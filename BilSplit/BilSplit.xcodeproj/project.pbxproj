@@ -13,6 +13,7 @@
 		122652821ABCE4B100F33300 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122652811ABCE4B100F33300 /* Images.xcassets */; };
 		122652851ABCE4B100F33300 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122652831ABCE4B100F33300 /* LaunchScreen.xib */; };
 		122652911ABCE4B100F33300 /* BilSplitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122652901ABCE4B100F33300 /* BilSplitTests.swift */; };
+		1226529B1ABCEFE300F33300 /* ViewControllerStartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1226529A1ABCEFE300F33300 /* ViewControllerStartScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		1226528A1ABCE4B100F33300 /* BilSplitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BilSplitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1226528F1ABCE4B100F33300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		122652901ABCE4B100F33300 /* BilSplitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilSplitTests.swift; sourceTree = "<group>"; };
+		1226529A1ABCEFE300F33300 /* ViewControllerStartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerStartScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				1226527A1ABCE4B100F33300 /* AppDelegate.swift */,
 				1226527C1ABCE4B100F33300 /* ViewController.swift */,
 				1226527E1ABCE4B100F33300 /* Main.storyboard */,
+				1226529A1ABCEFE300F33300 /* ViewControllerStartScreen.swift */,
 				122652811ABCE4B100F33300 /* Images.xcassets */,
 				122652831ABCE4B100F33300 /* LaunchScreen.xib */,
 				122652781ABCE4B100F33300 /* Supporting Files */,
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1226527D1ABCE4B100F33300 /* ViewController.swift in Sources */,
+				1226529B1ABCEFE300F33300 /* ViewControllerStartScreen.swift in Sources */,
 				1226527B1ABCE4B100F33300 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
