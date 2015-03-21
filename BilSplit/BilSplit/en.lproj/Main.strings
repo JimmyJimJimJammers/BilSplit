@@ -1,0 +1,108 @@
+
+/* Class = "UITextField"; placeholder = "Tip"; ObjectID = "0TE-9j-l74"; */
+"0TE-9j-l74.placeholder" = "Tip";
+
+/* Class = "UILabel"; text = "Color"; ObjectID = "1ND-yg-zzt"; */
+"1ND-yg-zzt.text" = "Color";
+
+/* Class = "UITextField"; placeholder = "Tax %"; ObjectID = "5sA-Li-SL6"; */
+"5sA-Li-SL6.placeholder" = "Tax %";
+
+/* Class = "UIViewController"; title = "StartWindow"; ObjectID = "6Da-VH-ipC"; */
+"6Da-VH-ipC.title" = "StartWindow";
+
+/* Class = "UIButton"; normalTitle = "Bob Valentine"; ObjectID = "6OT-kJ-hDp"; */
+"6OT-kJ-hDp.normalTitle" = "Bob Valentine";
+
+/* Class = "UILabel"; text = "Total: $7.99"; ObjectID = "7Gj-VX-r2d"; */
+"7Gj-VX-r2d.text" = "Total: $7.99";
+
+/* Class = "UILabel"; text = "$34.45"; ObjectID = "8BY-xI-CT8"; */
+"8BY-xI-CT8.text" = "$34.45";
+
+/* Class = "UITextField"; placeholder = "2x"; ObjectID = "8l6-Ik-3kK"; */
+"8l6-Ik-3kK.placeholder" = "2x";
+
+/* Class = "UISearchBar"; placeholder = "Add People"; ObjectID = "Cur-TC-cPu"; */
+"Cur-TC-cPu.placeholder" = "Add People";
+
+/* Class = "UIViewController"; title = "PersonSelectWindow"; ObjectID = "FgM-fa-SOj"; */
+"FgM-fa-SOj.title" = "PersonSelectWindow";
+
+/* Class = "UILabel"; text = "Buffalo Wings Platter"; ObjectID = "Fuq-YL-yia"; */
+"Fuq-YL-yia.text" = "Buffalo Wings Platter";
+
+/* Class = "UITextField"; placeholder = "1x"; ObjectID = "IBr-ig-8Vu"; */
+"IBr-ig-8Vu.placeholder" = "1x";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "Ij5-fn-N5v"; */
+"Ij5-fn-N5v.normalTitle" = "Next";
+
+/* Class = "UIButton"; normalTitle = "Add More"; ObjectID = "Km0-S5-UEp"; */
+"Km0-S5-UEp.normalTitle" = "Add More";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "M5w-bX-qqK"; */
+"M5w-bX-qqK.normalTitle" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "NO2-7s-fCr"; */
+"NO2-7s-fCr.normalTitle" = "Next";
+
+/* Class = "UITextField"; placeholder = "Buffalo Wings Platter"; ObjectID = "O5w-rV-2kw"; */
+"O5w-rV-2kw.placeholder" = "Buffalo Wings Platter";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "Oi6-Y6-GLP"; */
+"Oi6-Y6-GLP.normalTitle" = "Done";
+
+/* Class = "UILabel"; text = "$7.99"; ObjectID = "QrT-uY-hl2"; */
+"QrT-uY-hl2.text" = "$7.99";
+
+/* Class = "UILabel"; text = "Bob Valentine"; ObjectID = "TtV-Wx-s6O"; */
+"TtV-Wx-s6O.text" = "Bob Valentine";
+
+/* Class = "UILabel"; text = "Colors"; ObjectID = "V2a-In-e6k"; */
+"V2a-In-e6k.text" = "Colors";
+
+/* Class = "UILabel"; text = "Dinosaur Barbecue"; ObjectID = "Zkn-At-OKq"; */
+"Zkn-At-OKq.text" = "Dinosaur Barbecue";
+
+/* Class = "UIButton"; normalTitle = "Camera"; ObjectID = "Zzg-f2-Gu6"; */
+"Zzg-f2-Gu6.normalTitle" = "Camera";
+
+/* Class = "UIViewController"; title = "FriendsWindow"; ObjectID = "a16-KF-Ygy"; */
+"a16-KF-Ygy.title" = "FriendsWindow";
+
+/* Class = "UILabel"; text = "✓"; ObjectID = "avg-lo-f6Z"; */
+"avg-lo-f6Z.text" = "✓";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "cQz-bn-eOK"; */
+"cQz-bn-eOK.normalTitle" = "Done";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "gAL-4s-l6r"; */
+"gAL-4s-l6r.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "08/28/14"; ObjectID = "i4U-Ef-ipB"; */
+"i4U-Ef-ipB.text" = "08/28/14";
+
+/* Class = "UIViewController"; title = "ItemAssignmentWindow"; ObjectID = "l1d-di-qSC"; */
+"l1d-di-qSC.title" = "ItemAssignmentWindow";
+
+/* Class = "UIViewController"; title = "SummaryWindow"; ObjectID = "lSi-gJ-j0Z"; */
+"lSi-gJ-j0Z.title" = "SummaryWindow";
+
+/* Class = "UILabel"; text = "Total: $7.99"; ObjectID = "nne-cp-dxB"; */
+"nne-cp-dxB.text" = "Total: $7.99";
+
+/* Class = "UIViewController"; title = "ItemsWindow"; ObjectID = "q7G-M7-Var"; */
+"q7G-M7-Var.title" = "ItemsWindow";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "sSS-aq-9h6"; */
+"sSS-aq-9h6.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "Bob Valentine"; ObjectID = "xX0-Cu-uqR"; */
+"xX0-Cu-uqR.text" = "Bob Valentine";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "xmM-48-nuf"; */
+"xmM-48-nuf.normalTitle" = "Next";
+
+/* Class = "UITextField"; placeholder = "$7.99"; ObjectID = "z2R-I0-bYv"; */
+"z2R-I0-bYv.placeholder" = "$7.99";
