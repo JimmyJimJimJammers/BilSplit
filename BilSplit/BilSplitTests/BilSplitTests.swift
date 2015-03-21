@@ -2,8 +2,8 @@
 //  BilSplitTests.swift
 //  BilSplitTests
 //
-//  Created by James McCarthy on 3/19/15.
-//  Copyright (c) 2015 JimMcCarthy3d. All rights reserved.
+//  Created by James McCarthy on 3/20/15.
+//  Copyright (c) 2015 PandaTech. All rights reserved.
 //
 
 import UIKit
