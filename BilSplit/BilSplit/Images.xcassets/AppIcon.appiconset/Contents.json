@@ -27,13 +27,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "PandaFace60x60.png",
+      "filename" : "PandaFace120x120-2.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "PandaFace120x120.png",
+      "filename" : "PandaFace180x180.png",
       "scale" : "3x"
     },
     {
