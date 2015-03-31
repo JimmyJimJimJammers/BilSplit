@@ -12,10 +12,13 @@ import UIKit
 class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
     var activityIndicator:UIActivityIndicatorView!
+    var t:UILabel!
+    var finalReceipt: Receipt!
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        finalReceipt = Receipt()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -24,23 +27,47 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    // Activity Indicator methods
     func addActivityIndicator() {
         activityIndicator = UIActivityIndicatorView(frame: view.bounds)
         activityIndicator.activityIndicatorViewStyle = .WhiteLarge
         activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0.25)
         activityIndicator.startAnimating()
+        SwiftSpinner.show("Processing Image...\nthis takes a bit")
         view.addSubview(activityIndicator)
     }
     
     func removeActivityIndicator() {
+        SwiftSpinner.hide()
         activityIndicator.removeFromSuperview()
         activityIndicator = nil
     }
     
+    class Item {
+        var price: Double
+        var quantity: Int
+        var name: String
+        
+        init() {
+            self.quantity = 1
+            self.price = 0.0
+            self.name = ""
+        }
+    }
+    
+    class Receipt {
+        var items: [Item]
+        var total: Double
+        var tax: Double
+        
+        init() {
+            self.items = []
+            self.total = 0.0
+            self.tax = 0.0
+        }
+    }
+    
     //Scales the Image for Tesseract
     func scaleImage(image: UIImage, maxDimension: CGFloat) -> UIImage {
-        
         var scaledSize = CGSizeMake(maxDimension, maxDimension)
         var scaleFactor:CGFloat
         
@@ -61,6 +88,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         
         return scaledImage
     }
+    
     @IBAction func TakePhoto(sender: AnyObject)
     {
         /*
@@ -109,6 +137,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     }
     
     
+    
     func isNumeric(a: String) -> Bool {
         if let n = a.toInt() {
             return true
@@ -120,6 +149,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     
     //Checks text for errors and splits up into array
     func checkText(readText: String) -> [String] {
+        print("check start\n")
         var finalizedText = readText
         var arrayText:[String]
         let replaceI : Character = "1"
@@ -156,75 +186,172 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                 }
             }
             
-            var left : String = ""
-            var right : String = ""
-            //check if extra spaces eg. "6 . 99" || "6. 99" || "6 .99"
-            for var index = 0; index < arrayText.count; ++index {
-                for var j = 2; j < countElements(arrayText[index]); j++ {
-                    if (Array(arrayText[index])[j] == ".") {
-                        if (Array(arrayText[index])[j+1] == " " && Array(arrayText[index])[j-1] == " ") {
-                            if(Array(arrayText[index])[j-2] != nil && (j < countElements(arrayText[index])-2 && Array(arrayText[index])[j+2] != nil)){
-                                left = String(Array(arrayText[index])[j-2])
-                                right = String(Array(arrayText[index])[j+2])
+            
+            var errorString = ""
+            for var i = 0; i < arrayText.count; i++ {
+                for var j = 1; j<countElements(arrayText[i]); j++ {
+                    if(!isNumeric(String(Array(arrayText[i])[j]))){
+                        errorString = ""
+                        var founda = false
+                        for var counta = 1; counta<3 && j-counta>=0; counta++ {
+                            if(isNumeric(String(Array(arrayText[i])[j-counta]))){
+                                founda = true
+                                break
                             }
-                            
-                            if( isNumeric( left ) && isNumeric( right ) ) {
-                                arrayText[index] = arrayText[index].stringByReplacingOccurrencesOfString(left + " . " + right, withString: left + "." + right, options: NSStringCompareOptions.LiteralSearch, range: nil)
+                            else{
+                                errorString = errorString + String(Array(arrayText[i])[j-counta])
                             }
                         }
-                        else if (Array(arrayText[index])[j+1] == " ") {
-                            if(Array(arrayText[index])[j-2] != nil && (j < countElements(arrayText[index])-2 && Array(arrayText[index])[j+2] != nil)){
-                                left = String(Array(arrayText[index])[j-2])
-                                right = String(Array(arrayText[index])[j+2])
+                        errorString = errorString + String(Array(arrayText[i])[j])
+                        var foundb = false
+                        for var countb = 1; countb<3 && j+countb<countElements(arrayText[i]); countb++ {
+                            if(isNumeric(String(Array(arrayText[i])[j+countb]))){
+                                foundb = true
+                                break
                             }
-                            
-                            if( isNumeric( left ) && isNumeric( right ) ) {
-                                arrayText[index] = arrayText[index].stringByReplacingOccurrencesOfString(left + ". " + right, withString: left + "." + right, options: NSStringCompareOptions.LiteralSearch, range: nil)
-                            }
-                        }
-                        else if (Array(arrayText[index])[j-1] == " ") {
-                            if(Array(arrayText[index])[j-2] != nil && (j < countElements(arrayText[index])-2 && Array(arrayText[index])[j+2] != nil)){
-                                left = String(Array(arrayText[index])[j-2])
-                                right = String(Array(arrayText[index])[j+2])
-                            }
-                            
-                            if( isNumeric( left ) && isNumeric( right ) ) {
-                                arrayText[index] = arrayText[index].stringByReplacingOccurrencesOfString(left + " ." + right, withString: left + "." + right, options: NSStringCompareOptions.LiteralSearch, range: nil)
+                            else{
+                                errorString = errorString + String(Array(arrayText[i])[j+countb])
                             }
                         }
-                    }
-                }
-            }
-            
-            
-            
-            
-            //then check for no '.' eg. "2 99"
-            for var index = 0; index < arrayText.count; ++index {
-                for var j = 1; j < countElements(arrayText[index]); j++ {
-                    if(Array(arrayText[index])[j-1] != nil){
-                        left = String(Array(arrayText[index])[j-1])
-                    }
-                    if(j < countElements(arrayText[index])-1 && Array(arrayText[index])[j+1] != nil){
-                        right = String(Array(arrayText[index])[j+1])
-                    }
-                    
-                    if( isNumeric( left ) && isNumeric( right ) ) {
-                        arrayText[index] = arrayText[index].stringByReplacingOccurrencesOfString(left + " " + right, withString: left + "." + right, options: NSStringCompareOptions.LiteralSearch, range: nil)
+                        if(founda && foundb){
+                            arrayText[i] = arrayText[i].stringByReplacingOccurrencesOfString(errorString, withString: ".", options: nil, range: nil)
+                        }
                     }
                 }
             }
         }
-        // 8
+        
+        var split: [[String]] = []
+        for var index = 0; index < arrayText.count; index++ {
+            var x = arrayText[index].componentsSeparatedByString(" ")
+            var s = x.count
+            if s > 1 {
+                split.append(x)
+            }
+        }
+        
+        var receipt: [Item] = []
+        var sub:Double = 0.0
+        var tender:Double = 0.0
+        var change:Double = 0.0
+        for var i = 0; i < split.count; i++ {
+            var temp = Item()
+            //find price
+            for var p = 0; p < split[i].count; p++ {
+                let characterToFind: Character = "$"
+                if var characterIndex = find(split[i][p], characterToFind) {
+                    split[i][p].stringByReplacingOccurrencesOfString("$", withString: "", options: nil, range: nil)
+                }
+                
+                if split[i][p].rangeOfString(".") != nil && split[i][p].rangeOfString("%") == nil {
+                    var pr:Double = 0.0
+                    pr = NSString(string: split[i][p]).doubleValue
+                    if pr != 0.0 {
+                        var pri:Double = 0.0
+                        pri = pr
+                        temp.price = pri
+                        split[i].removeAtIndex(p)
+                        break
+                    }
+                }
+            }
+            //find quantity
+            //find name and put into array
+            if temp.price != 0.0 && !isEmpty(split[i]) {
+                var n = " ".join(split[i])
+                
+                if (n.lowercaseString.rangeOfString("total") != nil || n.lowercaseString.rangeOfString("tl") != nil) && n.lowercaseString.rangeOfString("tax") == nil && n.lowercaseString.rangeOfString("%") == nil{
+                    finalReceipt.total = temp.price
+                }
+                
+                else if n.lowercaseString.rangeOfString("tax") != nil {
+                    finalReceipt.tax = temp.price
+                }
+
+                
+                else if n.lowercaseString.rangeOfString("change") == nil && n.lowercaseString.rangeOfString("cash") == nil && n.lowercaseString.rangeOfString("cg") == nil && n.lowercaseString.rangeOfString("credit") == nil{
+                    temp.name = n
+                    receipt.append(temp)
+                }
+                
+                else if n.lowercaseString.rangeOfString("sub") != nil || n.lowercaseString.rangeOfString("subtotal") != nil {
+                    sub = temp.price
+                }
+                
+                else if n.lowercaseString.rangeOfString("cash") != nil || n.lowercaseString.rangeOfString("tender") != nil {
+                    tender = temp.price
+                }
+                
+                else if n.lowercaseString.rangeOfString("change") != nil || n.lowercaseString.rangeOfString("cg") != nil {
+                    change = temp.price
+                }
+            }
+        }
+        
+        if finalReceipt.total == 0.0 && tender != 0.0 && change != 0.0  {
+            finalReceipt.total = tender-change
+        }
+        
+        if finalReceipt.tax == 0.0 && sub != 0.0 {
+            finalReceipt.tax = finalReceipt.total - sub
+        }
+        
+        //below line is strictly for debugging
+        //receipt = []
+        
         removeActivityIndicator()
+        
+        if(isEmpty(receipt) == false){
+            if(isEmpty(finalReceipt.items)){
+                finalReceipt.items = receipt
+            }
+            else{
+                finalReceipt.items += receipt
+            }
+            var alert = UIAlertController(title: "Yay!", message: "Image procesed! Click next to continue.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        else{
+            var alert = UIAlertController(title: "Error:", message: "Couldn't processing image.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        // 8
+        
+        
         //call function to populate tables here
         //eg:
         //populateTables(arrayText)
         return arrayText as [String]
     }
+    
+    func preProcessingImage(preimage: UIImage) {
+        print("preprocessing start\n")
+        var beginImage = CIImage(image: preimage)
+        
+        var greyFilter = CIFilter(name: "CIPhotoEffectMono")
+        greyFilter.setValue(beginImage, forKey:kCIInputImageKey)
+        var displayImage = UIImage(CGImage: CIContext(options:nil).createCGImage(greyFilter.outputImage, fromRect:greyFilter.outputImage.extent()))!
+        
+        beginImage = CIImage(image: displayImage)
+        
+        
+        /*var invertFilter = CIFilter(name: "CIColorInvert")
+        invertFilter.setDefaults()
+        invertFilter.setValue(nextImage, forKey:kCIInputImageKey)
+        var final = UIImage(CGImage: CIContext(options:nil).createCGImage(invertFilter.outputImage, fromRect:invertFilter.outputImage.extent()))!*/
+        
+        print("preprocessing finish\n")
+        
+        performImageRecognition(displayImage)
+    }
 
     
     func performImageRecognition(image: UIImage) {
+        SwiftSpinner.show("Processing Image...\njust a little longer")
+        print("tess start\n")
         // 1
         let tesseract = G8Tesseract()
         
@@ -246,31 +373,32 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         
         // 7
         var readText = tesseract.recognizedText
-        
+        print("tess end\n")
         checkText(readText)
     
     }
     
 }
 
+extension String {
+    var floatValue: Float {
+        return (self as NSString).floatValue
+    }
+}
+
+
 extension ViewControllerStartScreen: UIImagePickerControllerDelegate {
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
             let selectedPhoto = info[UIImagePickerControllerOriginalImage] as UIImage
-            let scaledImage = scaleImage(selectedPhoto, maxDimension: 640)
+            let scaledImage = self.scaleImage(selectedPhoto, maxDimension: 640)
             
             addActivityIndicator()
             
             dismissViewControllerAnimated(true, completion: {
-                
-                let beginImage = CIImage(image: scaledImage)
-                let greyFilter = CIFilter(name: "CIPhotoEffectMono")
-                greyFilter.setValue(beginImage, forKey:kCIInputImageKey)
-                let invertFilter = CIFilter(name: "CIColorInvert")
-                invertFilter.setValue(greyFilter.outputImage, forKey:kCIInputImageKey)
-                let newImage = UIImage(CIImage: invertFilter.outputImage)
-                
-                self.performImageRecognition(newImage!)
+                self.preProcessingImage(scaledImage)
             })
+            
+            
     }
 }
