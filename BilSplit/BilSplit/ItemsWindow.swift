@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ItemsWindow: UITableViewController
 {
@@ -22,12 +23,12 @@ class ItemsWindow: UITableViewController
     override init()
     {
         editableItemsList = [];
+        super.init();
     }
     init(itemList: [EditableItem])
     {
         editableItemsList = ViewControllerStartScreen.getReceipt();
     }
-
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -36,11 +37,14 @@ class ItemsWindow: UITableViewController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("EditableItemCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         var editItem : EditableItem;
         
         editItem = editableItemsList[indexPath.row];
         
         cell.textLabel?.text = editItem.ItemName;
-    }*/
+        
+        
+        return cell;
+    }//*/
 }
