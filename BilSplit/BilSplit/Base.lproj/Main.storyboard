@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Da-VH-ipC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Da-VH-ipC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--ItemsWindow-->
         <scene sceneID="rIx-2y-bTt">
             <objects>
-                <viewController storyboardIdentifier="ItemsWindow" title="ItemsWindow" id="q7G-M7-Var" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemsWindow" title="ItemsWindow" id="q7G-M7-Var" customClass="ItemsWindow" customModule="BilSplit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rmH-7P-fJZ"/>
                         <viewControllerLayoutGuide type="bottom" id="zEQ-kY-DNY"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditItemsCell" id="arN-ij-HaR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditableItemCell" id="arN-ij-HaR">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="arN-ij-HaR" id="rC2-Qz-rKv">
@@ -433,7 +433,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Wb4-XC-bu0"/>
-        <segue reference="t6V-OR-2Yj"/>
         <segue reference="VO0-Z9-HNv"/>
+        <segue reference="t6V-OR-2Yj"/>
     </inferredMetricsTieBreakers>
 </document>
