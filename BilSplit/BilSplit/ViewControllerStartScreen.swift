@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MobileCoreServices
 
 class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
