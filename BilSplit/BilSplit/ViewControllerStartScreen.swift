@@ -19,6 +19,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("made receipt in load\n")
         finalReceipt = Receipt()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -26,6 +27,10 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getReceipt() -> Receipt {
+        return finalReceipt
     }
     
     func addActivityIndicator() {
@@ -149,13 +154,20 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     
     
     //Checks text for errors and splits up into array
-    func checkText(readText: String) -> [String] {
+    func checkText(readText: String) {
+        if(finalReceipt==nil){
+            print("made receipt in func")
+            finalReceipt = Receipt()
+        }
         print("check start\n")
         var finalizedText = readText
-        var arrayText:[String]
+        var arrayText:[String] = []
         let replaceI : Character = "1"
+        
         if(readText.isEmpty){
-            return []
+            var alert = UIAlertController(title: "Error:", message: "Couldn't processing image.", preferredStyle:UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         else{
             //remove extra '\n' (empty lines)
@@ -219,6 +231,39 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                         }
                     }
                 }
+            }
+        }
+        print("remove last")
+        for var i = 0; i < arrayText.count; i++ {
+            var stringLength:Int = countElements(arrayText[i])
+            var substringIndex = stringLength - 1
+            var x:String = ""
+            if(!isEmpty(arrayText[i])) {
+                x = String(Array(arrayText[i])[substringIndex])
+            }
+            else {
+                break
+            }
+            while (!isNumeric( x )){
+                print(x)
+                print("\n")
+                print("removed ")
+                arrayText[i] = arrayText[i].substringToIndex(advance(arrayText[i].startIndex, substringIndex))
+                stringLength = countElements(arrayText[i])
+                substringIndex = stringLength - 1
+                if(!isEmpty(arrayText[i])) {
+                    x = String(Array(arrayText[i])[substringIndex])
+                }
+                else {
+                    break
+                }
+
+            }
+        }
+        
+        for var i = 0; i < arrayText.count; i++ {
+            if(isEmpty(arrayText[i])){
+                arrayText.removeAtIndex(i)
             }
         }
         
@@ -289,29 +334,27 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             }
         }
         
-        if finalReceipt.total == 0.0 && tender != 0.0 && change != 0.0  {
-            finalReceipt.total = tender-change
-        }
-        
         if finalReceipt.tax == 0.0 && sub != 0.0 {
             finalReceipt.tax = finalReceipt.total - sub
         }
         
         //below line is strictly for debugging
         //receipt = []
-        
         removeActivityIndicator()
+        
         
         if(isEmpty(receipt) == false){
             if(isEmpty(finalReceipt.items)){
+                print("attached items\n")
                 finalReceipt.items = receipt
             }
             else{
                 finalReceipt.items += receipt
+                
             }
-            var alert = UIAlertController(title: "Yay!", message: "Image procesed! Click next to continue.", preferredStyle: UIAlertControllerStyle.Alert)
+            /*var alert = UIAlertController(title: "Yay!", message: "Image procesed! Click next to continue.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.presentViewController(alert, animated: true, completion: nil)*/
         }
         
         else{
@@ -319,13 +362,15 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
+        print(finalReceipt.total)
+        print()
+        print(finalReceipt.tax)
         // 8
         
         
         //call function to populate tables here
         //eg:
         //populateTables(arrayText)
-        return arrayText as [String]
     }
     
     func preProcessingImage(preimage: UIImage) {
@@ -336,13 +381,20 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         greyFilter.setValue(beginImage, forKey:kCIInputImageKey)
         var displayImage = UIImage(CGImage: CIContext(options:nil).createCGImage(greyFilter.outputImage, fromRect:greyFilter.outputImage.extent()))!
         
-        beginImage = CIImage(image: displayImage)
+        var greyImage = CIImage(image: displayImage)
         
         
-        /*var invertFilter = CIFilter(name: "CIColorInvert")
+        var invertFilter = CIFilter(name: "CIColorInvert")
         invertFilter.setDefaults()
-        invertFilter.setValue(nextImage, forKey:kCIInputImageKey)
-        var final = UIImage(CGImage: CIContext(options:nil).createCGImage(invertFilter.outputImage, fromRect:invertFilter.outputImage.extent()))!*/
+        invertFilter.setValue(greyImage, forKey:kCIInputImageKey)
+        var final = UIImage(CGImage: CIContext(options:nil).createCGImage(invertFilter.outputImage, fromRect:invertFilter.outputImage.extent()))!
+        
+        var next = CIImage(image: final)
+        
+        var finalgreyFilter = CIFilter(name: "CIColorControls")
+        finalgreyFilter.setValue(0.8, forKey:"inputContrast")
+        finalgreyFilter.setValue(next, forKey:kCIInputImageKey)
+        var finished = UIImage(CGImage: CIContext(options:nil).createCGImage(finalgreyFilter.outputImage, fromRect:finalgreyFilter.outputImage.extent()))!
         
         print("preprocessing finish\n")
         
@@ -370,6 +422,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         
         // 6
         tesseract.image = image.g8_blackAndWhite()
+        
         tesseract.recognize()
         
         // 7
@@ -384,6 +437,19 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
 extension String {
     var floatValue: Float {
         return (self as NSString).floatValue
+    }
+}
+
+extension String {
+    func characterAtIndex(index: Int) -> Character? {
+        var cur = 0
+        for char in self {
+            if cur == index {
+                return char
+            }
+            cur++
+        }
+        return nil
     }
 }
 
