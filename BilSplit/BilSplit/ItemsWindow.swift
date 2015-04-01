@@ -11,7 +11,7 @@ import Foundation
 
 class ItemsWindow: UITableViewController
 {
-    var editableItemsList : [EditableItem];
+    /*var editableItemsList : [EditableItem];
     
     override init()
     {
@@ -21,6 +21,7 @@ class ItemsWindow: UITableViewController
     {
         editableItemsList = itemList;
     }
+
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -35,5 +36,5 @@ class ItemsWindow: UITableViewController
         editItem = editableItemsList[indexPath.row];
         
         cell.textLabel?.text = editItem.ItemName;
-    }
+    }*/
 }
