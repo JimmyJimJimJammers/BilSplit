@@ -8,18 +8,24 @@
 
 import Foundation
 
-
 class ItemsWindow: UITableViewController
 {
-    /*var editableItemsList : [EditableItem];
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("here\n")
+        print(finalReceipt.total)
+        // Do any additional setup after loading the view, typically from a nib.
+    }
     
+    /*var editableItemsList : [EditableItem];
     override init()
     {
         editableItemsList = [];
     }
     init(itemList: [EditableItem])
     {
-        editableItemsList = itemList;
+        editableItemsList = ViewControllerStartScreen.getReceipt();
     }
 
     

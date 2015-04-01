@@ -10,11 +10,36 @@ import Foundation
 import UIKit
 import MobileCoreServices
 
+class Item {
+    var price: Double
+    var quantity: Int
+    var name: String
+    
+    init() {
+        self.quantity = 1
+        self.price = 0.0
+        self.name = ""
+    }
+}
+
+class Receipt {
+    var items: [Item]
+    var total: Double
+    var tax: Double
+    
+    init() {
+        self.items = []
+        self.total = 0.0
+        self.tax = 0.0
+    }
+}
+
+var finalReceipt: Receipt!
+
 class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
     var activityIndicator:UIActivityIndicatorView!
     var t:UILabel!
-    var finalReceipt: Receipt!
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
@@ -29,7 +54,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    func getReceipt() -> Receipt {
+    func getReceipt(i: Receipt) -> Receipt {
         return finalReceipt
     }
     
@@ -48,29 +73,6 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         activityIndicator = nil
     }
     
-    class Item {
-        var price: Double
-        var quantity: Int
-        var name: String
-        
-        init() {
-            self.quantity = 1
-            self.price = 0.0
-            self.name = ""
-        }
-    }
-    
-    class Receipt {
-        var items: [Item]
-        var total: Double
-        var tax: Double
-        
-        init() {
-            self.items = []
-            self.total = 0.0
-            self.tax = 0.0
-        }
-    }
     
     //Scales the Image for Tesseract
     func scaleImage(image: UIImage, maxDimension: CGFloat) -> UIImage {
@@ -352,9 +354,9 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                 finalReceipt.items += receipt
                 
             }
-            /*var alert = UIAlertController(title: "Yay!", message: "Image procesed! Click next to continue.", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Yay!", message: "Image procesed! Click next to continue.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)*/
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         
         else{
