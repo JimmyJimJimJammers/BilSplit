@@ -7,21 +7,34 @@
 //
 
 import Foundation
+import UIKit
 
 
 class ItemsWindow: UITableViewController
 {
-    /*var editableItemsList : [EditableItem];
+    override func viewDidLoad()
+    {
+        self.editableItemsList = [EditableItem(itemName: "Buffalo Wings", price: 3.50, quantity: 2), EditableItem(itemName: "Chicken Fingers", price: 2.75, quantity: 1)];
+        super.viewDidLoad();
+    }
+    
+    var editableItemsList : [EditableItem];
     
     override init()
     {
         editableItemsList = [];
+        super.init();
     }
     init(itemList: [EditableItem])
     {
         editableItemsList = itemList;
+        super.init();
     }
-
+    required init(coder aDecoder: NSCoder)
+    {
+        editableItemsList = [];
+        super.init(coder: aDecoder)
+    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -30,11 +43,14 @@ class ItemsWindow: UITableViewController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("EditableItemCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         var editItem : EditableItem;
         
         editItem = editableItemsList[indexPath.row];
         
         cell.textLabel?.text = editItem.ItemName;
-    }*/
+        
+        
+        return cell;
+    }//*/
 }
