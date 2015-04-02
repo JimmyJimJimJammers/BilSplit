@@ -35,6 +35,7 @@ class Receipt {
 }
 
 var finalReceipt: Receipt!
+var start: Bool!
 
 class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
@@ -45,6 +46,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         print("made receipt in load\n")
+        start = true
         if finalReceipt == nil{
             finalReceipt = Receipt()
         }
@@ -99,9 +101,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         return scaledImage
     }
     
-    @IBAction func TakePhoto(sender: AnyObject)
-    {
-        
+    func TakePhotoN(sender: AnyObject){
         let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
             message: nil, preferredStyle: .ActionSheet)
         
@@ -135,7 +135,132 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         imagePickerActionSheet.addAction(cancelButton)
         
         // 6
-        presentViewController(imagePickerActionSheet, animated: true, completion: nil)
+        self.presentViewController(imagePickerActionSheet, animated: true, completion: nil)
+    }
+
+    @IBAction func TakePhoto(sender: AnyObject)
+    {
+        
+        if !isEmpty(finalReceipt.items) && finalReceipt.total != 0.0 && finalReceipt.tax != 0.0 {
+            var alert = UIAlertController(title: "Start Over?", message:
+                "Receipt already loaded. Start over or add to original?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "Start Over", style: UIAlertActionStyle.Default,
+                handler: {action in
+                    finalReceipt = nil
+                    finalReceipt = Receipt()
+                    let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
+                        message: nil, preferredStyle: .ActionSheet)
+                    
+                    // 3
+                    if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+                        let cameraButton = UIAlertAction(title: "Take Photo",
+                            style: .Default) { (alert) -> Void in
+                                let imagePicker = UIImagePickerController()
+                                imagePicker.delegate = self
+                                imagePicker.sourceType = .Camera
+                                self.presentViewController(imagePicker,
+                                    animated: true,
+                                    completion: nil)
+                        }
+                        imagePickerActionSheet.addAction(cameraButton)
+                    }
+                    
+                    // 4
+                    let libraryButton = UIAlertAction(title: "Choose Existing",
+                        style: .Default) { (alert) -> Void in
+                            let imagePicker = UIImagePickerController()
+                            imagePicker.delegate = self
+                            imagePicker.sourceType = .PhotoLibrary
+                            self.presentViewController(imagePicker, animated: true, completion: nil)
+                    }
+                    imagePickerActionSheet.addAction(libraryButton)
+                    
+                    // 5
+                    let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel) { (alert) -> Void in
+                    }
+                    imagePickerActionSheet.addAction(cancelButton)
+                    
+                    // 6
+                    self.presentViewController(imagePickerActionSheet, animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Add More", style: UIAlertActionStyle.Default,
+                handler: { action in
+                    let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
+                        message: nil, preferredStyle: .ActionSheet)
+                    
+                    // 3
+                    if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+                        let cameraButton = UIAlertAction(title: "Take Photo",
+                            style: .Default) { (alert) -> Void in
+                                let imagePicker = UIImagePickerController()
+                                imagePicker.delegate = self
+                                imagePicker.sourceType = .Camera
+                                self.presentViewController(imagePicker,
+                                    animated: true,
+                                    completion: nil)
+                        }
+                        imagePickerActionSheet.addAction(cameraButton)
+                    }
+                    
+                    // 4
+                    let libraryButton = UIAlertAction(title: "Choose Existing",
+                        style: .Default) { (alert) -> Void in
+                            let imagePicker = UIImagePickerController()
+                            imagePicker.delegate = self
+                            imagePicker.sourceType = .PhotoLibrary
+                            self.presentViewController(imagePicker, animated: true, completion: nil)
+                    }
+                    imagePickerActionSheet.addAction(libraryButton)
+                    
+                    // 5
+                    let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel) { (alert) -> Void in
+                    }
+                    imagePickerActionSheet.addAction(cancelButton)
+                    
+                    // 6
+                    self.presentViewController(imagePickerActionSheet, animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default,
+                handler: nil ))
+            self.presentViewController(alert, animated: false, completion: nil)
+        }
+        else{
+            let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
+                message: nil, preferredStyle: .ActionSheet)
+            
+            // 3
+            if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+                let cameraButton = UIAlertAction(title: "Take Photo",
+                    style: .Default) { (alert) -> Void in
+                        let imagePicker = UIImagePickerController()
+                        imagePicker.delegate = self
+                        imagePicker.sourceType = .Camera
+                        self.presentViewController(imagePicker,
+                            animated: true,
+                            completion: nil)
+                }
+                imagePickerActionSheet.addAction(cameraButton)
+            }
+            
+            // 4
+            let libraryButton = UIAlertAction(title: "Choose Existing",
+                style: .Default) { (alert) -> Void in
+                    let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
+                    imagePicker.sourceType = .PhotoLibrary
+                    self.presentViewController(imagePicker, animated: true, completion: nil)
+            }
+            imagePickerActionSheet.addAction(libraryButton)
+            
+            // 5
+            let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel) { (alert) -> Void in
+            }
+            imagePickerActionSheet.addAction(cancelButton)
+            
+            // 6
+            self.presentViewController(imagePickerActionSheet, animated: true, completion: nil)
+        }
     }
     
     
@@ -151,7 +276,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     
     //Checks text for errors and splits up into array
     func checkText(readText: String) {
-        if(finalReceipt==nil){
+        if(finalReceipt == nil){
             print("made receipt in func")
             finalReceipt = Receipt()
         }
@@ -229,7 +354,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                 }
             }
         }
-        print("remove last")
+        
         for var i = 0; i < arrayText.count; i++ {
             var stringLength:Int = countElements(arrayText[i])
             var substringIndex = stringLength - 1
@@ -241,9 +366,6 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                 break
             }
             while (!isNumeric( x )){
-                print(x)
-                print("\n")
-                print("removed ")
                 arrayText[i] = arrayText[i].substringToIndex(advance(arrayText[i].startIndex, substringIndex))
                 stringLength = countElements(arrayText[i])
                 substringIndex = stringLength - 1
@@ -257,8 +379,47 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             }
         }
         
+        var count = 0
+        var stemp:String = ""
+        var f = false
         for var i = 0; i < arrayText.count; i++ {
-            if(isEmpty(arrayText[i])){
+            stemp = ""
+            for var j = 1; j<countElements(arrayText[i]); j++ {
+                if (!isNumeric(String(Array(arrayText[i])[j])) && !(String(Array(arrayText[i])[j]) == " ")) {
+                    stemp = stemp + String(Array(arrayText[i])[j])
+                }
+                else if (String(Array(arrayText[i])[j]) == " ") {
+                    stemp = ""
+                }
+            }
+            
+            if (stemp != "" && stemp != "."){
+                arrayText[i] = arrayText[i].stringByReplacingOccurrencesOfString(stemp, withString: " ", options: nil, range: nil)
+                arrayText[i] = arrayText[i].stringByReplacingOccurrencesOfString("  ", withString: " ", options: nil, range: nil)
+            }
+
+    
+        }
+        
+        for var i = 0; i < arrayText.count; i++ {
+            var stringLength:Int = countElements(arrayText[i])
+            var substringIndex = stringLength - 2
+            var x:String = ""
+            if(!isEmpty(arrayText[i])) {
+                x = String(Array(arrayText[i])[substringIndex])
+            }
+            else {
+                break
+            }
+            if(x != "." && x != " "){
+                var rep = arrayText[i].substringToIndex(advance(arrayText[i].startIndex, substringIndex))
+                arrayText[i] = arrayText[i].stringByReplacingOccurrencesOfString(rep, withString: rep + ".", options: nil, range: nil)
+                arrayText[i] = arrayText[i].stringByReplacingOccurrencesOfString("..", withString: ".", options: nil, range: nil)
+            }
+        }
+        
+        for var i = 0; i < arrayText.count; i++ {
+            if(isEmpty(arrayText[i]) || countElements(arrayText[i]) < 2){
                 arrayText.removeAtIndex(i)
             }
         }
@@ -297,16 +458,38 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                     }
                 }
             }
+            
             //find quantity
+            //not tested
+            for var p = 0; p < split[i].count; p++ {
+                if isNumeric(split[i][p]) && countElements(split[i][p]) < 3 {
+                    temp.quantity = split[i][p].toInt()!
+                }
+            }
+            
             //find name and put into array
             if temp.price != 0.0 && !isEmpty(split[i]) {
                 var n = " ".join(split[i])
                 
-                if (n.lowercaseString.rangeOfString("total") != nil || n.lowercaseString.rangeOfString("tl") != nil) && n.lowercaseString.rangeOfString("tax") == nil && n.lowercaseString.rangeOfString("%") == nil{
-                    finalReceipt.total = temp.price
+                if n.lowercaseString.rangeOfString("sub") != nil || n.lowercaseString.rangeOfString("subtotal") != nil {
+                    sub = temp.price
+                }
+                
+                else if (n.lowercaseString.rangeOfString("total") != nil || n.lowercaseString.rangeOfString("tl") != nil) && (n.lowercaseString.rangeOfString("tax") == nil && n.lowercaseString.rangeOfString("%") == nil) {
+                    if(  finalReceipt.tax == 0.0 && (temp.price < sub || sub == 0)) {
+                        print("set taxa\n")
+                        finalReceipt.tax = temp.price
+                    }
+                    
+                    else if( finalReceipt.total < sub || finalReceipt.total == 0.0 || finalReceipt.total < temp.price ){
+                        print("set totala\n")
+                        finalReceipt.total = temp.price
+                    }
+                    
                 }
                 
                 else if n.lowercaseString.rangeOfString("tax") != nil {
+                    print("set taxb\n")
                     finalReceipt.tax = temp.price
                 }
 
@@ -314,10 +497,6 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                 else if n.lowercaseString.rangeOfString("change") == nil && n.lowercaseString.rangeOfString("cash") == nil && n.lowercaseString.rangeOfString("cg") == nil && n.lowercaseString.rangeOfString("credit") == nil{
                     temp.name = n
                     receipt.append(temp)
-                }
-                
-                else if n.lowercaseString.rangeOfString("sub") != nil || n.lowercaseString.rangeOfString("subtotal") != nil {
-                    sub = temp.price
                 }
                 
                 else if n.lowercaseString.rangeOfString("cash") != nil || n.lowercaseString.rangeOfString("tender") != nil {
@@ -330,8 +509,20 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             }
         }
         
-        if finalReceipt.tax == 0.0 && sub != 0.0 {
+        if(finalReceipt.tax != 0.0 && sub != 0.0 && finalReceipt.total==0.0 ){
+            print("set totalb\n")
+            finalReceipt.total = finalReceipt.tax + sub
+        }
+        
+        else if finalReceipt.tax == 0.0 && sub != 0.0 && finalReceipt.total != 0.0 {
+            print("set taxc\n")
             finalReceipt.tax = finalReceipt.total - sub
+        }
+        
+        if finalReceipt.tax > finalReceipt.total {
+            var t = finalReceipt.tax
+            finalReceipt.tax = finalReceipt.total
+            finalReceipt.total = t
         }
         
         //below line is strictly for debugging
@@ -341,16 +532,28 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         
         if(isEmpty(receipt) == false){
             if(isEmpty(finalReceipt.items)){
-                print("attached items\n")
                 finalReceipt.items = receipt
             }
             else{
                 finalReceipt.items += receipt
                 
             }
-            var alert = UIAlertController(title: "Yay!", message: "Image procesed! Click next to continue.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            var alert = UIAlertController(title: "Add More?", message:
+                "Do you need to take another photo?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default,
+                handler: {action in
+                    start = true
+                    var alert = UIAlertController(title: "Yay!", message: "Image procesed! Click next to continue.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default,
+                handler: {action in
+                    let somevar = 0
+                    self.TakePhotoN(somevar)
+            }))
+            self.presentViewController(alert, animated: false, completion: nil)
         }
         
         else{
@@ -358,15 +561,26 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
+        /*print(finalReceipt.total)
+        print("\ntotal^ subV\n")
+        print(sub)
+        print("\tax\n")
+        print(finalReceipt.tax)*/
+        //for debugging purposes
+        for var i = 0; i<finalReceipt.items.count; i++ {
+            print("name: ")
+            print(finalReceipt.items[i].name)
+            print("\nquantity: ")
+            print(finalReceipt.items[i].quantity)
+            print("\nprice: ")
+            print(finalReceipt.items[i].price)
+            print("\n")
+        }
+        print("\ntotal: ")
         print(finalReceipt.total)
-        print()
+        print("\ntax: ")
         print(finalReceipt.tax)
         // 8
-        
-        
-        //call function to populate tables here
-        //eg:
-        //populateTables(arrayText)
     }
     
     func preProcessingImage(preimage: UIImage) {
