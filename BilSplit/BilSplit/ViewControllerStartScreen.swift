@@ -45,7 +45,9 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         print("made receipt in load\n")
-        finalReceipt = Receipt()
+        if finalReceipt == nil{
+            finalReceipt = Receipt()
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -99,14 +101,6 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     
     @IBAction func TakePhoto(sender: AnyObject)
     {
-        /*
-        let picker = UIImagePickerController()
-        
-        picker.delegate = self
-        picker.sourceType = .Camera
-        
-        presentViewController(picker, animated: true, completion: nil)
-        */
         
         let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
             message: nil, preferredStyle: .ActionSheet)

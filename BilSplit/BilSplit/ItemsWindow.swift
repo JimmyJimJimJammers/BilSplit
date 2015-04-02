@@ -8,18 +8,17 @@
 
 import Foundation
 import UIKit
-
-class ItemsWindow: UITableViewController
+//UIViewController
+class ItemsWindow: UIViewController//, UITableViewController
 {
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("here\n")
-        print(finalReceipt.total)
-        // Do any additional setup after loading the view, typically from a nib.
+    override func viewDidLoad()
+    {
+        super.viewDidLoad();
+        self.editableItemsList = [EditableItem(itemName: "Buffalo Wings", price: 3.50, quantity: 2), EditableItem(itemName: "Chicken Fingers", price: 2.75, quantity: 1)];
     }
     
-    /*var editableItemsList : [EditableItem];
+    var editableItemsList : [EditableItem];
+    
     override init()
     {
         editableItemsList = [];
@@ -27,17 +26,24 @@ class ItemsWindow: UITableViewController
     }
     init(itemList: [EditableItem])
     {
-        editableItemsList = ViewControllerStartScreen.getReceipt();
+        editableItemsList = itemList;
+        super.init();
+    }
+    required init(coder aDecoder: NSCoder)
+    {
+        editableItemsList = [];
+        super.init(coder: aDecoder)
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return self.editableItemsList.count;
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        //let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         var editItem : EditableItem;
         
         editItem = editableItemsList[indexPath.row];
@@ -46,5 +52,5 @@ class ItemsWindow: UITableViewController
         
         
         return cell;
-    }//*/
+    }
 }
