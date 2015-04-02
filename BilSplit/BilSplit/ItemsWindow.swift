@@ -14,6 +14,12 @@ class ItemsWindow: UIViewController//, UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad();
+        /*
+        //This should pull everything from the OCR into the editableItemsList array
+        for var i = 0; i<finalReceipt.items.count; i++ {
+            editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity))
+        }
+        */
         self.editableItemsList = [EditableItem(itemName: "Buffalo Wings", price: 3.50, quantity: 2), EditableItem(itemName: "Chicken Fingers", price: 2.75, quantity: 1)];
     }
     
