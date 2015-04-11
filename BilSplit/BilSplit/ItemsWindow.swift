@@ -11,23 +11,7 @@ import UIKit
 //UIViewController
 class ItemsWindow: UIViewController//, UITableViewController
 {
-    var editableItemsList : [EditableItem];
-    
-    init()
-    {
-        editableItemsList = [];
-    }
-    init(itemList: [EditableItem])
-    {
-        editableItemsList = itemList;
-        //super.init();
-    }
-    required init(coder aDecoder: NSCoder)
-    {
-        editableItemsList = [];
-        super.init(coder: aDecoder)
-    }// */
-    
+    var editableItemsList : [EditableItem] = [];
     
     override func viewDidLoad()
     {

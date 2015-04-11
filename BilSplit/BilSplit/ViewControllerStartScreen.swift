@@ -379,7 +379,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             }
         }
         
-        var count = 0
+        //var count = 0
         var stemp:String = ""
         var f = false
         for var i = 0; i < arrayText.count; i++ {
