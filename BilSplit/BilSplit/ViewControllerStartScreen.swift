@@ -294,7 +294,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             //remove extra '\n' (empty lines)
             arrayText = finalizedText.componentsSeparatedByString("\n")
             for var index = 0; index < arrayText.count; ++index {
-                if(countElements(arrayText[index]) < 2){
+                if(count(arrayText[index]) < 2){
                     arrayText.removeAtIndex(index)
                 }
             }
@@ -308,7 +308,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             
             
             for var index = 0; index < arrayText.count; ++index {
-                if( countElements(arrayText[index]) > 2 ) {
+                if( count(arrayText[index]) > 2 ) {
                     if( startsWith(arrayText[index], "I") ) {
                         var temp = dropFirst( arrayText[index] )
                         arrayText[index] = ("1" + temp)
@@ -323,7 +323,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             
             var errorString = ""
             for var i = 0; i < arrayText.count; i++ {
-                for var j = 1; j<countElements(arrayText[i]); j++ {
+                for var j = 1; j<count(arrayText[i]); j++ {
                     if(!isNumeric(String(Array(arrayText[i])[j]))){
                         errorString = ""
                         var founda = false
@@ -338,7 +338,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                         }
                         errorString = errorString + String(Array(arrayText[i])[j])
                         var foundb = false
-                        for var countb = 1; countb<3 && j+countb<countElements(arrayText[i]); countb++ {
+                        for var countb = 1; countb<3 && j+countb<count(arrayText[i]); countb++ {
                             if(isNumeric(String(Array(arrayText[i])[j+countb]))){
                                 foundb = true
                                 break
@@ -356,7 +356,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         }
         
         for var i = 0; i < arrayText.count; i++ {
-            var stringLength:Int = countElements(arrayText[i])
+            var stringLength:Int = count(arrayText[i])
             var substringIndex = stringLength - 1
             var x:String = ""
             if(!isEmpty(arrayText[i])) {
@@ -367,7 +367,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             }
             while (!isNumeric( x )){
                 arrayText[i] = arrayText[i].substringToIndex(advance(arrayText[i].startIndex, substringIndex))
-                stringLength = countElements(arrayText[i])
+                stringLength = count(arrayText[i])
                 substringIndex = stringLength - 1
                 if(!isEmpty(arrayText[i])) {
                     x = String(Array(arrayText[i])[substringIndex])
@@ -384,7 +384,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         var f = false
         for var i = 0; i < arrayText.count; i++ {
             stemp = ""
-            for var j = 1; j<countElements(arrayText[i]); j++ {
+            for var j = 1; j<count(arrayText[i]); j++ {
                 if (!isNumeric(String(Array(arrayText[i])[j])) && !(String(Array(arrayText[i])[j]) == " ")) {
                     stemp = stemp + String(Array(arrayText[i])[j])
                 }
@@ -402,7 +402,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         }
         
         for var i = 0; i < arrayText.count; i++ {
-            var stringLength:Int = countElements(arrayText[i])
+            var stringLength:Int = count(arrayText[i])
             var substringIndex = stringLength - 2
             var x:String = ""
             if(!isEmpty(arrayText[i])) {
@@ -419,7 +419,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         }
         
         for var i = 0; i < arrayText.count; i++ {
-            if(isEmpty(arrayText[i]) || countElements(arrayText[i]) < 2){
+            if(isEmpty(arrayText[i]) || count(arrayText[i]) < 2){
                 arrayText.removeAtIndex(i)
             }
         }
@@ -462,7 +462,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             //find quantity
             //not tested
             for var p = 0; p < split[i].count; p++ {
-                if isNumeric(split[i][p]) && countElements(split[i][p]) < 3 {
+                if isNumeric(split[i][p]) && count(split[i][p]) < 3 {
                     temp.quantity = split[i][p].toInt()!
                 }
             }
@@ -667,7 +667,7 @@ extension String {
 extension ViewControllerStartScreen: UIImagePickerControllerDelegate {
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-            let selectedPhoto = info[UIImagePickerControllerOriginalImage] as UIImage
+            let selectedPhoto = info[UIImagePickerControllerOriginalImage] as! UIImage
             let scaledImage = self.scaleImage(selectedPhoto, maxDimension: 640)
             
             addActivityIndicator()

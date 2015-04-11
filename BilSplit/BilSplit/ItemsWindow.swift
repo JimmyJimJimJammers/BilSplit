@@ -11,34 +11,34 @@ import UIKit
 //UIViewController
 class ItemsWindow: UIViewController//, UITableViewController
 {
+    var editableItemsList : [EditableItem];
+    
+    init()
+    {
+        editableItemsList = [];
+    }
+    init(itemList: [EditableItem])
+    {
+        editableItemsList = itemList;
+        //super.init();
+    }
+    required init(coder aDecoder: NSCoder)
+    {
+        editableItemsList = [];
+        super.init(coder: aDecoder)
+    }// */
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad();
         /*
         //This should pull everything from the OCR into the editableItemsList array
         for var i = 0; i<finalReceipt.items.count; i++ {
-            editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity))
+        editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity))
         }
         */
         self.editableItemsList = [EditableItem(itemName: "Buffalo Wings", price: 3.50, quantity: 2), EditableItem(itemName: "Chicken Fingers", price: 2.75, quantity: 1)];
-    }
-    
-    var editableItemsList : [EditableItem];
-    
-    override init()
-    {
-        editableItemsList = [];
-        super.init();
-    }
-    init(itemList: [EditableItem])
-    {
-        editableItemsList = itemList;
-        super.init();
-    }
-    required init(coder aDecoder: NSCoder)
-    {
-        editableItemsList = [];
-        super.init(coder: aDecoder)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -48,7 +48,7 @@ class ItemsWindow: UIViewController//, UITableViewController
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         //let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         var editItem : EditableItem;
         
