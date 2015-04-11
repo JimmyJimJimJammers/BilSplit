@@ -11,18 +11,21 @@ import UIKit
 //UIViewController
 class ItemsWindow: UIViewController//, UITableViewController
 {
+    @IBOutlet weak var EditItemsTable: UITableView!
+    
     var editableItemsList : [EditableItem] = [];
     
     override func viewDidLoad()
     {
         super.viewDidLoad();
-        /*
         //This should pull everything from the OCR into the editableItemsList array
-        for var i = 0; i<finalReceipt.items.count; i++ {
-        editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity))
+        for var i = 0; i<finalReceipt.items.count; i++
+        {
+            editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity))
         }
-        */
-        self.editableItemsList = [EditableItem(itemName: "Buffalo Wings", price: 3.50, quantity: 2), EditableItem(itemName: "Chicken Fingers", price: 2.75, quantity: 1)];
+        //self.editableItemsList = [EditableItem(itemName: "Buffalo Wings", price: 3.50, quantity: 2), EditableItem(itemName: "Chicken Fingers", price: 2.75, quantity: 1)];
+        
+        //EditItemsTable.dequeueReusableCellWithIdentifier()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -32,14 +35,15 @@ class ItemsWindow: UIViewController//, UITableViewController
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
-        //let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell: EditItemsCell = tableView.dequeueReusableCellWithIdentifier("EditItemCell", forIndexPath: indexPath) as! EditItemsCell
         var editItem : EditableItem;
         
         editItem = editableItemsList[indexPath.row];
         
-        cell.textLabel?.text = editItem.ItemName;
-        
+        //cell.textLabel?.text = editItem.ItemName;
+        cell.QuantityField.text = String(format: "%dx",editItem.Quantity);
+        cell.ItemNameField.text = editItem.ItemName;
+        cell.CostField.text = String(format: "$%f",editItem.Price);
         
         return cell;
     }
