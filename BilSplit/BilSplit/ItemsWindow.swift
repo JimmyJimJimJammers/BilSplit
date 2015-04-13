@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 //UIViewController
-class ItemsWindow: UIViewController//, UITableViewController
+class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate//, UITableViewController
 {
     @IBOutlet weak var EditItemsTable: UITableView!
     
@@ -43,8 +43,11 @@ class ItemsWindow: UIViewController//, UITableViewController
         //cell.textLabel?.text = editItem.ItemName;
         cell.QuantityField.text = String(format: "%dx",editItem.Quantity);
         cell.ItemNameField.text = editItem.ItemName;
-        cell.CostField.text = String(format: "$%f",editItem.Price);
+        cell.CostField.text = String(format: "$%.2f",editItem.Price);
         
         return cell;
     }
+    
+    
+    
 }
