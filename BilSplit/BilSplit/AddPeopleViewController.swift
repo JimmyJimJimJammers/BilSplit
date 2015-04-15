@@ -43,22 +43,14 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         cell.NameLabel.text = person.name;
         cell.ColorLabel.backgroundColor = person.color;
         
-        /*
-        @IBOutlet weak var NameLabel: UILabel!
-        @IBOutlet weak var ColorLabel: UILabel!
-        */
-        
-        //cell.NameLabel.text = "";
-        //cell.ColorLabel.backgroundColor = colorPallette;
-        
         return cell;
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
     {
-        if (segue.identifier == "AddPeopleViewController.swift")
+        if (segue.identifier == "AddPeoplePopUpSegue")
         {
-            var svc = segue.destinationViewController as! AddPeopleViewController;
+            var svc = segue.destinationViewController as! AddPersonPopUp;
             //svc.NameTextField = NameTextField.text
             //svc = fieldB.text
         }
