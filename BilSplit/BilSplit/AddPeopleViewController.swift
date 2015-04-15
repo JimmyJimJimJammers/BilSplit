@@ -11,9 +11,12 @@ import UIKit
 
 class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    var people: [Person] = [];
+    //suck this dick
+    var people: [Person]!;// = [];
+    var personToAdd: Person!;
     var editableItemsList: [EditableItem] = []
     var dataPassed: [EditableItem]!
+    
     @IBOutlet weak var FriendsTable: UITableView!
 
     
