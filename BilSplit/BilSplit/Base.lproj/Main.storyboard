@@ -4,6 +4,71 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
+        <!--AddPerson-->
+        <scene sceneID="RaR-D0-ZBt">
+            <objects>
+                <viewController storyboardIdentifier="AddPersonPopup" title="AddPersonPopup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="veT-kV-NsQ" userLabel="AddPerson" customClass="AddPersonPopUp" customModule="BilSplit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nGd-Du-nRC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gph-H1-4wT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="duP-xS-zRR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="NameTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8f-8Y-2Kb">
+                                <rect key="frame" x="26" y="171" width="323" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="NumberTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rES-LP-ctP">
+                                <rect key="frame" x="26" y="266" width="323" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="EmailTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jt3-tj-E69">
+                                <rect key="frame" x="26" y="363" width="323" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Person" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66E-ZP-v7F">
+                                <rect key="frame" x="88" y="87" width="198" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sG3-51-myu">
+                                <rect key="frame" x="130" y="570" width="114" height="77"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="a16-KF-Ygy" kind="showDetail" identifier="BackToAddPeopleSegue" id="4pX-3i-R5X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcE-tJ-4KQ">
+                                <rect key="frame" x="80" y="449" width="215" height="74"/>
+                                <color key="backgroundColor" red="0.43851775409999999" green="0.84883604020000003" blue="0.31050313610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Color">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="ColorButton" destination="kcE-tJ-4KQ" id="K31-09-ZKu"/>
+                        <outlet property="EmailTextField" destination="jt3-tj-E69" id="0OD-sv-sYx"/>
+                        <outlet property="NameTextField" destination="k8f-8Y-2Kb" id="25b-eu-n0d"/>
+                        <outlet property="NumberTextField" destination="rES-LP-ctP" id="IU5-LF-Q38"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="22y-sf-oou" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="495.5" y="416.5"/>
+        </scene>
         <!--ItemsWindow-->
         <scene sceneID="rIx-2y-bTt">
             <objects>
@@ -163,6 +228,7 @@
                                 </state>
                                 <connections>
                                     <action selector="AddPerson:" destination="a16-KF-Ygy" eventType="touchUpInside" id="cPi-FI-nDJ"/>
+                                    <segue destination="veT-kV-NsQ" kind="showDetail" identifier="ToAddPeoplePopUp" id="H0s-81-Vub"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -461,9 +527,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="4pX-3i-R5X"/>
         <segue reference="npf-OQ-j7z"/>
-        <segue reference="5OL-sD-fxn"/>
         <segue reference="3zV-up-ghY"/>
-        <segue reference="t6V-OR-2Yj"/>
+        <segue reference="RVp-US-asg"/>
     </inferredMetricsTieBreakers>
 </document>

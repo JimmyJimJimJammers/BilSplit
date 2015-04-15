@@ -17,10 +17,10 @@ class EditItemsCell: UITableViewCell
     
     @IBOutlet weak var CostField: UITextField!
     
-    override func setEditing(editing: Bool, animated: Bool)
+    /*override func setEditing(editing: Bool, animated: Bool)
     {
         self.editing = editing;
-    }
+    }*/
     
     func getEdited() -> Bool
     {

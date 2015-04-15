@@ -45,8 +45,23 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
 
     @IBAction func AddPerson(sender: AnyObject)
     {
+        var newPerson: Person;
         
+        
+        //people.append(newPerson);
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
+    {
+        if (segue.identifier == "AddPeopleViewController.swift")
+        {
+            var svc = segue.destinationViewController as! AddPeopleViewController;
+            //svc.NameTextField = NameTextField.text
+            //svc = fieldB.text
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
