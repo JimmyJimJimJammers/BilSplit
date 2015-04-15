@@ -227,8 +227,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="AddPerson:" destination="a16-KF-Ygy" eventType="touchUpInside" id="cPi-FI-nDJ"/>
-                                    <segue destination="veT-kV-NsQ" kind="showDetail" identifier="ToAddPeoplePopUp" id="H0s-81-Vub"/>
+                                    <segue destination="veT-kV-NsQ" kind="showDetail" identifier="AddPeopleViewController" id="guV-mq-bhd"/>
                                 </connections>
                             </button>
                         </subviews>

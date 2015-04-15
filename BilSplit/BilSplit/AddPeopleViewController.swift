@@ -37,18 +37,18 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         
         person = people[indexPath.row];
         
+        cell.NameLabel.text = person.name;
+        cell.ColorLabel.backgroundColor = person.color;
+        
+        /*
+        @IBOutlet weak var NameLabel: UILabel!
+        @IBOutlet weak var ColorLabel: UILabel!
+        */
+        
         //cell.NameLabel.text = "";
         //cell.ColorLabel.backgroundColor = colorPallette;
         
         return cell;
-    }
-
-    @IBAction func AddPerson(sender: AnyObject)
-    {
-        var newPerson: Person;
-        
-        
-        //people.append(newPerson);
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
