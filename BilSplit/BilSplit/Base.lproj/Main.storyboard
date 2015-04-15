@@ -232,7 +232,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="AddPersonCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonColorCell" id="74m-v2-XRh" userLabel="AddPeopleCell" customClass="AddPeopleCell" customModule="BilSplit" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="AddPersonCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddPersonCell" id="74m-v2-XRh" userLabel="AddPeopleCell" customClass="AddPeopleCell" customModule="BilSplit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="74m-v2-XRh" id="olD-sQ-LvE">
@@ -591,7 +591,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="5OL-sD-fxn"/>
-        <segue reference="F4R-2p-YIW"/>
+        <segue reference="3zV-up-ghY"/>
         <segue reference="t6V-OR-2Yj"/>
         <segue reference="npf-OQ-j7z"/>
     </inferredMetricsTieBreakers>

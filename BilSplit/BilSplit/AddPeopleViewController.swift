@@ -28,12 +28,14 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         
         people = [];
         
-        people.append(Person(personName: "Jim", personColor: UIColor.blackColor(), personEmail: "McCarthyj10@aol.com", phoneNumber: "17742499626", assignedItems: []));
+        /*println("Added Jim to people");
+        people.append(Person(personName: "Jim", personColor: UIColor.blackColor(), personEmail: "McCarthyj10@aol.com", phoneNumber: "17742499626", assignedItems: []));*/
         
         
         let x = personToAdd;
         if(x != nil)
         {
+            println("Added A Person to people");
             people.append(personToAdd);
         }
         
@@ -51,11 +53,11 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         return self.people.count;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(tView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         println("CAME IN HERE FUCKR");
         
-        let cell: AddPeopleCell = tableView.dequeueReusableCellWithIdentifier("AddPersonCell", forIndexPath: indexPath) as! AddPeopleCell
+        let cell: AddPeopleCell = tView.dequeueReusableCellWithIdentifier("AddPersonCell", forIndexPath: indexPath) as! AddPeopleCell
         
         
         
@@ -81,22 +83,10 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         /*if (segue.identifier == "SelectPersonSegue") {
         var svc = segue.destinationViewController as!  PersonSelectViewController;
         svc.dataPassed = editableItemsList
-        }*/
+        }
         if (segue.identifier == "BackToEditItemsSegue") {
             var svc = segue.destinationViewController as!  ItemsWindow;
             svc.dataPassedBack = editableItemsList
-        }
+        }*/
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

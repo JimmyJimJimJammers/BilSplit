@@ -15,9 +15,11 @@ class AddPersonPopUp: UIViewController {
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var ColorButton: UIButton!
     
+    var people: [Person] = [];
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLoad()
+    {
+        super.viewDidLoad();
 
         // Do any additional setup after loading the view.
     }
