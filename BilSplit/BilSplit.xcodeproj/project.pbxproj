@@ -10,6 +10,8 @@
 		12033CC51ACC789F007201B3 /* ItemsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12033CC41ACC789F007201B3 /* ItemsWindow.swift */; };
 		12033CC71ACC7D3B007201B3 /* EditableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12033CC61ACC7D3B007201B3 /* EditableItem.swift */; };
 		12089C2A1ADEF96000F094A6 /* ColorPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C291ADEF96000F094A6 /* ColorPresets.swift */; };
+		12089C2C1ADF158500F094A6 /* SelectPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C2B1ADF158500F094A6 /* SelectPersonViewController.swift */; };
+		12089C2F1ADF16AC00F094A6 /* PersonSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C2E1ADF16AC00F094A6 /* PersonSelectCell.swift */; };
 		122652801ABCE4B100F33300 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1226527E1ABCE4B100F33300 /* Main.storyboard */; };
 		122652821ABCE4B100F33300 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122652811ABCE4B100F33300 /* Images.xcassets */; };
 		122652851ABCE4B100F33300 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122652831ABCE4B100F33300 /* LaunchScreen.xib */; };
@@ -46,6 +48,8 @@
 		12033CC41ACC789F007201B3 /* ItemsWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsWindow.swift; sourceTree = "<group>"; };
 		12033CC61ACC7D3B007201B3 /* EditableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableItem.swift; sourceTree = "<group>"; };
 		12089C291ADEF96000F094A6 /* ColorPresets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPresets.swift; sourceTree = "<group>"; };
+		12089C2B1ADF158500F094A6 /* SelectPersonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPersonViewController.swift; sourceTree = "<group>"; };
+		12089C2E1ADF16AC00F094A6 /* PersonSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonSelectCell.swift; sourceTree = "<group>"; };
 		122652751ABCE4B100F33300 /* BilSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		122652791ABCE4B100F33300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1226527F1ABCE4B100F33300 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,6 +99,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12089C2D1ADF167F00F094A6 /* SelectPersonScreen */ = {
+			isa = PBXGroup;
+			children = (
+				12089C2B1ADF158500F094A6 /* SelectPersonViewController.swift */,
+				12089C2E1ADF16AC00F094A6 /* PersonSelectCell.swift */,
+			);
+			name = SelectPersonScreen;
+			sourceTree = "<group>";
+		};
 		1226526C1ABCE4B100F33300 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				1238C5611ADE068F00844C86 /* AppDelegate.swift */,
+				12089C2D1ADF167F00F094A6 /* SelectPersonScreen */,
 				1238C5621ADE068F00844C86 /* ViewController.swift */,
 				307054051ADE25E600426415 /* Receipt.swift */,
 				1238C5571ADDD71500844C86 /* Person.swift */,
@@ -305,11 +319,13 @@
 			files = (
 				1238C5631ADE068F00844C86 /* AppDelegate.swift in Sources */,
 				12EE76441AD9BD170033848D /* EditItemsCell.swift in Sources */,
+				12089C2C1ADF158500F094A6 /* SelectPersonViewController.swift in Sources */,
 				307054061ADE25E600426415 /* Receipt.swift in Sources */,
 				12033CC71ACC7D3B007201B3 /* EditableItem.swift in Sources */,
 				12CD274B1ADA0EDF00484BAF /* QuantityTextField.swift in Sources */,
 				12089C2A1ADEF96000F094A6 /* ColorPresets.swift in Sources */,
 				30B962421ACA2A5B0047D02E /* SwiftSpinner.swift in Sources */,
+				12089C2F1ADF16AC00F094A6 /* PersonSelectCell.swift in Sources */,
 				1238C55A1ADDE89800844C86 /* AddPeopleViewController.swift in Sources */,
 				1238C5641ADE068F00844C86 /* ViewController.swift in Sources */,
 				307054041ADE257300426415 /* Item.swift in Sources */,

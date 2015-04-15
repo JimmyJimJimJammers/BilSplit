@@ -11,11 +11,8 @@ import UIKit
 
 class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    //suck this dick, you suck one too
     var people: [Person] = [];
-    var personToAdd: Person!;
     var editableItemsList: [EditableItem] = []
-    var dataPassed: [EditableItem]!
     var colors: ColorPresets = ColorPresets();
     
     @IBOutlet weak var FriendsTable: UITableView!
@@ -24,23 +21,6 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        let y = dataPassed
-        if (y != nil){
-            editableItemsList = dataPassed;
-        }
-        // Do any additional setup after loading the view.
-        
-        /*println("Added Jim to people");
-        people.append(Person(personName: "Jim", personColor: UIColor.blackColor(), personEmail: "McCarthyj10@aol.com", phoneNumber: "17742499626", assignedItems: []));*/
-        
-        let x = personToAdd;
-        if(x != nil)
-        {
-            println("Added A Person to people");
-            people.append(personToAdd);
-        }
-        
     }
 
     override func didReceiveMemoryWarning()
@@ -71,19 +51,26 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         if (segue.identifier == "AddPeoplePopUpSegue")
         {
             var svc = segue.destinationViewController as! AddPersonPopUp;
-            
+
+            svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
             svc.colors = self.colors;
-            //svc.NameTextField = NameTextField.text
-            //svc = fieldB.text
         }
-        /*if (segue.identifier == "SelectPersonSegue") {
-        var svc = segue.destinationViewController as!  PersonSelectViewController;
-        svc.dataPassed = editableItemsList
-        }*/
-        if (segue.identifier == "BackToEditItemsSegue") {
+        if (segue.identifier == "BackToEditItemsSegue")
+        {
             var svc = segue.destinationViewController as!  ItemsWindow;
-            svc.dataPassedBack = editableItemsList
+            
+            svc.editableItemsList = self.editableItemsList;
+            svc.people = self.people;
+            svc.colors = self.colors;
+        }
+        if (segue.identifier == "SelectPersonSegue")
+        {
+            var svc = segue.destinationViewController as!  SelectPersonViewController;
+            
+            svc.editableItemsList = self.editableItemsList;
+            svc.people = self.people;
+            svc.colors = self.colors;
         }
     }
 }

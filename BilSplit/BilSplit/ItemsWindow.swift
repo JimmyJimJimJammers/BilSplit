@@ -9,26 +9,22 @@
 import Foundation
 import UIKit
 //UIViewController
-class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
+class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate
 {
     @IBOutlet weak var TaxField: UITextField!
     @IBOutlet weak var EditItemsTable: UITableView!
     
-    var dataPassedBack: [EditableItem]!
-    
-    var editableItemsList : [EditableItem] = [];
+    var people: [Person] = [];
+    var editableItemsList: [EditableItem] = []
+    var colors: ColorPresets = ColorPresets();
     
     override func viewDidLoad()
     {
         super.viewDidLoad();
         //This should pull everything from the OCR into the editableItemsList array
-        let x = dataPassedBack
-        if (x != nil){
-            print("Went back!\n");
-            editableItemsList = [];
-            editableItemsList = dataPassedBack;
-        }
-        else{
+        
+        if (isEmpty(editableItemsList))
+        {
             for var i = 0; i<finalReceipt.items.count; i++
             {
                 editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity));
@@ -43,15 +39,14 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
         //EditItemsTable.dequeueReusableCellWithIdentifier()
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "AddPeopleSegue") {
+        if (segue.identifier == "AddPeopleSegue")
+        {
             var svc = segue.destinationViewController as! AddPeopleViewController;
             /*pull changed data here and save back into editableItemsList*/
             var passedEditableItemsList : [EditableItem] = [];
             var newTotal : Double = 0;
             var table = EditItemsTable.visibleCells()
-//            print("size of table ")
-//            print(table.count)
-//            print("\n")
+
             for(var i: Int = 0; i < table.count; i++)
             {
                 let selectedCell = table[i] as! EditItemsCell
@@ -85,27 +80,8 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
             }
             
             finalReceipt.tax=taxD;
-
             
-            print("SAVED TABLE and TOTAL\n")
-//            print("size of pEI: ")
-//            print(passedEditableItemsList.count)
-//            print("\n")
-//            //for debugging
-//            for(var i = 0; i<passedEditableItemsList.count; i++){
-//                print("name: ")
-//                print(passedEditableItemsList[i].ItemName)
-//                print("\nquantity: ")
-//                print(passedEditableItemsList[i].Quantity)
-//                print("\nprice: ")
-//                print(passedEditableItemsList[i].Price)
-//                print("\n")
-//            }
-//            print("SAVED TABLE and TOTAL end\n")
-            
-            svc.dataPassed = passedEditableItemsList;
-            
-            
+            svc.editableItemsList = passedEditableItemsList;
             
         }
     }
@@ -128,6 +104,17 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
         cell.CostField.text = String(format: "$%.2f",editItem.Price);
         
         return cell;
+    }
+    
+    /*func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }*/
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
+    {
+        textField.resignFirstResponder()
+        return true;
     }
     
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Da-VH-ipC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Da-VH-ipC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
@@ -313,7 +313,7 @@
         <!--PersonSelectWindow-->
         <scene sceneID="6V6-2e-vWR">
             <objects>
-                <viewController storyboardIdentifier="PersonSelectWindow" title="PersonSelectWindow" id="FgM-fa-SOj" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonSelectWindow" title="PersonSelectWindow" id="FgM-fa-SOj" customClass="SelectPersonViewController" customModule="BilSplit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mCt-Kq-GyP"/>
                         <viewControllerLayoutGuide type="bottom" id="Jl2-dT-ieM"/>
@@ -335,31 +335,36 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="601"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonItemAsssignmentCell" id="SvA-zf-LbC" userLabel="LinkToAsssignmentCell">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="PersonItemAsssignmentCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonItemAsssignmentCell" id="SvA-zf-LbC" userLabel="LinkToAsssignmentCell" customClass="PersonSelectCell" customModule="BilSplit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SvA-zf-LbC" id="7sc-NF-ZET">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OT-kJ-hDp">
-                                                    <rect key="frame" x="8" y="9" width="287" height="30"/>
-                                                    <state key="normal" title="Bob Valentine">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="l1d-di-qSC" kind="showDetail" identifier="ToAssignItemsSegue" id="bJ5-37-emN"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="✓" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avg-lo-f6Z">
                                                     <rect key="frame" x="303" y="1" width="72" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bob Valentine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmk-Q5-v6b">
+                                                    <rect key="frame" x="8" y="8" width="312" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="DoneLabel" destination="avg-lo-f6Z" id="d0A-Jv-7db"/>
+                                            <outlet property="NameLabel" destination="nmk-Q5-v6b" id="Nne-rd-Dcg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="FgM-fa-SOj" id="gC7-Ki-xPd"/>
+                                    <outlet property="delegate" destination="FgM-fa-SOj" id="5Gt-0K-DHT"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQm-kN-k72">
                                 <rect key="frame" x="16" y="629" width="46" height="30"/>
@@ -597,9 +602,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5OL-sD-fxn"/>
+        <segue reference="npf-OQ-j7z"/>
+        <segue reference="qY9-OU-AXP"/>
         <segue reference="F4R-2p-YIW"/>
         <segue reference="t6V-OR-2Yj"/>
-        <segue reference="npf-OQ-j7z"/>
     </inferredMetricsTieBreakers>
 </document>
