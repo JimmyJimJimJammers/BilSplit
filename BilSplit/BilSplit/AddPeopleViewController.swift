@@ -11,6 +11,7 @@ import UIKit
 
 class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
+    //suck this dick
     var people: [Person]!;// = [];
     var personToAdd: Person!;
     @IBOutlet weak var FriendsTable: UITableView!
