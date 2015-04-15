@@ -11,6 +11,7 @@ import UIKit
 //UIViewController
 class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
+    @IBOutlet weak var TaxField: UITextField!
     @IBOutlet weak var EditItemsTable: UITableView!
     
     var dataPassedBack: [EditableItem]!
@@ -23,6 +24,8 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
         //This should pull everything from the OCR into the editableItemsList array
         let x = dataPassedBack
         if (x != nil){
+            print("Went back!\n");
+            editableItemsList = [];
             editableItemsList = dataPassedBack;
         }
         else{
@@ -34,7 +37,7 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
             /* need to populate tax text field from finalReceipt.tax which is type double*/
             
         }
-        
+        TaxField.text = String(format: "$%.2f", finalReceipt.tax);
         //self.editableItemsList = [EditableItem(itemName: "Buffalo Wings", price: 3.50, quantity: 2), EditableItem(itemName: "Chicken Fingers", price: 2.75, quantity: 1)];
         
         //EditItemsTable.dequeueReusableCellWithIdentifier()
