@@ -15,9 +15,11 @@ class AddPersonPopUp: UIViewController {
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var ColorButton: UIButton!
     
+    var people: [Person] = [];
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLoad()
+    {
+        super.viewDidLoad();
 
         // Do any additional setup after loading the view.
     }
@@ -47,7 +49,9 @@ class AddPersonPopUp: UIViewController {
             {
                 tempPerson.email = EmailTextField.text;
             }
-            svc.personToAdd = tempPerson;
+            people.append(tempPerson);
+
+            svc.people = self.people;
             //svc.people.append(tempPerson); //wrong, send person
             
             //svc.NameTextField = NameTextField.text

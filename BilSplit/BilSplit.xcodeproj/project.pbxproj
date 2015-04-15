@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12033CC51ACC789F007201B3 /* ItemsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12033CC41ACC789F007201B3 /* ItemsWindow.swift */; };
 		12033CC71ACC7D3B007201B3 /* EditableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12033CC61ACC7D3B007201B3 /* EditableItem.swift */; };
+		12089C2A1ADEF96000F094A6 /* ColorPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C291ADEF96000F094A6 /* ColorPresets.swift */; };
 		122652801ABCE4B100F33300 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1226527E1ABCE4B100F33300 /* Main.storyboard */; };
 		122652821ABCE4B100F33300 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122652811ABCE4B100F33300 /* Images.xcassets */; };
 		122652851ABCE4B100F33300 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122652831ABCE4B100F33300 /* LaunchScreen.xib */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		12033CC41ACC789F007201B3 /* ItemsWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsWindow.swift; sourceTree = "<group>"; };
 		12033CC61ACC7D3B007201B3 /* EditableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableItem.swift; sourceTree = "<group>"; };
+		12089C291ADEF96000F094A6 /* ColorPresets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPresets.swift; sourceTree = "<group>"; };
 		122652751ABCE4B100F33300 /* BilSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		122652791ABCE4B100F33300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1226527F1ABCE4B100F33300 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				1238C5571ADDD71500844C86 /* Person.swift */,
 				12033CC61ACC7D3B007201B3 /* EditableItem.swift */,
 				1226527E1ABCE4B100F33300 /* Main.storyboard */,
+				12089C291ADEF96000F094A6 /* ColorPresets.swift */,
 				1238C5601ADE053500844C86 /* AddPersonPopUp */,
 				1238C55B1ADDE8CA00844C86 /* AddPeopleWindow */,
 				12EE76421AD9BC910033848D /* EditItemsWindow */,
@@ -305,6 +308,7 @@
 				307054061ADE25E600426415 /* Receipt.swift in Sources */,
 				12033CC71ACC7D3B007201B3 /* EditableItem.swift in Sources */,
 				12CD274B1ADA0EDF00484BAF /* QuantityTextField.swift in Sources */,
+				12089C2A1ADEF96000F094A6 /* ColorPresets.swift in Sources */,
 				30B962421ACA2A5B0047D02E /* SwiftSpinner.swift in Sources */,
 				1238C55A1ADDE89800844C86 /* AddPeopleViewController.swift in Sources */,
 				1238C5641ADE068F00844C86 /* ViewController.swift in Sources */,
