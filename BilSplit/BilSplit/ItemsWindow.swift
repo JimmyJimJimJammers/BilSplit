@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 //UIViewController
-class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate//, UITableViewController
+class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     @IBOutlet weak var EditItemsTable: UITableView!
     
