@@ -38,7 +38,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6x-23-tOc">
-                                <rect key="frame" x="16" y="324" width="343" height="185"/>
+                                <rect key="frame" x="16" y="357" width="343" height="137"/>
                                 <state key="normal" title="DONE FUCKER">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -252,7 +252,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="ColorLabel" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ND-yg-zzt">
-                                                    <rect key="frame" x="291" y="0.0" width="84" height="44"/>
+                                                    <rect key="frame" x="291" y="0.0" width="84" height="43"/>
                                                     <color key="backgroundColor" red="0.43851775409999999" green="0.84883604020000003" blue="0.31050313610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
@@ -598,7 +598,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="5OL-sD-fxn"/>
-        <segue reference="3zV-up-ghY"/>
+        <segue reference="F4R-2p-YIW"/>
         <segue reference="t6V-OR-2Yj"/>
         <segue reference="npf-OQ-j7z"/>
     </inferredMetricsTieBreakers>

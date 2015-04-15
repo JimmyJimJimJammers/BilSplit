@@ -16,6 +16,7 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
     var personToAdd: Person!;
     var editableItemsList: [EditableItem] = []
     var dataPassed: [EditableItem]!
+    var colors: ColorPresets = ColorPresets();
     
     @IBOutlet weak var FriendsTable: UITableView!
 
@@ -32,7 +33,6 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         
         /*println("Added Jim to people");
         people.append(Person(personName: "Jim", personColor: UIColor.blackColor(), personEmail: "McCarthyj10@aol.com", phoneNumber: "17742499626", assignedItems: []));*/
-        
         
         let x = personToAdd;
         if(x != nil)
@@ -73,6 +73,7 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
             var svc = segue.destinationViewController as! AddPersonPopUp;
             
             svc.people = self.people;
+            svc.colors = self.colors;
             //svc.NameTextField = NameTextField.text
             //svc = fieldB.text
         }

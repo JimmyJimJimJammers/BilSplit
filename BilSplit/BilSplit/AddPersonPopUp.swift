@@ -14,13 +14,15 @@ class AddPersonPopUp: UIViewController {
     @IBOutlet weak var NumberTextField: UITextField!
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var ColorButton: UIButton!
-    
+    var colors: ColorPresets = ColorPresets();
     var people: [Person] = [];
     
     override func viewDidLoad()
     {
         super.viewDidLoad();
-
+        
+        ColorButton.backgroundColor = colors.getColor();
+        
         // Do any additional setup after loading the view.
     }
 
@@ -52,6 +54,7 @@ class AddPersonPopUp: UIViewController {
             people.append(tempPerson);
 
             svc.people = self.people;
+            svc.colors = self.colors;
             //svc.people.append(tempPerson); //wrong, send person
             
             //svc.NameTextField = NameTextField.text
