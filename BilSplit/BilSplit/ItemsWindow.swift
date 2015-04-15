@@ -12,6 +12,7 @@ import UIKit
 class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     @IBOutlet weak var EditItemsTable: UITableView!
+    
     var dataPassedBack: [EditableItem]!
     
     var editableItemsList : [EditableItem] = [];
@@ -39,6 +40,16 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
             var svc = segue.destinationViewController as! AddPeopleViewController;
             /*pull changed data here and save back into editableItemsList*/
             svc.dataPassed = editableItemsList
+            
+            /*
+            for(var i: Int = 0; i < EditItemsTable.accessibilityElementCount(); i++)
+            {
+                EditItemsTable.accessibilityElementAtIndex(i).name;
+            }
+
+
+            */
+            
         }
     }
     
