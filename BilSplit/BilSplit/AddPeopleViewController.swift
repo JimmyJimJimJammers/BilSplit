@@ -12,7 +12,7 @@ import UIKit
 class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     //suck this dick, you suck one too
-    var people: [Person]!;// = [];
+    var people: [Person] = [];
     var personToAdd: Person!;
     var editableItemsList: [EditableItem] = []
     var dataPassed: [EditableItem]!
@@ -23,10 +23,12 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        editableItemsList = dataPassed
-        // Do any additional setup after loading the view.
         
-        people = [];
+        let y = dataPassed
+        if (y != nil){
+            editableItemsList = dataPassed;
+        }
+        // Do any additional setup after loading the view.
         
         /*println("Added Jim to people");
         people.append(Person(personName: "Jim", personColor: UIColor.blackColor(), personEmail: "McCarthyj10@aol.com", phoneNumber: "17742499626", assignedItems: []));*/
@@ -55,20 +57,12 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        println("CAME IN HERE FUCKR");
-        
         let cell: AddPeopleCell = tView.dequeueReusableCellWithIdentifier("AddPersonCell", forIndexPath: indexPath) as! AddPeopleCell
         
-        
-        
-        println("CAME IN HERE FUCKR1");
         var person : Person;
-        println("CAME IN HERE FUCKR2");
         person = people[indexPath.row];
-        println("CAME IN HERE FUCKR3");
         cell.NameLabel.text = person.name;
         cell.ColorLabel.backgroundColor = person.color;
-        println("CAME IN HERE FUCKR4");
         return cell;
     }
     
@@ -77,6 +71,8 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         if (segue.identifier == "AddPeoplePopUpSegue")
         {
             var svc = segue.destinationViewController as! AddPersonPopUp;
+            
+            svc.people = self.people;
             //svc.NameTextField = NameTextField.text
             //svc = fieldB.text
         }
