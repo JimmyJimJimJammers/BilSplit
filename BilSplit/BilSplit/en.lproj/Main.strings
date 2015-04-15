@@ -38,8 +38,8 @@
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "Ij5-fn-N5v"; */
 "Ij5-fn-N5v.normalTitle" = "Next";
 
-/* Class = "UIButton"; normalTitle = "Add More"; ObjectID = "Km0-S5-UEp"; */
-"Km0-S5-UEp.normalTitle" = "Add More";
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "Km0-S5-UEp"; */
+"Km0-S5-UEp.normalTitle" = "Back";
 
 /* Class = "UIButton"; normalTitle = "Back"; ObjectID = "M5w-bX-qqK"; */
 "M5w-bX-qqK.normalTitle" = "Back";

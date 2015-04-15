@@ -75,18 +75,17 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
             }
             finalReceipt.total = newTotal;
             
-            /*save tax amount in finalReceipt global variable
             
             //pull from tax text field here
-            ?var cell = ???
-            var savedTax = ?cell.something.text?;
+            var savedTax = TaxField.text;
+            savedTax = savedTax.stringByReplacingOccurrencesOfString("$", withString: "", options: nil, range: nil);
             var taxD : Double = 0;
             if let myNumber = NSNumberFormatter().numberFromString(savedTax) {
                 taxD = NSString(string: savedTax).doubleValue;
             }
             
             finalReceipt.tax=taxD;
-            */
+
             
             print("SAVED TABLE and TOTAL\n")
 //            print("size of pEI: ")

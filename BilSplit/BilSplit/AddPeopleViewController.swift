@@ -79,10 +79,10 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         /*if (segue.identifier == "SelectPersonSegue") {
         var svc = segue.destinationViewController as!  PersonSelectViewController;
         svc.dataPassed = editableItemsList
-        }
+        }*/
         if (segue.identifier == "BackToEditItemsSegue") {
             var svc = segue.destinationViewController as!  ItemsWindow;
             svc.dataPassedBack = editableItemsList
-        }*/
+        }
     }
 }

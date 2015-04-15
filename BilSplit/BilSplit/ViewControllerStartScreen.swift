@@ -453,19 +453,16 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                 
                 else if (n.lowercaseString.rangeOfString("total") != nil || n.lowercaseString.rangeOfString("tl") != nil) && (n.lowercaseString.rangeOfString("tax") == nil && n.lowercaseString.rangeOfString("%") == nil) {
                     if(  finalReceipt.tax == 0.0 && (temp.price < sub || sub == 0)) {
-                        print("set taxa\n")
                         finalReceipt.tax = temp.price
                     }
                     
                     else if( finalReceipt.total < sub || finalReceipt.total == 0.0 || finalReceipt.total < temp.price ){
-                        print("set totala\n")
                         finalReceipt.total = temp.price
                     }
                     
                 }
                 
                 else if n.lowercaseString.rangeOfString("tax") != nil {
-                    print("set taxb\n")
                     finalReceipt.tax = temp.price
                 }
 
@@ -486,12 +483,10 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         }
         
         if(finalReceipt.tax != 0.0 && sub != 0.0 && finalReceipt.total==0.0 ){
-            print("set totalb\n")
             finalReceipt.total = finalReceipt.tax + sub
         }
         
         else if finalReceipt.tax == 0.0 && sub != 0.0 && finalReceipt.total != 0.0 {
-            print("set taxc\n")
             finalReceipt.tax = finalReceipt.total - sub
         }
         
@@ -543,20 +538,20 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         print("\tax\n")
         print(finalReceipt.tax)*/
         //for debugging purposes
-        for var i = 0; i<finalReceipt.items.count; i++ {
-            print("name: ")
-            print(finalReceipt.items[i].name)
-            print("\nquantity: ")
-            print(finalReceipt.items[i].quantity)
-            print("\nprice: ")
-            print(finalReceipt.items[i].price)
-            print("\n")
-        }
-        print("\ntotal: ")
-        print(finalReceipt.total)
-        print("\ntax: ")
-        print(finalReceipt.tax)
-        print("\n")
+//        for var i = 0; i<finalReceipt.items.count; i++ {
+//            print("name: ")
+//            print(finalReceipt.items[i].name)
+//            print("\nquantity: ")
+//            print(finalReceipt.items[i].quantity)
+//            print("\nprice: ")
+//            print(finalReceipt.items[i].price)
+//            print("\n")
+//        }
+//        print("\ntotal: ")
+//        print(finalReceipt.total)
+//        print("\ntax: ")
+//        print(finalReceipt.tax)
+//        print("\n")
         // 8
     }
     
