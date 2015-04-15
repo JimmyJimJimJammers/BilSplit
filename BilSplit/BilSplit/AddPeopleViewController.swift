@@ -13,12 +13,25 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var dataPassed: [EditableItem]!
+    @IBOutlet weak var FriendsTable: UITableView!
+
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         editableItemsList = dataPassed
         // Do any additional setup after loading the view.
+        people = [];
+        
+        people.append(Person(personName: "Jim", personColor: UIColor.blackColor(), personEmail: "McCarthyj10@aol.com", phoneNumber: "17742499626", assignedItems: []));
+        
+        
+        let x = personToAdd;
+        if(x != nil)
+        {
+            people.append(personToAdd);
+        }
+        
     }
 
     override func didReceiveMemoryWarning()
