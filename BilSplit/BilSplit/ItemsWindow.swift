@@ -44,27 +44,34 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
             var svc = segue.destinationViewController as! AddPeopleViewController;
             /*pull changed data here and save back into editableItemsList*/
             var passedEditableItemsList : [EditableItem] = [];
-            
-            for(var i: Int = 0; i < EditItemsTable.accessibilityElementCount(); i++)
+            var newTotal : Double = 0;
+            var table = EditItemsTable.visibleCells()
+//            print("size of table ")
+//            print(table.count)
+//            print("\n")
+            for(var i: Int = 0; i < table.count; i++)
             {
-                let selectedCell = EditItemsTable.accessibilityElementAtIndex(i) as! EditItemsCell
-                var q = String(stringInterpolationSegment: selectedCell.QuantityField)
-                var n = String(stringInterpolationSegment: selectedCell.ItemNameField)
-                var p = String(stringInterpolationSegment: selectedCell.CostField)
+                let selectedCell = table[i] as! EditItemsCell
+                var q = String(selectedCell.QuantityField.text)
+                var n = String(selectedCell.ItemNameField.text)
+                var p = String(selectedCell.CostField.text)
                 var quantInt : Int = 0;
                 var priceD : Double = 0;
-                q = q.stringByReplacingOccurrencesOfString("x", withString: "", options: nil, range: nil)
-                p = p.stringByReplacingOccurrencesOfString("$", withString: "", options: nil, range: nil)
+                q = q.stringByReplacingOccurrencesOfString("x", withString: "", options: nil, range: nil);
+                p = p.stringByReplacingOccurrencesOfString("$", withString: "", options: nil, range: nil);
                 if let myNumber = NSNumberFormatter().numberFromString(q) {
-                    quantInt = q.toInt()!
+                    quantInt = q.toInt()!;
                 }
                 if let myNumber = NSNumberFormatter().numberFromString(p) { //<- not sure if works with '.' in number
-                    priceD = NSString(string: p).doubleValue
+                    priceD = NSString(string: p).doubleValue;
+                    newTotal = newTotal + priceD;
                 }
                 
                 passedEditableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt));
                 
             }
+            finalReceipt.total = newTotal;
+            
             /*save tax amount in finalReceipt global variable
             
             //pull from tax text field here
@@ -76,6 +83,23 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
             
             finalReceipt.tax=taxD;
             */
+            
+            print("SAVED TABLE and TOTAL\n")
+//            print("size of pEI: ")
+//            print(passedEditableItemsList.count)
+//            print("\n")
+//            //for debugging
+//            for(var i = 0; i<passedEditableItemsList.count; i++){
+//                print("name: ")
+//                print(passedEditableItemsList[i].ItemName)
+//                print("\nquantity: ")
+//                print(passedEditableItemsList[i].Quantity)
+//                print("\nprice: ")
+//                print(passedEditableItemsList[i].Price)
+//                print("\n")
+//            }
+//            print("SAVED TABLE and TOTAL end\n")
+            
             svc.dataPassed = passedEditableItemsList;
             
             

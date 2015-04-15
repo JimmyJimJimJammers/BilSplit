@@ -26,16 +26,6 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         editableItemsList = dataPassed
         // Do any additional setup after loading the view.
         
-        for(var i = 0; i<editableItemsList.count; i++){
-            print("name: ")
-            print(editableItemsList[i].ItemName)
-            print("\nquantity: ")
-            print(editableItemsList[i].Quantity)
-            print("\nprice: ")
-            print(editableItemsList[i].Price)
-            print("\n")
-        }
-        
         people = [];
         
         people.append(Person(personName: "Jim", personColor: UIColor.blackColor(), personEmail: "McCarthyj10@aol.com", phoneNumber: "17742499626", assignedItems: []));
