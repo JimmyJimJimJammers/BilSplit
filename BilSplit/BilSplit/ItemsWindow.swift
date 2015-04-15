@@ -30,7 +30,11 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
             {
                 editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity));
             }
+            
+            /* need to populate tax text field from finalReceipt.tax which is type double*/
+            
         }
+        
         //self.editableItemsList = [EditableItem(itemName: "Buffalo Wings", price: 3.50, quantity: 2), EditableItem(itemName: "Chicken Fingers", price: 2.75, quantity: 1)];
         
         //EditItemsTable.dequeueReusableCellWithIdentifier()
@@ -39,16 +43,42 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
         if (segue.identifier == "AddPeopleSegue") {
             var svc = segue.destinationViewController as! AddPeopleViewController;
             /*pull changed data here and save back into editableItemsList*/
-            svc.dataPassed = editableItemsList
+            var passedEditableItemsList : [EditableItem] = [];
             
-            /*
             for(var i: Int = 0; i < EditItemsTable.accessibilityElementCount(); i++)
             {
-                EditItemsTable.accessibilityElementAtIndex(i).name;
+                let selectedCell = EditItemsTable.accessibilityElementAtIndex(i) as! EditItemsCell
+                var q = String(stringInterpolationSegment: selectedCell.QuantityField)
+                var n = String(stringInterpolationSegment: selectedCell.ItemNameField)
+                var p = String(stringInterpolationSegment: selectedCell.CostField)
+                var quantInt : Int = 0;
+                var priceD : Double = 0;
+                q = q.stringByReplacingOccurrencesOfString("x", withString: "", options: nil, range: nil)
+                p = p.stringByReplacingOccurrencesOfString("$", withString: "", options: nil, range: nil)
+                if let myNumber = NSNumberFormatter().numberFromString(q) {
+                    quantInt = q.toInt()!
+                }
+                if let myNumber = NSNumberFormatter().numberFromString(p) { //<- not sure if works with '.' in number
+                    priceD = NSString(string: p).doubleValue
+                }
+                
+                passedEditableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt));
+                
             }
-
-
+            /*save tax amount in finalReceipt global variable
+            
+            //pull from tax text field here
+            var savedTax = ??;
+            var taxD : Double = 0;
+            if let myNumber = NSNumberFormatter().numberFromString(savedTax) {
+                taxD = NSString(string: savedTax).doubleValue;
+            }
+            
+            finalReceipt.tax=taxD;
             */
+            svc.dataPassed = passedEditableItemsList;
+            
+            
             
         }
     }
