@@ -75,7 +75,8 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
             /*save tax amount in finalReceipt global variable
             
             //pull from tax text field here
-            var savedTax = ??;
+            ?var cell = ???
+            var savedTax = ?cell.something.text?;
             var taxD : Double = 0;
             if let myNumber = NSNumberFormatter().numberFromString(savedTax) {
                 taxD = NSString(string: savedTax).doubleValue;
