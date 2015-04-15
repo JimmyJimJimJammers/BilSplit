@@ -47,7 +47,8 @@ class AddPersonPopUp: UIViewController {
             {
                 tempPerson.email = EmailTextField.text;
             }
-            svc.people.append(tempPerson);
+            svc.personToAdd = tempPerson;
+            //svc.people.append(tempPerson); //wrong, send person
             
             //svc.NameTextField = NameTextField.text
             //svc = fieldB.text

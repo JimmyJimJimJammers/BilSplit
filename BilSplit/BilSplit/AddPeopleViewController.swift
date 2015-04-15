@@ -10,11 +10,25 @@ import UIKit
 
 class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    var people: [Person] = [];
+    var people: [Person]!;// = [];
+    var personToAdd: Person!;
+    @IBOutlet weak var FriendsTable: UITableView!
+    
     override func viewDidLoad()
     {
-        super.viewDidLoad()
-
+        super.viewDidLoad();
+        people = [];
+        
+        people.append(Person(personName: "Jim", personColor: UIColor.blackColor(), personEmail: "McCarthyj10@aol.com", phoneNumber: "17742499626", assignedItems: []));
+        
+        
+        let x = personToAdd;
+        if(x != nil)
+        {
+            people.append(personToAdd);
+        }
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -40,22 +54,14 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         cell.NameLabel.text = person.name;
         cell.ColorLabel.backgroundColor = person.color;
         
-        /*
-        @IBOutlet weak var NameLabel: UILabel!
-        @IBOutlet weak var ColorLabel: UILabel!
-        */
-        
-        //cell.NameLabel.text = "";
-        //cell.ColorLabel.backgroundColor = colorPallette;
-        
         return cell;
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
     {
-        if (segue.identifier == "AddPeopleViewController.swift")
+        if (segue.identifier == "AddPeoplePopUpSegue")
         {
-            var svc = segue.destinationViewController as! AddPeopleViewController;
+            var svc = segue.destinationViewController as! AddPersonPopUp;
             //svc.NameTextField = NameTextField.text
             //svc = fieldB.text
         }
