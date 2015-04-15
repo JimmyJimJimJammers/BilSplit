@@ -10,30 +10,6 @@ import Foundation
 import UIKit
 import MobileCoreServices
 
-class Item {
-    var price: Double
-    var quantity: Int
-    var name: String
-    
-    init() {
-        self.quantity = 1
-        self.price = 0.0
-        self.name = ""
-    }
-}
-
-class Receipt {
-    var items: [Item]
-    var total: Double
-    var tax: Double
-    
-    init() {
-        self.items = []
-        self.total = 0.0
-        self.tax = 0.0
-    }
-}
-
 var finalReceipt: Receipt!
 var start: Bool!
 
@@ -580,6 +556,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         print(finalReceipt.total)
         print("\ntax: ")
         print(finalReceipt.tax)
+        print("\n")
         // 8
     }
     

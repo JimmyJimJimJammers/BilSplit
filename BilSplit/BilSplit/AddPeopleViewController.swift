@@ -11,10 +11,13 @@ import UIKit
 class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     var people: [Person] = [];
+    var editableItemsList: [EditableItem] = []
+    var dataPassed: [EditableItem]!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        editableItemsList = dataPassed
         // Do any additional setup after loading the view.
     }
 
@@ -58,6 +61,14 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
             var svc = segue.destinationViewController as! AddPeopleViewController;
             //svc.NameTextField = NameTextField.text
             //svc = fieldB.text
+        }
+        /*if (segue.identifier == "SelectPersonSegue") {
+        var svc = segue.destinationViewController as!  PersonSelectViewController;
+        svc.dataPassed = editableItemsList
+        }*/
+        if (segue.identifier == "BackToEditItemsSegue") {
+            var svc = segue.destinationViewController as!  ItemsWindow;
+            svc.dataPassedBack = editableItemsList
         }
     }
     

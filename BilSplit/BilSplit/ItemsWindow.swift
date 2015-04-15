@@ -12,6 +12,7 @@ import UIKit
 class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate//, UITableViewController
 {
     @IBOutlet weak var EditItemsTable: UITableView!
+    var dataPassedBack: [EditableItem]!
     
     var editableItemsList : [EditableItem] = [];
     
@@ -19,13 +20,26 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate/
     {
         super.viewDidLoad();
         //This should pull everything from the OCR into the editableItemsList array
-        for var i = 0; i<finalReceipt.items.count; i++
-        {
-            editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity))
+        let x = dataPassedBack
+        if (x != nil){
+            editableItemsList = dataPassedBack;
+        }
+        else{
+            for var i = 0; i<finalReceipt.items.count; i++
+            {
+                editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity));
+            }
         }
         //self.editableItemsList = [EditableItem(itemName: "Buffalo Wings", price: 3.50, quantity: 2), EditableItem(itemName: "Chicken Fingers", price: 2.75, quantity: 1)];
         
         //EditItemsTable.dequeueReusableCellWithIdentifier()
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "AddPeopleSegue") {
+            var svc = segue.destinationViewController as! AddPeopleViewController;
+            /*pull changed data here and save back into editableItemsList*/
+            svc.dataPassed = editableItemsList
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
