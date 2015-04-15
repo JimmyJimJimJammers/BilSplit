@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 PandaTech. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
@@ -48,14 +49,20 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell: AddPeopleCell = tableView.dequeueReusableCellWithIdentifier("AddPeopleCell", forIndexPath: indexPath) as! AddPeopleCell
+        println("CAME IN HERE FUCKR");
+        
+        let cell: AddPeopleCell = tableView.dequeueReusableCellWithIdentifier("AddPersonCell", forIndexPath: indexPath) as! AddPeopleCell
+        
+        
+        
+        println("CAME IN HERE FUCKR1");
         var person : Person;
-        
+        println("CAME IN HERE FUCKR2");
         person = people[indexPath.row];
-        
+        println("CAME IN HERE FUCKR3");
         cell.NameLabel.text = person.name;
         cell.ColorLabel.backgroundColor = person.color;
-        
+        println("CAME IN HERE FUCKR4");
         return cell;
     }
     
