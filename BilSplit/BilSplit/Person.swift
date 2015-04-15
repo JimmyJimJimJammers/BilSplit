@@ -13,6 +13,6 @@ class Person
     var name: String = "Name";
     var color: UIColor = UIColor.blackColor();
     var email: String = "NoEmail";
-    var phone: int = 5558675309;
-    var items: []
+    var phone: Float  = 5558675309;
+    var items: [EditableItem] = [];
 }
