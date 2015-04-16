@@ -89,7 +89,14 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         }
     }
     
-    
+    @IBAction func deleteHistory(sender: AnyObject) {
+        var error:NSError?
+        let filemgr = NSFileManager.defaultManager()
+        filemgr.removeItemAtPath(dataFilePath!, error: &error);
+        historyList = [];
+        histListString = [];
+        historyTable.reloadData();
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
