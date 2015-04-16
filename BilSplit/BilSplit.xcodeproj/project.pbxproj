@@ -17,6 +17,7 @@
 		12089C361ADF30B400F094A6 /* ContactSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C351ADF30B400F094A6 /* ContactSearch.swift */; };
 		12089C391ADF49F200F094A6 /* SummaryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C381ADF49F200F094A6 /* SummaryWindow.swift */; };
 		12089C3D1ADF4C9D00F094A6 /* SummaryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C3C1ADF4C9D00F094A6 /* SummaryTableCell.swift */; };
+		12089C511ADF755700F094A6 /* StartWindowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C501ADF755700F094A6 /* StartWindowCell.swift */; };
 		122652801ABCE4B100F33300 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1226527E1ABCE4B100F33300 /* Main.storyboard */; };
 		122652821ABCE4B100F33300 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122652811ABCE4B100F33300 /* Images.xcassets */; };
 		122652851ABCE4B100F33300 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122652831ABCE4B100F33300 /* LaunchScreen.xib */; };
@@ -63,6 +64,7 @@
 		12089C351ADF30B400F094A6 /* ContactSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearch.swift; sourceTree = "<group>"; };
 		12089C381ADF49F200F094A6 /* SummaryWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryWindow.swift; sourceTree = "<group>"; };
 		12089C3C1ADF4C9D00F094A6 /* SummaryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SummaryTableCell.swift; path = BilSplit.xcodeproj/../SummaryTableCell.swift; sourceTree = SOURCE_ROOT; };
+		12089C501ADF755700F094A6 /* StartWindowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartWindowCell.swift; sourceTree = "<group>"; };
 		122652751ABCE4B100F33300 /* BilSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		122652791ABCE4B100F33300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1226527F1ABCE4B100F33300 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		307054071ADE25FA00426415 /* ViewControllerStartSceen */ = {
 			isa = PBXGroup;
 			children = (
+				12089C501ADF755700F094A6 /* StartWindowCell.swift */,
 				30B962411ACA2A5B0047D02E /* SwiftSpinner.swift */,
 				1226529A1ABCEFE300F33300 /* ViewControllerStartScreen.swift */,
 				307054031ADE257300426415 /* Item.swift */,
@@ -397,6 +400,7 @@
 				1238C5581ADDD71500844C86 /* Person.swift in Sources */,
 				302572571ADF2AE70044026E /* AddItemPopUpViewController.swift in Sources */,
 				12033CC51ACC789F007201B3 /* ItemsWindow.swift in Sources */,
+				12089C511ADF755700F094A6 /* StartWindowCell.swift in Sources */,
 				12089C311ADF2CE800F094A6 /* AssignItemsWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
