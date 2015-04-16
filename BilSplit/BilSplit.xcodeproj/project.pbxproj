@@ -25,6 +25,8 @@
 		1238C5641ADE068F00844C86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1238C5621ADE068F00844C86 /* ViewController.swift */; };
 		12CD274B1ADA0EDF00484BAF /* QuantityTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CD274A1ADA0EDF00484BAF /* QuantityTextField.swift */; };
 		12EE76441AD9BD170033848D /* EditItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE76431AD9BD170033848D /* EditItemsCell.swift */; };
+		302572571ADF2AE70044026E /* AddItemPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302572561ADF2AE60044026E /* AddItemPopUpViewController.swift */; };
+		3025725A1ADF334C0044026E /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302572591ADF334C0044026E /* History.swift */; };
 		307054041ADE257300426415 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307054031ADE257300426415 /* Item.swift */; };
 		307054061ADE25E600426415 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307054051ADE25E600426415 /* Receipt.swift */; };
 		30B962421ACA2A5B0047D02E /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B962411ACA2A5B0047D02E /* SwiftSpinner.swift */; };
@@ -67,6 +69,8 @@
 		1238C5621ADE068F00844C86 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		12CD274A1ADA0EDF00484BAF /* QuantityTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantityTextField.swift; sourceTree = "<group>"; };
 		12EE76431AD9BD170033848D /* EditItemsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemsCell.swift; sourceTree = "<group>"; };
+		302572561ADF2AE60044026E /* AddItemPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemPopUpViewController.swift; sourceTree = "<group>"; };
+		302572591ADF334C0044026E /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		3062B5951ABD88490005E932 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		307054031ADE257300426415 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		307054051ADE25E600426415 /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
@@ -136,9 +140,11 @@
 				1238C5611ADE068F00844C86 /* AppDelegate.swift */,
 				12089C2D1ADF167F00F094A6 /* SelectPersonScreen */,
 				1238C5621ADE068F00844C86 /* ViewController.swift */,
+				302572591ADF334C0044026E /* History.swift */,
 				307054051ADE25E600426415 /* Receipt.swift */,
 				1238C5571ADDD71500844C86 /* Person.swift */,
 				12033CC61ACC7D3B007201B3 /* EditableItem.swift */,
+				302572581ADF33320044026E /* AddItemPopUp */,
 				1226527E1ABCE4B100F33300 /* Main.storyboard */,
 				12089C291ADEF96000F094A6 /* ColorPresets.swift */,
 				1238C5601ADE053500844C86 /* AddPersonPopUp */,
@@ -203,6 +209,14 @@
 				12CD274A1ADA0EDF00484BAF /* QuantityTextField.swift */,
 			);
 			name = EditItemsWindow;
+			sourceTree = "<group>";
+		};
+		302572581ADF33320044026E /* AddItemPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				302572561ADF2AE60044026E /* AddItemPopUpViewController.swift */,
+			);
+			name = AddItemPopUp;
 			sourceTree = "<group>";
 		};
 		307054071ADE25FA00426415 /* ViewControllerStartSceen */ = {
@@ -319,6 +333,7 @@
 			files = (
 				1238C5631ADE068F00844C86 /* AppDelegate.swift in Sources */,
 				12EE76441AD9BD170033848D /* EditItemsCell.swift in Sources */,
+				3025725A1ADF334C0044026E /* History.swift in Sources */,
 				12089C2C1ADF158500F094A6 /* SelectPersonViewController.swift in Sources */,
 				307054061ADE25E600426415 /* Receipt.swift in Sources */,
 				12033CC71ACC7D3B007201B3 /* EditableItem.swift in Sources */,
@@ -333,6 +348,7 @@
 				1238C55F1ADE052D00844C86 /* AddPersonPopUp.swift in Sources */,
 				1226529B1ABCEFE300F33300 /* ViewControllerStartScreen.swift in Sources */,
 				1238C5581ADDD71500844C86 /* Person.swift in Sources */,
+				302572571ADF2AE70044026E /* AddItemPopUpViewController.swift in Sources */,
 				12033CC51ACC789F007201B3 /* ItemsWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

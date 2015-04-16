@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Da-VH-ipC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Da-VH-ipC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Add Item Pop Up View Controller-->
         <scene sceneID="krJ-CF-Tez">
             <objects>
-                <viewController id="7UW-6a-f8S" sceneMemberID="viewController">
+                <viewController id="7UW-6a-f8S" customClass="AddItemPopUpViewController" customModule="BilSplit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rS7-m6-ZDm"/>
                         <viewControllerLayoutGuide type="bottom" id="7C2-YA-jqt"/>
@@ -50,6 +50,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="ItemNameField" destination="iC3-b5-KFO" id="Z7F-Ef-UNL"/>
+                        <outlet property="PriceField" destination="EOx-Pr-Anc" id="b9n-52-zWS"/>
+                        <outlet property="QuantityField" destination="NEN-Vl-3Og" id="fB1-em-B7M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JeG-ac-HeY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

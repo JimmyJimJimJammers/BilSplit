@@ -84,6 +84,14 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
             svc.editableItemsList = passedEditableItemsList;
             
         }
+        
+        if (segue.identifier == "AddItemsSegue")
+        {
+            var svc = segue.destinationViewController as! AddItemPopUpViewController;
+            svc.people = self.people;
+            svc.colors = self.colors;
+            svc.editableItemsList = self.editableItemsList;
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
