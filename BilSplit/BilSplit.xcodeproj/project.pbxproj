@@ -18,13 +18,6 @@
 		12089C391ADF49F200F094A6 /* SummaryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C381ADF49F200F094A6 /* SummaryWindow.swift */; };
 		12089C3D1ADF4C9D00F094A6 /* SummaryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C3C1ADF4C9D00F094A6 /* SummaryTableCell.swift */; };
 		12089C471ADF561100F094A6 /* ContactSearch-1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C3F1ADF561100F094A6 /* ContactSearch-1.swift */; };
-		12089C481ADF561100F094A6 /* SwiftAddressBookDataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C401ADF561100F094A6 /* SwiftAddressBookDataStructures.swift */; };
-		12089C491ADF561100F094A6 /* SwiftAddressBookGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C411ADF561100F094A6 /* SwiftAddressBookGroup.swift */; };
-		12089C4A1ADF561100F094A6 /* SwiftAddressBookHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C421ADF561100F094A6 /* SwiftAddressBookHelperMethods.swift */; };
-		12089C4B1ADF561100F094A6 /* SwiftAddressBookPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C431ADF561100F094A6 /* SwiftAddressBookPerson.swift */; };
-		12089C4C1ADF561100F094A6 /* SwiftAddressBookRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C441ADF561100F094A6 /* SwiftAddressBookRecord.swift */; };
-		12089C4D1ADF561100F094A6 /* SwiftAddressBookSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C451ADF561100F094A6 /* SwiftAddressBookSource.swift */; };
-		12089C4E1ADF561100F094A6 /* SwiftAddressBookWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C461ADF561100F094A6 /* SwiftAddressBookWrapper.swift */; };
 		122652801ABCE4B100F33300 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1226527E1ABCE4B100F33300 /* Main.storyboard */; };
 		122652821ABCE4B100F33300 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122652811ABCE4B100F33300 /* Images.xcassets */; };
 		122652851ABCE4B100F33300 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122652831ABCE4B100F33300 /* LaunchScreen.xib */; };
@@ -46,6 +39,8 @@
 		30E2E9201ABD8EFC009D7004 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 30E2E91F1ABD8EFC009D7004 /* tessdata */; };
 		30E2E9241ABD9196009D7004 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E2E9231ABD9196009D7004 /* libstdc++.dylib */; };
 		30E2E9261ABD919D009D7004 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E2E9251ABD919D009D7004 /* CoreImage.framework */; };
+		3B7545591ADF5F1800FFD8F2 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7545581ADF5F1800FFD8F2 /* AddressBook.framework */; };
+		3B75455B1ADF5F1E00FFD8F2 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B75455A1ADF5F1E00FFD8F2 /* AddressBookUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,13 +65,6 @@
 		12089C381ADF49F200F094A6 /* SummaryWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryWindow.swift; sourceTree = "<group>"; };
 		12089C3C1ADF4C9D00F094A6 /* SummaryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SummaryTableCell.swift; path = BilSplit.xcodeproj/../SummaryTableCell.swift; sourceTree = SOURCE_ROOT; };
 		12089C3F1ADF561100F094A6 /* ContactSearch-1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContactSearch-1.swift"; sourceTree = "<group>"; };
-		12089C401ADF561100F094A6 /* SwiftAddressBookDataStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAddressBookDataStructures.swift; sourceTree = "<group>"; };
-		12089C411ADF561100F094A6 /* SwiftAddressBookGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAddressBookGroup.swift; sourceTree = "<group>"; };
-		12089C421ADF561100F094A6 /* SwiftAddressBookHelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAddressBookHelperMethods.swift; sourceTree = "<group>"; };
-		12089C431ADF561100F094A6 /* SwiftAddressBookPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAddressBookPerson.swift; sourceTree = "<group>"; };
-		12089C441ADF561100F094A6 /* SwiftAddressBookRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAddressBookRecord.swift; sourceTree = "<group>"; };
-		12089C451ADF561100F094A6 /* SwiftAddressBookSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAddressBookSource.swift; sourceTree = "<group>"; };
-		12089C461ADF561100F094A6 /* SwiftAddressBookWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAddressBookWrapper.swift; sourceTree = "<group>"; };
 		122652751ABCE4B100F33300 /* BilSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		122652791ABCE4B100F33300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1226527F1ABCE4B100F33300 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +92,8 @@
 		30E2E9231ABD9196009D7004 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		30E2E9251ABD919D009D7004 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		30E2E9271ABD920C009D7004 /* BilSplit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BilSplit-Bridging-Header.h"; sourceTree = "<group>"; };
+		3B7545581ADF5F1800FFD8F2 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		3B75455A1ADF5F1E00FFD8F2 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B75455B1ADF5F1E00FFD8F2 /* AddressBookUI.framework in Frameworks */,
+				3B7545591ADF5F1800FFD8F2 /* AddressBook.framework in Frameworks */,
 				30E2E9261ABD919D009D7004 /* CoreImage.framework in Frameworks */,
 				30E2E9241ABD9196009D7004 /* libstdc++.dylib in Frameworks */,
 				30E2E91E1ABD8EDC009D7004 /* TesseractOCR.framework in Frameworks */,
@@ -166,13 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				12089C3F1ADF561100F094A6 /* ContactSearch-1.swift */,
-				12089C401ADF561100F094A6 /* SwiftAddressBookDataStructures.swift */,
-				12089C411ADF561100F094A6 /* SwiftAddressBookGroup.swift */,
-				12089C421ADF561100F094A6 /* SwiftAddressBookHelperMethods.swift */,
-				12089C431ADF561100F094A6 /* SwiftAddressBookPerson.swift */,
-				12089C441ADF561100F094A6 /* SwiftAddressBookRecord.swift */,
-				12089C451ADF561100F094A6 /* SwiftAddressBookSource.swift */,
-				12089C461ADF561100F094A6 /* SwiftAddressBookWrapper.swift */,
 			);
 			name = ColinsFiles;
 			sourceTree = "<group>";
@@ -180,6 +165,8 @@
 		1226526C1ABCE4B100F33300 = {
 			isa = PBXGroup;
 			children = (
+				3B75455A1ADF5F1E00FFD8F2 /* AddressBookUI.framework */,
+				3B7545581ADF5F1800FFD8F2 /* AddressBook.framework */,
 				30E2E9251ABD919D009D7004 /* CoreImage.framework */,
 				30E2E9231ABD9196009D7004 /* libstdc++.dylib */,
 				30E2E91D1ABD8EDC009D7004 /* TesseractOCR.framework */,
@@ -399,26 +386,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12089C481ADF561100F094A6 /* SwiftAddressBookDataStructures.swift in Sources */,
 				1238C5631ADE068F00844C86 /* AppDelegate.swift in Sources */,
 				12EE76441AD9BD170033848D /* EditItemsCell.swift in Sources */,
 				3025725A1ADF334C0044026E /* History.swift in Sources */,
 				12089C2C1ADF158500F094A6 /* SelectPersonViewController.swift in Sources */,
-				12089C4C1ADF561100F094A6 /* SwiftAddressBookRecord.swift in Sources */,
 				12089C391ADF49F200F094A6 /* SummaryWindow.swift in Sources */,
-				12089C4A1ADF561100F094A6 /* SwiftAddressBookHelperMethods.swift in Sources */,
 				307054061ADE25E600426415 /* Receipt.swift in Sources */,
 				12033CC71ACC7D3B007201B3 /* EditableItem.swift in Sources */,
 				12089C2A1ADEF96000F094A6 /* ColorPresets.swift in Sources */,
-				12089C491ADF561100F094A6 /* SwiftAddressBookGroup.swift in Sources */,
 				12089C471ADF561100F094A6 /* ContactSearch-1.swift in Sources */,
 				30B962421ACA2A5B0047D02E /* SwiftSpinner.swift in Sources */,
-				12089C4E1ADF561100F094A6 /* SwiftAddressBookWrapper.swift in Sources */,
-				12089C4D1ADF561100F094A6 /* SwiftAddressBookSource.swift in Sources */,
 				12089C2F1ADF16AC00F094A6 /* PersonSelectCell.swift in Sources */,
 				1238C55A1ADDE89800844C86 /* AddPeopleViewController.swift in Sources */,
 				1238C5641ADE068F00844C86 /* ViewController.swift in Sources */,
-				12089C4B1ADF561100F094A6 /* SwiftAddressBookPerson.swift in Sources */,
 				307054041ADE257300426415 /* Item.swift in Sources */,
 				12089C361ADF30B400F094A6 /* ContactSearch.swift in Sources */,
 				12089C3D1ADF4C9D00F094A6 /* SummaryTableCell.swift in Sources */,

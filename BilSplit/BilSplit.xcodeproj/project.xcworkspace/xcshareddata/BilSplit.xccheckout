@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>BC3A008F-7B68-4DC6-BE84-D82413D27838</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>BilSplit</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>C20AEF2BFFA5005B12D01FF09F7FCEEF7894C127</key>
 		<string>https://github.com/JimmyJimJimJammers/BilSplit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>BilSplit/BilSplit.xcodeproj/project.xcworkspace</string>
+	<string>BilSplit/BilSplit.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C20AEF2BFFA5005B12D01FF09F7FCEEF7894C127</key>
