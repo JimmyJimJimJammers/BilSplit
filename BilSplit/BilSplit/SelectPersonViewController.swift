@@ -36,4 +36,18 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
         return cell;
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
+    {
+        if (segue.identifier == "ToSignUpForItemsSegue")
+        {
+            var svc = segue.destinationViewController as! AssignItemsWindow;
+            
+            svc.editableItemsList = self.editableItemsList;
+            svc.people = self.people;
+            svc.colors = self.colors;
+        }
+    }
+    //ToSignUpForItemsSegue
+    
 }
