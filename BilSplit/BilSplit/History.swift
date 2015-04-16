@@ -12,12 +12,14 @@ class History {
     var people:[Person]
     var tax:Double
     var total:Double
+    var location:String
     
-    init(people: [Person], tax: Double, total: Double)
+    init(people: [Person], tax: Double, total: Double, location: String)
     {
         self.people = people;
         self.tax = tax;
         self.total =  total;
+        self.location = location;
     }
     
     init()
@@ -25,5 +27,6 @@ class History {
         self.people = [];
         self.tax = 0.0;
         self.total = 0.0;
+        self.location = ""
     }
 }

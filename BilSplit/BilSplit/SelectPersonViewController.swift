@@ -14,7 +14,7 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
-    var currPerson: String = "";
+    var currPerson: Person = Person();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,10 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
         //cell.ColorLabel.backgroundColor = person.color;
         return cell;
     }
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        currPerson = people[indexPath.row];
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
     {
@@ -46,6 +50,7 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
             svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
             svc.colors = self.colors;
+            //svc. ******************************SEND THE CURRENT PERSON TO THE NEXT SCREEN*******************************
             
             //sender.
         }

@@ -82,6 +82,8 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
             finalReceipt.tax=taxD;
             
             svc.editableItemsList = passedEditableItemsList;
+            svc.people = self.people;
+            svc.colors = self.colors;
             
         }
         
