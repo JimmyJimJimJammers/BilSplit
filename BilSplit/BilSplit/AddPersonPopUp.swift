@@ -23,8 +23,18 @@ class AddPersonPopUp: UIViewController {
     var totalItemsAssigned: Int = 0;
     var totalItems: Int = 0;
     
+    //Calls this function when the tap is recognized.
+    func DismissKeyboard()
+    {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad()
     {
+        //for dismissing the keyboard when tapping elsewhere
+        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)
         super.viewDidLoad();
         
         ColorButton.backgroundColor = colors.getColor();
