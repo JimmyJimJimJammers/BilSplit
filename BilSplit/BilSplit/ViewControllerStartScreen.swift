@@ -43,8 +43,8 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         
         let docsDir = dirPaths[0] as! String
         dataFilePath = docsDir.stringByAppendingPathComponent("data.archive")
-        var error:NSError?
-        filemgr.removeItemAtPath(dataFilePath!, error: &error);
+        //var error:NSError?
+        //filemgr.removeItemAtPath(dataFilePath!, error: &error);
         
         if filemgr.fileExistsAtPath(dataFilePath!)
         {
@@ -57,7 +57,8 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                 var persons : [Person] = [];
                 for(var j = 0; j<tempPeople.count; j++){
                     var singlePerson = tempPeople[j].componentsSeparatedByString("{}"); //singlePerson[0]=name 1=color 2=email 3=phone 4=tip 5=arrayOfItems
-                    var itemsArray = singlePerson[5].componentsSeparatedByString("()");
+                    var itemsArray = singlePerson[1].componentsSeparatedByString("()");
+                    singlePerson=singlePerson[0].componentsSeparatedByString("[]");
                     var tempItem : [EditableItem] = [];
                     for(var k = 0; k<itemsArray.count; k++){
                         var singleItem = itemsArray[k].componentsSeparatedByString("&&"); //singleItem[0] = ItemName 1=Price 2=Quantity 3=numAssigned
