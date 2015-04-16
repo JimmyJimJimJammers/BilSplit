@@ -64,28 +64,57 @@ class SummaryWindow: UIViewController, NSCoding
             
             var loc : String = RestaurantTextField.text
             
+            
+            //string history class
+            var temp = loc + "==";
+            temp = temp + String(format: "%.2f", finalReceipt.total) + "==";
+            temp = temp + String(format: "%.2f", finalReceipt.tax) + "== ::";
+            
+            for(var i=0; i<people.count; i++){
+                temp = temp + "::";
+                temp = temp + people[i].name + "[]";
+                //temp = temp + people[i].color + "[]";// <--color bullshit
+                var r:CGFloat = 0;
+                var g:CGFloat = 0;
+                var b:CGFloat = 0;
+                var a:CGFloat = 0;
+                var myColor = people[i].color;
+                myColor.getRed(&r, green: &g, blue: &b, alpha: &a);
+                temp = temp + r.description + " " + g.description + " " + b.description + " " + a.description + "[]"
+                temp = temp + people[i].email + "[]";
+                temp = temp + people[i].phone + "[]";
+                temp = temp + String(format: "%d", people[i].tip) + "{}";
+                for(var j=0; j<people[i].items.count; j++){
+                    temp = temp + people[i].items[j].ItemName + "&&";
+                    temp = temp + String(format: "%.2f", people[i].items[j].Price) + "&&";
+                    temp = temp + String(format: "%d", people[i].items[j].Quantity) + "&&";
+                    temp = temp + String(format: "%d", people[i].items[j].numAssigned) + "()";
+                    
+                }
+            }
+            
+            
             let filemgr = NSFileManager.defaultManager()
-            /*let dirPaths =
+            let dirPaths =
             NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
                 .UserDomainMask, true)
             
             let docsDir = dirPaths[0] as! String
             dataFilePath =
-                docsDir.stringByAppendingPathComponent("data.archive")*/
+                docsDir.stringByAppendingPathComponent("data.archive")
             
             if filemgr.fileExistsAtPath(dataFilePath!) {
                 var dataArray =
                 NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!)
-                    as! [History]
-                dataArray.append(History(people: people, tax: finalReceipt.tax, total: finalReceipt.total, location: loc));
+                    as! [String]
+                dataArray.append(temp);
                 NSKeyedArchiver.archiveRootObject(dataArray,
                     toFile: dataFilePath!)
             }
             else{
-                var dataArray: [History] = [];
-                //var t = History(people: people, tax: finalReceipt.tax, total: finalReceipt.total, location: loc) as NSObject;
-                //dataArray.append(t);
-                //NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
+                var dataArray: [String] = [];
+                dataArray.append(temp);
+                NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
             }
         }
     }
