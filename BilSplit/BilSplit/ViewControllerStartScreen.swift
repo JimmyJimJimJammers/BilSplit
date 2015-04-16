@@ -28,6 +28,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     var totalItemsAssigned: Int = 0;
     var totalItems: Int = 0;
     
+    //loads screen every time screen is called via segue
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -50,8 +51,12 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         if filemgr.fileExistsAtPath(dataFilePath!)
         {
             historyList = [];
+            
+            //loads saved persistent data file
             histListString = NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!) as! [String]
             
+            
+            //parses in saved data
             for(var i = 0; i<histListString.count; i++){
                 var temp = histListString[i].componentsSeparatedByString("=="); //temp[0]=location temp[1]=total temp[2]=tax
                 var tempPeople = temp[3].componentsSeparatedByString("::"); //tempPeople = array of people
@@ -77,6 +82,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                     persons.append(p);
                 }
                 
+                //saves parsed data in historyList
                 var h = History(people: persons, tax: NSString(string: temp[2]).doubleValue, total: NSString(string: temp[1]).doubleValue, location: temp[0]);
                 historyList.append(h);
             }
@@ -90,10 +96,13 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
+    //function to get global final receipt
     func getReceipt(i: Receipt) -> Receipt {
         return finalReceipt
     }
     
+    
+    //handles loading the spinny bar thingy
     func addActivityIndicator() {
         activityIndicator = UIActivityIndicatorView(frame: view.bounds)
         activityIndicator.activityIndicatorViewStyle = .WhiteLarge
@@ -103,6 +112,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         view.addSubview(activityIndicator)
     }
     
+    //handles closing the spinny bar thingy
     func removeActivityIndicator() {
         SwiftSpinner.hide()
         activityIndicator.removeFromSuperview()
@@ -111,11 +121,13 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     
     
     //TABLE STUFFF
+    //function to return the size of the table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return self.historyList.count;
     }
     
+    //defualt loading function of the table
     func tableView(tView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell: StartWindowCell = tView.dequeueReusableCellWithIdentifier("HistoryTableCell", forIndexPath: indexPath) as! StartWindowCell
@@ -131,10 +143,12 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         return cell;
     }
     
+    
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
+    //handles deleting from the table
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             // handle delete (by removing the data from your array and updating the tableview)
@@ -147,7 +161,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     }
     
     
-    //Scales the Image for Tesseract
+    //Scales the Image for Tesseract based on dimension sent to func
     func scaleImage(image: UIImage, maxDimension: CGFloat) -> UIImage {
         var scaledSize = CGSizeMake(maxDimension, maxDimension)
         var scaleFactor:CGFloat
@@ -170,6 +184,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         return scaledImage
     }
     
+    //take photo function to call the image picker without alert boxes
     func TakePhotoN(sender: AnyObject){
         let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
             message: nil, preferredStyle: .ActionSheet)
@@ -207,9 +222,12 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         self.presentViewController(imagePickerActionSheet, animated: true, completion: nil)
     }
 
+    
+    //take photo with alert boxes
     @IBAction func TakePhoto(sender: AnyObject)
     {
-        
+        //if a receipt has already been scaned it asks if you want to discard that receipt
+        //or add to it
         if !isEmpty(finalReceipt.items) && finalReceipt.total != 0.0 && finalReceipt.tax != 0.0 {
             var alert = UIAlertController(title: "Start Over?", message:
                 "Receipt already loaded. Start over or add to original?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -253,6 +271,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                     // 6
                     self.presentViewController(imagePickerActionSheet, animated: true, completion: nil)
             }))
+            //if add more is selected it appends the scan results
             alert.addAction(UIAlertAction(title: "Add More", style: UIAlertActionStyle.Default,
                 handler: { action in
                     let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Photo",
@@ -333,7 +352,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     }
     
     
-    
+    //checks if type swift string is numeric
     func isNumeric(a: String) -> Bool {
         if let n = a.toInt() {
             return true
@@ -345,6 +364,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     
     //Checks text for errors and splits up into array
     func checkText(readText: String) {
+        //creates storage object
         if(finalReceipt == nil){
             print("made receipt in func")
             finalReceipt = Receipt()
@@ -354,6 +374,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         var arrayText:[String] = []
         let replaceI : Character = "1"
         
+        //if readText is empty then nothing was read from photo and display error popup to go back
         if(readText.isEmpty){
             var alert = UIAlertController(title: "Error:", message: "Couldn't processing image.", preferredStyle:UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: nil))
@@ -375,7 +396,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                 }
             }
             
-            
+            //check if first char of string is I and just change it to 1 (common error in OCR)
             for var index = 0; index < arrayText.count; ++index {
                 if( count(arrayText[index]) > 2 ) {
                     if( startsWith(arrayText[index], "I") ) {
@@ -390,6 +411,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             }
             
             
+            //will fix "6 .99" "6. 99" "6df.99" to "6.99"
             var errorString = ""
             for var i = 0; i < arrayText.count; i++ {
                 for var j = 1; j<count(arrayText[i]); j++ {
@@ -470,6 +492,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     
         }
         
+        //checks to see if numbers are formatted properly
         for var i = 0; i < arrayText.count; i++ {
             var stringLength:Int = count(arrayText[i])
             var substringIndex = stringLength - 2
@@ -480,6 +503,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             else {
                 break
             }
+            //fixes cases of double ..
             if(x != "." && x != " "){
                 var rep = arrayText[i].substringToIndex(advance(arrayText[i].startIndex, substringIndex))
                 arrayText[i] = arrayText[i].stringByReplacingOccurrencesOfString(rep, withString: rep + ".", options: nil, range: nil)
@@ -506,6 +530,8 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         var sub:Double = 0.0
         var tender:Double = 0.0
         var change:Double = 0.0
+        
+        //finds price in receipt
         for var i = 0; i < split.count; i++ {
             var temp = Item()
             //find price
@@ -529,14 +555,14 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             }
             
             //find quantity
-            //not tested
+            //not fully tested
             for var p = 0; p < split[i].count; p++ {
                 if isNumeric(split[i][p]) && count(split[i][p]) < 3 {
                     temp.quantity = split[i][p].toInt()!
                 }
             }
             
-            //find name and put into array
+            //find name and put into array also sets tax and total in storage object
             if temp.price != 0.0 && !isEmpty(split[i]) {
                 var n = " ".join(split[i])
                 
@@ -594,6 +620,9 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         removeActivityIndicator()
         
         
+        //pops up to see if another photo is needed for large receipt
+        //if yes opens up camera button again
+        //if not tells user what to do next (click next button)
         if(isEmpty(receipt) == false){
             if(isEmpty(finalReceipt.items)){
                 finalReceipt.items = receipt
@@ -625,29 +654,12 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        /*print(finalReceipt.total)
-        print("\ntotal^ subV\n")
-        print(sub)
-        print("\tax\n")
-        print(finalReceipt.tax)*/
-        //for debugging purposes
-//        for var i = 0; i<finalReceipt.items.count; i++ {
-//            print("name: ")
-//            print(finalReceipt.items[i].name)
-//            print("\nquantity: ")
-//            print(finalReceipt.items[i].quantity)
-//            print("\nprice: ")
-//            print(finalReceipt.items[i].price)
-//            print("\n")
-//        }
-//        print("\ntotal: ")
-//        print(finalReceipt.total)
-//        print("\ntax: ")
-//        print(finalReceipt.tax)
-//        print("\n")
         // 8
     }
     
+    
+    //applies filters from CIImage to sharpen up and contrast photo
+    //calls perform image recognition function
     func preProcessingImage(preimage: UIImage) {
         print("preprocessing start\n")
         var beginImage = CIImage(image: preimage)
@@ -676,7 +688,8 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         performImageRecognition(displayImage)
     }
 
-    
+    //initalizes and starts tesseract
+    //calls the checkText functon
     func performImageRecognition(image: UIImage) {
         SwiftSpinner.show("Processing Image...\njust a little longer")
         print("tess start\n")
@@ -707,14 +720,28 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
+    {
+        if(segue.identifier == "EditItemsSegue")
+        {
+            var svc = segue.destinationViewController as! ItemsWindow;
+            
+            svc.historyList = self.historyList;
+        }
+    }
+    
 }
 
+//extenstion to string class to convert string to float
 extension String {
     var floatValue: Float {
         return (self as NSString).floatValue
     }
 }
 
+
+//extenstion to string class to get character at index from string
 extension String {
     func characterAtIndex(index: Int) -> Character? {
         var cur = 0
@@ -729,6 +756,9 @@ extension String {
 }
 
 
+//extension to viewcontrollerstartscreen to open up image picker and allow image to be pulled from user selection
+//and passed into preprocessingimage function
+//also starts the activityindicator (spinny bar thingy)
 extension ViewControllerStartScreen: UIImagePickerControllerDelegate {
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
@@ -740,18 +770,5 @@ extension ViewControllerStartScreen: UIImagePickerControllerDelegate {
             dismissViewControllerAnimated(true, completion: {
                 self.preProcessingImage(scaledImage)
             })
-            
-            
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
-    {
-        if(segue.identifier == "EditItemsSegue")
-        {
-            var svc = segue.destinationViewController as! ItemsWindow;
-  
-            svc.historyList = self.historyList;
-        }
-    }
-    
 }
