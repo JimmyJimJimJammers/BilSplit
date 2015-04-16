@@ -47,7 +47,7 @@ class AddItemPopUpViewController: UIViewController {
             if let myNumber = NSNumberFormatter().numberFromString(p) { //<- not sure if works with '.' in number
                 priceD = NSString(string: p).doubleValue;
             }
-            self.editableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt))
+            self.editableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt, assigned:0))
             
             var x = Item()
             x.price = priceD
