@@ -38,6 +38,8 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         
         let docsDir = dirPaths[0] as! String
         dataFilePath = docsDir.stringByAppendingPathComponent("data.archive")
+        var error:NSError?
+        filemgr.removeItemAtPath(dataFilePath!, error: &error);
         
         if filemgr.fileExistsAtPath(dataFilePath!)
         {
@@ -63,7 +65,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                     var colorBits = singlePerson[1].componentsSeparatedByString(" ")
                     //CGFloat((str as NSString).floatValue)
                     var c = UIColor(red: CGFloat((colorBits[0] as NSString).floatValue), green: CGFloat((colorBits[1] as NSString).floatValue), blue: CGFloat((colorBits[2] as NSString).floatValue), alpha: CGFloat((colorBits[3] as NSString).floatValue));
-                    var p = Person(personName: singlePerson[0], personColor: c, personEmail: singlePerson[2], phoneNumber: singlePerson[3], assignedItems: tempItem, personTip: singlePerson[4].toInt()!);
+                    var p = Person(personName: singlePerson[0], personColor: c, personEmail: singlePerson[2], phoneNumber: singlePerson[3], assignedItems: tempItem, personTip: NSString(string: singlePerson[4]).doubleValue);
                     //appendPerson
                     persons.append(p);
                 }

@@ -95,10 +95,10 @@ class SummaryWindow: UIViewController, NSCoding
             //string history class
             var temp = loc + "==";
             temp = temp + String(format: "%.2f", finalReceipt.total) + "==";
-            temp = temp + String(format: "%.2f", finalReceipt.tax) + "== ::";
+            temp = temp + String(format: "%.2f", finalReceipt.tax) + "==";
             
             for(var i=0; i<people.count; i++){
-                temp = temp + "::";
+                
                 temp = temp + people[i].name + "[]";
                 //temp = temp + people[i].color + "[]";// <--color bullshit
                 var r:CGFloat = 0;
@@ -118,6 +118,7 @@ class SummaryWindow: UIViewController, NSCoding
                     temp = temp + String(format: "%d", people[i].items[j].numAssigned) + "()";
                     
                 }
+                temp = temp + "::";
             }
             
             
