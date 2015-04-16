@@ -95,7 +95,7 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
             svc.people = self.people;
             svc.colors = self.colors;
             svc.historyList = self.historyList;
-            svc.totalItems = self.totalItems;
+            //svc.totalItems = self.totalItems;
             svc.totalItemsAssigned = self.totalItemsAssigned;
         }
         if (segue.identifier == "SelectPersonSegue")

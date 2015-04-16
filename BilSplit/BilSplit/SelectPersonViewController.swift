@@ -38,6 +38,10 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
         view.addGestureRecognizer(tap)*/
         
         super.viewDidLoad()
+        
+        print("Total Items: " + String(totalItems) + "\n");
+        print("Assigned Items: " + String(totalItemsAssigned) + "\n");
+        
         // Do view setup here.
         if(totalItemsAssigned == totalItems)
         {
