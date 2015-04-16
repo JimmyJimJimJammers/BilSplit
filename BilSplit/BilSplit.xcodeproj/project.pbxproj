@@ -17,7 +17,6 @@
 		12089C361ADF30B400F094A6 /* ContactSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C351ADF30B400F094A6 /* ContactSearch.swift */; };
 		12089C391ADF49F200F094A6 /* SummaryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C381ADF49F200F094A6 /* SummaryWindow.swift */; };
 		12089C3D1ADF4C9D00F094A6 /* SummaryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C3C1ADF4C9D00F094A6 /* SummaryTableCell.swift */; };
-		12089C471ADF561100F094A6 /* ContactSearch-1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C3F1ADF561100F094A6 /* ContactSearch-1.swift */; };
 		122652801ABCE4B100F33300 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1226527E1ABCE4B100F33300 /* Main.storyboard */; };
 		122652821ABCE4B100F33300 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122652811ABCE4B100F33300 /* Images.xcassets */; };
 		122652851ABCE4B100F33300 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122652831ABCE4B100F33300 /* LaunchScreen.xib */; };
@@ -64,7 +63,6 @@
 		12089C351ADF30B400F094A6 /* ContactSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearch.swift; sourceTree = "<group>"; };
 		12089C381ADF49F200F094A6 /* SummaryWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryWindow.swift; sourceTree = "<group>"; };
 		12089C3C1ADF4C9D00F094A6 /* SummaryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SummaryTableCell.swift; path = BilSplit.xcodeproj/../SummaryTableCell.swift; sourceTree = SOURCE_ROOT; };
-		12089C3F1ADF561100F094A6 /* ContactSearch-1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContactSearch-1.swift"; sourceTree = "<group>"; };
 		122652751ABCE4B100F33300 /* BilSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		122652791ABCE4B100F33300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1226527F1ABCE4B100F33300 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -154,14 +152,6 @@
 			name = SummaryWindow;
 			sourceTree = "<group>";
 		};
-		12089C4F1ADF561C00F094A6 /* ColinsFiles */ = {
-			isa = PBXGroup;
-			children = (
-				12089C3F1ADF561100F094A6 /* ContactSearch-1.swift */,
-			);
-			name = ColinsFiles;
-			sourceTree = "<group>";
-		};
 		1226526C1ABCE4B100F33300 = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				1226527E1ABCE4B100F33300 /* Main.storyboard */,
-				12089C4F1ADF561C00F094A6 /* ColinsFiles */,
 				12089C291ADEF96000F094A6 /* ColorPresets.swift */,
 				1238C5611ADE068F00844C86 /* AppDelegate.swift */,
 				1238C5621ADE068F00844C86 /* ViewController.swift */,
@@ -394,7 +383,6 @@
 				307054061ADE25E600426415 /* Receipt.swift in Sources */,
 				12033CC71ACC7D3B007201B3 /* EditableItem.swift in Sources */,
 				12089C2A1ADEF96000F094A6 /* ColorPresets.swift in Sources */,
-				12089C471ADF561100F094A6 /* ContactSearch-1.swift in Sources */,
 				30B962421ACA2A5B0047D02E /* SwiftSpinner.swift in Sources */,
 				12089C2F1ADF16AC00F094A6 /* PersonSelectCell.swift in Sources */,
 				1238C55A1ADDE89800844C86 /* AddPeopleViewController.swift in Sources */,
