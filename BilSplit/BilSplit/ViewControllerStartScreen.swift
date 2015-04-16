@@ -29,7 +29,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         }
         // Do any additional setup after loading the view, typically from a nib.
         
-        /*let filemgr = NSFileManager.defaultManager()
+        let filemgr = NSFileManager.defaultManager()
         let dirPaths =
         NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
             .UserDomainMask, true)
@@ -43,7 +43,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!)
                 as! [History]
             
-        }*/
+        }
 
         
     }

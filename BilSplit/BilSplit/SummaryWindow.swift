@@ -62,6 +62,8 @@ class SummaryWindow: UIViewController
         {
             var svc = segue.destinationViewController as! ViewControllerStartScreen;
             
+            var loc : String = RestaurantTextField.text
+            
             let filemgr = NSFileManager.defaultManager()
             let dirPaths =
             NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
@@ -75,13 +77,13 @@ class SummaryWindow: UIViewController
                 var dataArray =
                 NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!)
                     as! [History]
-                dataArray.append(History(people: people, tax: finalReceipt.tax, total: finalReceipt.total));
+                dataArray.append(History(people: people, tax: finalReceipt.tax, total: finalReceipt.total, location: loc));
                 NSKeyedArchiver.archiveRootObject(dataArray,
                     toFile: dataFilePath!)
             }
             else{
                 var dataArray: [History] = [];
-                dataArray.append(History(people: people, tax: finalReceipt.tax, total: finalReceipt.total));
+                dataArray.append(History(people: people, tax: finalReceipt.tax, total: finalReceipt.total, location: loc));
                 NSKeyedArchiver.archiveRootObject(dataArray,
                     toFile: dataFilePath!)
             }
