@@ -36,8 +36,8 @@ class SummaryWindow: UIViewController
     {
         let cell: SummaryTableCell = tableView.dequeueReusableCellWithIdentifier("IndividualTotalCells", forIndexPath: indexPath) as! SummaryTableCell
         
-        var Person : EditableItem;
-        item = editableItemsList[indexPath.row];
+        var person :Person;
+        person = people[indexPath.row];
         
         //cell.QuantityTextField.text = "0x";
         
