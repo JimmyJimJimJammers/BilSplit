@@ -51,6 +51,19 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
         return cell;
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            people.removeAtIndex(indexPath.row);
+            FriendsTable.reloadData();
+            
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
     {
         if (segue.identifier == "AddPeoplePopUpSegue")

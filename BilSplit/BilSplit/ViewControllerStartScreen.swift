@@ -17,6 +17,7 @@ var historyList: [History] = [];
 
 class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate
 {
+    @IBOutlet weak var historyTable: UITableView!
     var activityIndicator:UIActivityIndicatorView!
     var t:UILabel!
     @IBOutlet weak var textView: UITextView!
@@ -128,6 +129,21 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         //cell.NameLabel.text = person.name;
         //cell.ColorLabel.backgroundColor = person.color;
         return cell;
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            historyList.removeAtIndex(indexPath.row);
+            histListString.removeAtIndex(indexPath.row);
+            NSKeyedArchiver.archiveRootObject(histListString, toFile: dataFilePath!)
+            historyTable.reloadData();
+            
+        }
     }
     
     

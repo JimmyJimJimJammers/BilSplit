@@ -136,6 +136,21 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
         return cell;
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            editableItemsList.removeAtIndex(indexPath.row);
+            finalReceipt.items.removeAtIndex(indexPath.row);
+            EditItemsTable.reloadData();
+            
+        }
+    }
+
+    
     /*func textFieldShouldReturn(textField: UITextField!) -> Bool {
         self.view.endEditing(true)
         return false
