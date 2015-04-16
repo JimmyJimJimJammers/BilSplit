@@ -56,6 +56,29 @@ class SummaryWindow: UIViewController
         svc.people = self.people;
         svc.colors = self.colors;
         }*/
+        
+        if(segue.identifier == "SaveHistorySegue")
+        {
+            var svc = segue.destinationViewController as! ViewControllerStartScreen;
+            
+            let filemgr = NSFileManager.defaultManager()
+            let dirPaths =
+            NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
+                .UserDomainMask, true)
+            
+            let docsDir = dirPaths[0] as! String
+            dataFilePath =
+                docsDir.stringByAppendingPathComponent("data.archive")
+            
+            if filemgr.fileExistsAtPath(dataFilePath!) {
+                var dataArray =
+                NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!)
+                    as! [History]
+                dataArray.append(History(people: people, tax: finalReceipt.tax, total: finalReceipt.total));
+                NSKeyedArchiver.archiveRootObject(dataArray,
+                    toFile: dataFilePath!)
+            }
+        }
     }
     
 }
