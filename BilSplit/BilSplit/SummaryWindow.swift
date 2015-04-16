@@ -105,6 +105,7 @@ class SummaryWindow: UIViewController, NSCoding
             historyList.append(tempHistory);
             svc.historyList = self.historyList;
             
+            finalReceipt = Receipt();
             
             /*var loc : String = RestaurantTextField.text
             
