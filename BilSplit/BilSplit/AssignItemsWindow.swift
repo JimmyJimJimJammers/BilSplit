@@ -30,17 +30,17 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var TipTextField: UITextField!
     
     //Calls this function when the tap is recognized.
-    func DismissKeyboard()
+    /*func DismissKeyboard()
     {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
-    }
+    }*/
     
     override func viewDidLoad()
     {
-        //for dismissing the keyboard when tapping elsewhere
+        /*//for dismissing the keyboard when tapping elsewhere
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
-        view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)*/
         
         super.viewDidLoad()
         

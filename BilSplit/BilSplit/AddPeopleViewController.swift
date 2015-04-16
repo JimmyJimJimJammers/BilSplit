@@ -23,17 +23,17 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var FriendsTable: UITableView!
 
     //Calls this function when the tap is recognized.
-    func DismissKeyboard()
+    /*func DismissKeyboard()
     {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
-    }
+    }*/
     
     override func viewDidLoad()
     {
         //for dismissing the keyboard when tapping elsewhere
-        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
-        view.addGestureRecognizer(tap)
+        /*var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        view.addGestureRecognizer(tap)*/
         
         super.viewDidLoad()
     }
@@ -95,7 +95,7 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
             svc.people = self.people;
             svc.colors = self.colors;
             svc.historyList = self.historyList;
-            svc.totalItems = self.totalItems;
+            //svc.totalItems = self.totalItems;
             svc.totalItemsAssigned = self.totalItemsAssigned;
         }
         if (segue.identifier == "SelectPersonSegue")
