@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SummaryWindow: UIViewController
+class SummaryWindow: UIViewController, NSCoding
 {
     
     var people: [Person] = [];
@@ -83,8 +83,9 @@ class SummaryWindow: UIViewController
             }
             else{
                 var dataArray: [History] = [];
-                dataArray.append(History(people: people, tax: finalReceipt.tax, total: finalReceipt.total, location: loc));
-                NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
+                //var t = History(people: people, tax: finalReceipt.tax, total: finalReceipt.total, location: loc) as NSObject;
+                //dataArray.append(t);
+                //NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
             }
         }
     }
