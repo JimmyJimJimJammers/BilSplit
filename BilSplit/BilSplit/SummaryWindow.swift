@@ -78,6 +78,12 @@ class SummaryWindow: UIViewController
                 NSKeyedArchiver.archiveRootObject(dataArray,
                     toFile: dataFilePath!)
             }
+            else{
+                var dataArray: [History] = [];
+                dataArray.append(History(people: people, tax: finalReceipt.tax, total: finalReceipt.total));
+                NSKeyedArchiver.archiveRootObject(dataArray,
+                    toFile: dataFilePath!)
+            }
         }
     }
     
