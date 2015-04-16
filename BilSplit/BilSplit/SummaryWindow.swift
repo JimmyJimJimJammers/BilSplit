@@ -102,41 +102,52 @@ class SummaryWindow: UIViewController, NSCoding
             
             var svc = segue.destinationViewController as! ViewControllerStartScreen;
             
-            historyList.append(tempHistory);
-            svc.historyList = self.historyList;
+            //historyList.append(tempHistory);
+            //svc.historyList = self.historyList;
             
             finalReceipt = Receipt();
             
-            /*var loc : String = RestaurantTextField.text
-            
-            
             //string history class
-            var temp = loc + "==";
-            temp = temp + String(format: "%.2f", finalReceipt.total) + "==";
-            temp = temp + String(format: "%.2f", finalReceipt.tax) + "==";
+            var temp = tempHistory.location + "==";
+            temp = temp + String(format: "%.2f", tempHistory.total) + "==";
+            temp = temp + String(format: "%.2f", tempHistory.tax) + "==";
             
-            for(var i=0; i<people.count; i++){
+            for(var i=0; i<tempHistory.people.count; i++){
                 
-                temp = temp + people[i].name + "[]";
+                temp = temp + tempHistory.people[i].name + "[]";
                 //temp = temp + people[i].color + "[]";// <--color bullshit
                 var r:CGFloat = 0;
                 var g:CGFloat = 0;
                 var b:CGFloat = 0;
                 var a:CGFloat = 0;
-                var myColor = people[i].color;
+                var myColor = tempHistory.people[i].color;
                 myColor.getRed(&r, green: &g, blue: &b, alpha: &a);
                 temp = temp + r.description + " " + g.description + " " + b.description + " " + a.description + "[]"
-                temp = temp + people[i].email + "[]";
-                temp = temp + people[i].phone + "[]";
-                temp = temp + String(format: "%d", people[i].tip) + "{}";
-                for(var j=0; j<people[i].items.count; j++){
-                    temp = temp + people[i].items[j].ItemName + "&&";
-                    temp = temp + String(format: "%.2f", people[i].items[j].Price) + "&&";
-                    temp = temp + String(format: "%d", people[i].items[j].Quantity) + "&&";
-                    temp = temp + String(format: "%d", people[i].items[j].numAssigned) + "()";
-                    
+                if(tempHistory.people[i].email != ""){
+                    temp = temp + tempHistory.people[i].email + "[]";
                 }
-                temp = temp + "::";
+                else{
+                    temp = temp + "n/a" + "[]";
+                }
+                if(tempHistory.people[i].phone != ""){
+                    temp = temp + tempHistory.people[i].phone + "[]";
+                }
+                else{
+                    temp = temp + "n/a" + "[]";
+                }
+                temp = temp + String(format: "%d", people[i].tip) + "{}";
+                for(var j=0; j<tempHistory.people[i].items.count; j++){
+                    temp = temp + tempHistory.people[i].items[j].ItemName + "&&";
+                    temp = temp + String(format: "%.2f", tempHistory.people[i].items[j].Price) + "&&";
+                    temp = temp + String(format: "%d", tempHistory.people[i].items[j].Quantity) + "&&";
+                    temp = temp + String(format: "%d", tempHistory.people[i].items[j].numAssigned);
+                    if(j<tempHistory.people[i].items.count-1){
+                        temp = temp + "()";
+                    }
+                }
+                if(i<tempHistory.people.count-1){
+                    temp = temp + "::";
+                }
             }
             
             
@@ -158,11 +169,11 @@ class SummaryWindow: UIViewController, NSCoding
                     toFile: dataFilePath!)
             }
             else{
-                var dataArray: [History] = [];
+                var dataArray: [String] = [];
                 //var t = History(people: people, tax: finalReceipt.tax, total: finalReceipt.total, location: loc) as NSObject;
-                //dataArray.append(t);
-                //NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
-            }*/
+                dataArray.append(temp);
+                NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
+            }
         }
     }
     
