@@ -14,6 +14,7 @@ class SummaryWindow: UIViewController
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
+    @IBOutlet weak var RestaurantTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()

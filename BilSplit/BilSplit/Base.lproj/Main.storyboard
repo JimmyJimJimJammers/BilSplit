@@ -568,6 +568,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="RestaurantTextField" destination="I7Q-Vc-fvN" id="h5a-pP-Jyw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6c-He-wLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
