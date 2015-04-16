@@ -15,9 +15,25 @@ class SummaryWindow: UIViewController, NSCoding
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
     @IBOutlet weak var RestaurantTextField: UITextField!
+    @IBOutlet weak var TotalLabel: UILabel!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        
+        var total: Double = 0;
+        
+        for(var i: Int = 0; i < people.count; i++)
+        {
+            var subTotal: Double = 0;
+            for(var j: Int = 0; j < people[i].items.count; j++)
+            {
+                subTotal += people[i].items[j].Price;
+            }
+            total += (subTotal + (subTotal * people[i].tip));
+        }
+        
+        TotalLabel.text = String(format: "$%.2f", total);
         
         // Do any additional setup after loading the view.
     }
@@ -30,7 +46,7 @@ class SummaryWindow: UIViewController, NSCoding
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return editableItemsList.count;
+        return people.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -39,6 +55,17 @@ class SummaryWindow: UIViewController, NSCoding
         
         var person :Person;
         person = people[indexPath.row];
+        
+        cell.Name.text = person.name;
+        var total: Double = 0;
+        for(var i: Int = 0; i < person.items.count; i++)
+        {
+            total += person.items[i].Price;
+        }
+        total += total*person.tip;
+        
+        cell.Total.text = String(format: "$%.2f", total);
+        cell.Color.backgroundColor = person.color;
         
         //cell.QuantityTextField.text = "0x";
         

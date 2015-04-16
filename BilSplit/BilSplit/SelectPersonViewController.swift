@@ -15,6 +15,7 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
     var currPerson: Person = Person();
+    var currPersonIndex: Int = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +34,30 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
         var person : Person;
         person = people[indexPath.row];
         cell.NameLabel.text = person.name;
+        if(person.items.count > 0)
+        {
+            cell.DoneLabel.text = "✓";
+        }
+        else
+        {
+            cell.DoneLabel.text = "";
+        }
+        
+        
         //cell.ColorLabel.backgroundColor = person.color;
         return cell;
     }
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
+    
+    
+    func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath)
     {
         currPerson = people[indexPath.row];
+        currPersonIndex = indexPath.row;
+        
+        print("Person after click: " + currPerson.name + "\n");
+        
+        //call the segue here explicitly
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
@@ -50,9 +69,16 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
             svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
             svc.colors = self.colors;
-            //svc. ******************************SEND THE CURRENT PERSON TO THE NEXT SCREEN*******************************
+            svc.currPerson = self.currPerson;
+            svc.currPersonIndex = self.currPersonIndex;
+        }
+        if (segue.identifier == "ToFinalScreenSegue")
+        {
+            var svc = segue.destinationViewController as! SummaryWindow;
             
-            //sender.
+            svc.editableItemsList = self.editableItemsList;
+            svc.people = self.people;
+            svc.colors = self.colors;
         }
     }
 }

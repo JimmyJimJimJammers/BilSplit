@@ -38,7 +38,8 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
         //EditItemsTable.dequeueReusableCellWithIdentifier()
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
+    {
         if (segue.identifier == "AddPeopleSegue")
         {
             var svc = segue.destinationViewController as! AddPeopleViewController;

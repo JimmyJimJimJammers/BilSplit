@@ -10,11 +10,13 @@ import UIKit
 
 class ItemSelectCellTableViewCell: UITableViewCell
 {
+    @IBOutlet weak var Color1: UILabel!
+    
     @IBOutlet weak var QuantityTextField: UITextField!
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var PriceLabel: UILabel!
     @IBOutlet weak var OutOfLabel: UILabel!
-    
+    var personSelected: Bool = true;
     
     override func awakeFromNib()
     {

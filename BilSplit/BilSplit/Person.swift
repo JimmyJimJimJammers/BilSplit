@@ -15,9 +15,9 @@ class Person
     var email: String;// = "NoEmail";
     var phone: String;//  = 5558675309;
     var items: [EditableItem];// = [];
-    var tip: Int;
+    var tip: Double;
     
-    init(personName: String, personColor: UIColor, personEmail: String, phoneNumber: String, assignedItems: [EditableItem], personTip: Int)
+    init(personName: String, personColor: UIColor, personEmail: String, phoneNumber: String, assignedItems: [EditableItem], personTip: Double)
     {
         name = personName;
         color = personColor;
@@ -34,6 +34,6 @@ class Person
         email = "NoEmail";
         phone  = "5558675309";
         items = [];
-        tip = 20;
+        tip = 0.20;
     }
 }
