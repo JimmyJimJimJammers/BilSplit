@@ -33,15 +33,47 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         }
         // Do any additional setup after loading the view, typically from a nib.
         
+        
         let filemgr = NSFileManager.defaultManager()
         let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         
         let docsDir = dirPaths[0] as! String
         dataFilePath = docsDir.stringByAppendingPathComponent("data.archive")
+        var error:NSError?
+        filemgr.removeItemAtPath(dataFilePath!, error: &error);
         
         if filemgr.fileExistsAtPath(dataFilePath!)
         {
-            historyList = NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!) as! [History]
+            historyList = [];
+            histListString = NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!) as! [String]
+            
+            for(var i = 0; i<histListString.count; i++){
+                var temp = histListString[i].componentsSeparatedByString("=="); //temp[0]=location temp[1]=total temp[2]=tax
+                var tempPeople = temp[3].componentsSeparatedByString("::"); //tempPeople = array of people
+                var persons : [Person] = [];
+                for(var j = 0; j<tempPeople.count; j++){
+                    var singlePerson = tempPeople[j].componentsSeparatedByString("{}"); //singlePerson[0]=name 1=color 2=email 3=phone 4=tip 5=arrayOfItems
+                    var itemsArray = singlePerson[5].componentsSeparatedByString("()");
+                    var tempItem : [EditableItem] = [];
+                    for(var k = 0; k<itemsArray.count; k++){
+                        var singleItem = itemsArray[k].componentsSeparatedByString("&&"); //singleItem[0] = ItemName 1=Price 2=Quantity 3=numAssigned
+                        //make Item
+                        var tItem = EditableItem(itemName: singleItem[0], price: NSString(string: singleItem[1]).doubleValue, quantity: singleItem[2].toInt()!, assigned: singleItem[3].toInt()!);
+                        //append Item
+                        tempItem.append(tItem);
+                    }
+                    //make Person
+                    var colorBits = singlePerson[1].componentsSeparatedByString(" ")
+                    //CGFloat((str as NSString).floatValue)
+                    var c = UIColor(red: CGFloat((colorBits[0] as NSString).floatValue), green: CGFloat((colorBits[1] as NSString).floatValue), blue: CGFloat((colorBits[2] as NSString).floatValue), alpha: CGFloat((colorBits[3] as NSString).floatValue));
+                    var p = Person(personName: singlePerson[0], personColor: c, personEmail: singlePerson[2], phoneNumber: singlePerson[3], assignedItems: tempItem, personTip: NSString(string: singlePerson[4]).doubleValue);
+                    //appendPerson
+                    persons.append(p);
+                }
+                
+                var h = History(people: persons, tax: NSString(string: temp[2]).doubleValue, total: NSString(string: temp[1]).doubleValue, location: temp[0]);
+                historyList.append(h);
+            }
         }
     }
     
