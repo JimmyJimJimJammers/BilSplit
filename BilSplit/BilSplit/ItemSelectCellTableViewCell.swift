@@ -10,6 +10,9 @@ import UIKit
 
 class ItemSelectCellTableViewCell: UITableViewCell
 {
+    @IBOutlet weak var QuantityTextField: UITextField!
+    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var PriceLabel: UILabel!
 
     override func awakeFromNib()
     {

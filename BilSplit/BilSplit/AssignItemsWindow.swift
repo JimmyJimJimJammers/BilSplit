@@ -14,6 +14,8 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
     
+    @IBOutlet weak var TipTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,14 +34,31 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell: ItemSelectCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("PersonItemAsssignmentCell", forIndexPath: indexPath) as! ItemSelectCellTableViewCell
+        let cell: ItemSelectCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("AssignmentCell", forIndexPath: indexPath) as! ItemSelectCellTableViewCell
         
         var item : EditableItem;
         item = editableItemsList[indexPath.row];
+        
+        cell.QuantityTextField.text = "1x";
+        cell.NameLabel.text = item.ItemName;
+        cell.PriceLabel.text = String(format: "$%.2f", item.Price);
         
         //cell.NameLabel.text = person.name;
         //cell.ColorLabel.backgroundColor = person.color;
         return cell;
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
+    {
+        if (segue.identifier == "DoneAssigningItemsSegue")
+        {
+            var svc = segue.destinationViewController as! SelectPersonViewController;
+            
+            svc.editableItemsList = self.editableItemsList;
+            svc.people = self.people;
+            svc.colors = self.colors;
+        }
+    }
+    
     
 }

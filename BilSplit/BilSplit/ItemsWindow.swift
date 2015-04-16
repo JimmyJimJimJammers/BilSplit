@@ -27,7 +27,7 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
         {
             for var i = 0; i<finalReceipt.items.count; i++
             {
-                editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity));
+                editableItemsList.append(EditableItem(itemName: finalReceipt.items[i].name, price: finalReceipt.items[i].price, quantity: finalReceipt.items[i].quantity, assigned: 0));
             }
             
             /* need to populate tax text field from finalReceipt.tax which is type double*/
@@ -65,7 +65,7 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
                     newTotal = newTotal + priceD;
                 }
                 
-                passedEditableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt));
+                passedEditableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt, assigned: 0));
                 
             }
             finalReceipt.total = newTotal;

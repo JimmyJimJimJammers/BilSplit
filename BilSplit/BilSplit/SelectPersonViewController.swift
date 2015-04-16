@@ -48,6 +48,5 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
             svc.colors = self.colors;
         }
     }
-    //ToSignUpForItemsSegue
     
 }

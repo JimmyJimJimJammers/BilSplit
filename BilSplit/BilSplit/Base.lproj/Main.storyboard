@@ -397,7 +397,7 @@
         <!--ItemAssignmentWindow-->
         <scene sceneID="Gyb-sR-0Im">
             <objects>
-                <viewController storyboardIdentifier="ItemAssignmentWindow" title="ItemAssignmentWindow" id="l1d-di-qSC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemAssignmentWindow" title="ItemAssignmentWindow" id="l1d-di-qSC" customClass="AssignItemsWindow" customModule="BilSplit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Py9-6m-WJV"/>
                         <viewControllerLayoutGuide type="bottom" id="oMg-A7-hKc"/>
@@ -456,13 +456,25 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="NameLabel" destination="Fuq-YL-yia" id="xex-6u-eK8"/>
+                                            <outlet property="PriceLabel" destination="QrT-uY-hl2" id="JWS-7z-jEU"/>
+                                            <outlet property="QuantityTextField" destination="IBr-ig-8Vu" id="gfZ-O1-kgx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="l1d-di-qSC" id="MQq-YB-Ykm"/>
+                                    <outlet property="delegate" destination="l1d-di-qSC" id="lvc-Em-TAU"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="TipTextField" destination="0TE-9j-l74" id="1OT-VD-aiF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXl-g9-SED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -612,7 +624,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="npf-OQ-j7z"/>
+        <segue reference="Wb4-XC-bu0"/>
         <segue reference="qY9-OU-AXP"/>
         <segue reference="3zV-up-ghY"/>
         <segue reference="t6V-OR-2Yj"/>
