@@ -12,6 +12,9 @@
 		12089C2A1ADEF96000F094A6 /* ColorPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C291ADEF96000F094A6 /* ColorPresets.swift */; };
 		12089C2C1ADF158500F094A6 /* SelectPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C2B1ADF158500F094A6 /* SelectPersonViewController.swift */; };
 		12089C2F1ADF16AC00F094A6 /* PersonSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C2E1ADF16AC00F094A6 /* PersonSelectCell.swift */; };
+		12089C311ADF2CE800F094A6 /* AssignItemsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C301ADF2CE800F094A6 /* AssignItemsWindow.swift */; };
+		12089C341ADF2DDE00F094A6 /* ItemSelectCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C331ADF2DDE00F094A6 /* ItemSelectCellTableViewCell.swift */; };
+		12089C361ADF30B400F094A6 /* ContactSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12089C351ADF30B400F094A6 /* ContactSearch.swift */; };
 		122652801ABCE4B100F33300 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1226527E1ABCE4B100F33300 /* Main.storyboard */; };
 		122652821ABCE4B100F33300 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122652811ABCE4B100F33300 /* Images.xcassets */; };
 		122652851ABCE4B100F33300 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122652831ABCE4B100F33300 /* LaunchScreen.xib */; };
@@ -52,6 +55,9 @@
 		12089C291ADEF96000F094A6 /* ColorPresets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPresets.swift; sourceTree = "<group>"; };
 		12089C2B1ADF158500F094A6 /* SelectPersonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPersonViewController.swift; sourceTree = "<group>"; };
 		12089C2E1ADF16AC00F094A6 /* PersonSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonSelectCell.swift; sourceTree = "<group>"; };
+		12089C301ADF2CE800F094A6 /* AssignItemsWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignItemsWindow.swift; sourceTree = "<group>"; };
+		12089C331ADF2DDE00F094A6 /* ItemSelectCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSelectCellTableViewCell.swift; sourceTree = "<group>"; };
+		12089C351ADF30B400F094A6 /* ContactSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearch.swift; sourceTree = "<group>"; };
 		122652751ABCE4B100F33300 /* BilSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		122652791ABCE4B100F33300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1226527F1ABCE4B100F33300 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -112,6 +118,23 @@
 			name = SelectPersonScreen;
 			sourceTree = "<group>";
 		};
+		12089C321ADF2CEF00F094A6 /* AssignItemsWindow */ = {
+			isa = PBXGroup;
+			children = (
+				12089C331ADF2DDE00F094A6 /* ItemSelectCellTableViewCell.swift */,
+				12089C301ADF2CE800F094A6 /* AssignItemsWindow.swift */,
+			);
+			name = AssignItemsWindow;
+			sourceTree = "<group>";
+		};
+		12089C371ADF31CB00F094A6 /* ContactSearch */ = {
+			isa = PBXGroup;
+			children = (
+				12089C351ADF30B400F094A6 /* ContactSearch.swift */,
+			);
+			name = ContactSearch;
+			sourceTree = "<group>";
+		};
 		1226526C1ABCE4B100F33300 = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				1238C5611ADE068F00844C86 /* AppDelegate.swift */,
-				12089C2D1ADF167F00F094A6 /* SelectPersonScreen */,
 				1238C5621ADE068F00844C86 /* ViewController.swift */,
 				302572591ADF334C0044026E /* History.swift */,
 				307054051ADE25E600426415 /* Receipt.swift */,
@@ -146,6 +168,9 @@
 				12033CC61ACC7D3B007201B3 /* EditableItem.swift */,
 				302572581ADF33320044026E /* AddItemPopUp */,
 				1226527E1ABCE4B100F33300 /* Main.storyboard */,
+				12089C371ADF31CB00F094A6 /* ContactSearch */,
+				12089C321ADF2CEF00F094A6 /* AssignItemsWindow */,
+				12089C2D1ADF167F00F094A6 /* SelectPersonScreen */,
 				12089C291ADEF96000F094A6 /* ColorPresets.swift */,
 				1238C5601ADE053500844C86 /* AddPersonPopUp */,
 				1238C55B1ADDE8CA00844C86 /* AddPeopleWindow */,
@@ -344,12 +369,15 @@
 				1238C55A1ADDE89800844C86 /* AddPeopleViewController.swift in Sources */,
 				1238C5641ADE068F00844C86 /* ViewController.swift in Sources */,
 				307054041ADE257300426415 /* Item.swift in Sources */,
+				12089C361ADF30B400F094A6 /* ContactSearch.swift in Sources */,
 				1238C55D1ADDF23E00844C86 /* AddPeopleCell.swift in Sources */,
+				12089C341ADF2DDE00F094A6 /* ItemSelectCellTableViewCell.swift in Sources */,
 				1238C55F1ADE052D00844C86 /* AddPersonPopUp.swift in Sources */,
 				1226529B1ABCEFE300F33300 /* ViewControllerStartScreen.swift in Sources */,
 				1238C5581ADDD71500844C86 /* Person.swift in Sources */,
 				302572571ADF2AE70044026E /* AddItemPopUpViewController.swift in Sources */,
 				12033CC51ACC789F007201B3 /* ItemsWindow.swift in Sources */,
+				12089C311ADF2CE800F094A6 /* AssignItemsWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
