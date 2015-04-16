@@ -20,6 +20,9 @@ class AddPersonPopUp: UIViewController {
     var historyList: [History] = [];
     var taxAmount: Double = 0;
     
+    var totalItemsAssigned: Int = 0;
+    var totalItems: Int = 0;
+    
     override func viewDidLoad()
     {
         super.viewDidLoad();
@@ -69,6 +72,8 @@ class AddPersonPopUp: UIViewController {
                 svc.colors = self.colors;
                 svc.historyList = self.historyList;
                 svc.editableItemsList = self.editableItemsList;
+                svc.totalItems = self.totalItems;
+                svc.totalItemsAssigned = self.totalItemsAssigned;
                 //svc.people.append(tempPerson); //wrong, send person
                 //svc.NameTextField = NameTextField.text
                 //svc = fieldB.text

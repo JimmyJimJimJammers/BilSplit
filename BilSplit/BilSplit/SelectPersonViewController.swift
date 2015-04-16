@@ -19,9 +19,27 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
     var historyList: [History] = [];
     var taxAmount: Double = 0;
     
-    override func viewDidLoad() {
+    var totalItemsAssigned: Int = 0;
+    var totalItems: Int = 0;
+    
+    @IBOutlet weak var DoneButton: UIButton!
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do view setup here.
+        if(totalItemsAssigned == totalItems)
+        {
+            DoneButton.enabled = true;
+            //svc.DoneButton.userInteractionEnabled = true;
+        }
+        else
+        {
+            DoneButton.enabled = false
+            //DoneButton.userInteractionEnabled = false;
+            //DoneButton.
+        }
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -74,6 +92,8 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
             svc.currPerson = self.currPerson;
             svc.currPersonIndex = self.currPersonIndex;
             svc.historyList = self.historyList;
+            svc.totalItems = self.totalItems;
+            svc.totalItemsAssigned = self.totalItemsAssigned;
         }
         if (segue.identifier == "ToFinalScreenSegue")
         {
@@ -83,6 +103,8 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
             svc.people = self.people;
             svc.colors = self.colors;
             svc.historyList = self.historyList;
+            svc.totalItems = self.totalItems;
+            svc.totalItemsAssigned = self.totalItemsAssigned;
         }
     }
 }

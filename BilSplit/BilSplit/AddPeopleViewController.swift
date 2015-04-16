@@ -17,6 +17,9 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
     var historyList: [History] = [];
     var taxAmount: Double = 0;
     
+    var totalItemsAssigned: Int = 0;
+    var totalItems: Int = 0;
+    
     @IBOutlet weak var FriendsTable: UITableView!
 
     
@@ -58,6 +61,8 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
             svc.people = self.people;
             svc.colors = self.colors;
             svc.historyList = self.historyList;
+            svc.totalItems = self.totalItems;
+            svc.totalItemsAssigned = self.totalItemsAssigned;
         }
         if (segue.identifier == "BackToEditItemsSegue")
         {
@@ -67,6 +72,8 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
             svc.people = self.people;
             svc.colors = self.colors;
             svc.historyList = self.historyList;
+            svc.totalItems = self.totalItems;
+            svc.totalItemsAssigned = self.totalItemsAssigned;
         }
         if (segue.identifier == "SelectPersonSegue")
         {
@@ -76,6 +83,8 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
             svc.people = self.people;
             svc.colors = self.colors;
             svc.historyList = self.historyList;
+            svc.totalItems = self.totalItems;
+            svc.totalItemsAssigned = self.totalItemsAssigned;
         }
     }
 }

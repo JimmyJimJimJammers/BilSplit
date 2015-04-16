@@ -21,7 +21,11 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     var t:UILabel!
     @IBOutlet weak var textView: UITextView!
     var historyList: [History] = [];
+    var histListString : [String] = [];
     var taxAmount: Double = 0;
+    
+    var totalItemsAssigned: Int = 0;
+    var totalItems: Int = 0;
     
     override func viewDidLoad()
     {

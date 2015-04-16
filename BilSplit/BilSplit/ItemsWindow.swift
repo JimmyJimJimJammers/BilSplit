@@ -20,6 +20,9 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
     var historyList: [History] = [];
     var taxAmount: Double = 0;
     
+    var totalItemsAssigned: Int = 0;
+    var totalItems: Int = 0;
+    
     override func viewDidLoad()
     {
         super.viewDidLoad();
@@ -74,6 +77,8 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
                     newTotal = newTotal + priceD;
                 }
                 
+                totalItems += q.toInt()!;
+                
                 passedEditableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt, assigned: 0));
                 
             }
@@ -94,6 +99,8 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
             svc.people = self.people;
             svc.historyList = self.historyList;
             svc.colors = self.colors;
+            svc.totalItems = self.totalItems;
+            svc.totalItemsAssigned = self.totalItemsAssigned;
             
         }
         
@@ -104,6 +111,8 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
             svc.people = self.people;
             svc.colors = self.colors;
             svc.editableItemsList = self.editableItemsList;
+            svc.totalItems = self.totalItems;
+            svc.totalItemsAssigned = self.totalItemsAssigned;
         }
     }
     

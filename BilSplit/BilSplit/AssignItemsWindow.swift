@@ -23,6 +23,9 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
     var viableItemsList: [EditableItem] = []
     var originalIndex: [Int] = [];
     
+    var totalItemsAssigned: Int = 0;
+    var totalItems: Int = 0;
+    
     @IBOutlet weak var SelectItemTable: UITableView!
     @IBOutlet weak var TipTextField: UITextField!
     
@@ -110,6 +113,8 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
             {
                 if(selected[i])
                 {
+                    totalItemsAssigned += assignedQuantities[i];
+                    
                     var tempItem: EditableItem = editableItemsList[originalIndex[i]];
                     tempItem.Quantity = assignedQuantities[i];
                     people[currPersonIndex].items.append(tempItem);
@@ -118,8 +123,8 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             }
             
-        var tipString = TipTextField.text;
-        tipString = tipString.stringByReplacingOccurrencesOfString("%", withString: "", options: nil, range: nil);
+            var tipString = TipTextField.text;
+            tipString = tipString.stringByReplacingOccurrencesOfString("%", withString: "", options: nil, range: nil);
             
             people[currPersonIndex].tip = (0.01 * Double(tipString.toInt()!));
             
@@ -127,6 +132,21 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
             svc.people = self.people;
             svc.colors = self.colors;
             svc.historyList = self.historyList;
+            svc.totalItems = self.totalItems;
+            svc.totalItemsAssigned = self.totalItemsAssigned;
+            
+            var itemsAssigned: Int = 0;
+            for(var i: Int = 0; i < people.count; i++)
+            {
+                itemsAssigned += people[i].items.count;
+            }
+            
+            
+            /*if(totalItemsAssigned == totalItems)
+            {
+                svc.DoneButton.enabled = true;
+                //svc.DoneButton.userInteractionEnabled = true;
+            }*/
             
         }
     }
@@ -145,6 +165,10 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
             var q = String(selectedCell.QuantityTextField.text)
             q = q.stringByReplacingOccurrencesOfString("x", withString: "", options: nil, range: nil);
             assignedQuantities[i] = q.toInt()!;
+        }
+        if(selected[indexPath.row])
+        {
+            assignedQuantities[indexPath.row]++;
         }
         self.SelectItemTable.reloadData();
     }

@@ -16,6 +16,9 @@ class SummaryWindow: UIViewController, NSCoding
     var colors: ColorPresets = ColorPresets();
     var taxAmount: Double = 0;
     
+    var totalItemsAssigned: Int = 0;
+    var totalItems: Int = 0;
+    
     @IBOutlet weak var RestaurantTextField: UITextField!
     @IBOutlet weak var TotalLabel: UILabel!
     
@@ -107,8 +110,7 @@ class SummaryWindow: UIViewController, NSCoding
             
             finalReceipt = Receipt();
             
-            /*var loc : String = RestaurantTextField.text
-            
+            var loc: String = RestaurantTextField.text;
             
             //string history class
             var temp = loc + "==";
@@ -158,11 +160,10 @@ class SummaryWindow: UIViewController, NSCoding
                     toFile: dataFilePath!)
             }
             else{
-                var dataArray: [History] = [];
-                //var t = History(people: people, tax: finalReceipt.tax, total: finalReceipt.total, location: loc) as NSObject;
-                //dataArray.append(t);
-                //NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
-            }*/
+                var dataArray: [String] = [];
+                dataArray.append(temp);
+                NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
+            }
         }
     }
     

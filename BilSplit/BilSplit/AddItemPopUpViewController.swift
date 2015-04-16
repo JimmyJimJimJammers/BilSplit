@@ -18,6 +18,8 @@ class AddItemPopUpViewController: UIViewController {
     var colors: ColorPresets = ColorPresets();
     var historyList: [History] = [];
     var taxAmount: Double = 0;
+    var totalItemsAssigned: Int = 0;
+    var totalItems: Int = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +63,8 @@ class AddItemPopUpViewController: UIViewController {
             svc.historyList = self.historyList;
             svc.colors = self.colors;
             svc.editableItemsList = self.editableItemsList;
+            svc.totalItems = self.totalItems;
+            svc.totalItemsAssigned = self.totalItemsAssigned;
         }
     }
 
