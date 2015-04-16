@@ -1,5 +1,5 @@
 //
-//  AssignItemsWindow.swift
+//  SummaryWindow.swift
 //  BilSplit
 //
 //  Created by James McCarthy on 4/15/15.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
+class SummaryWindow: UIViewController
 {
+
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
-    
-    @IBOutlet weak var TipTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +21,8 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -39,10 +39,7 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
         var item : EditableItem;
         item = editableItemsList[indexPath.row];
         
-        cell.QuantityTextField.text = "1x";
-        cell.OutOfLabel.text = String(format: "/%d", item.Quantity);
-        cell.NameLabel.text = item.ItemName;
-        cell.PriceLabel.text = String(format: "$%.2f", item.Price);
+        //cell.QuantityTextField.text = "0x";
         
         //cell.NameLabel.text = person.name;
         //cell.ColorLabel.backgroundColor = person.color;
@@ -60,6 +57,5 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
             svc.colors = self.colors;
         }
     }
-    
-    
+
 }
