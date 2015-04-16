@@ -25,17 +25,17 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var DoneButton: UIButton!
     
     //Calls this function when the tap is recognized.
-    func DismissKeyboard()
+    /*func DismissKeyboard()
     {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
-    }
+    }*/
     
     override func viewDidLoad()
     {
-        //for dismissing the keyboard when tapping elsewhere
+        /*//for dismissing the keyboard when tapping elsewhere
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
-        view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)*/
         
         super.viewDidLoad()
         // Do view setup here.
@@ -109,6 +109,17 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
         if (segue.identifier == "ToFinalScreenSegue")
         {
             var svc = segue.destinationViewController as! SummaryWindow;
+            
+            svc.editableItemsList = self.editableItemsList;
+            svc.people = self.people;
+            svc.colors = self.colors;
+            svc.historyList = self.historyList;
+            svc.totalItems = self.totalItems;
+            svc.totalItemsAssigned = self.totalItemsAssigned;
+        }
+        if(segue.identifier == "BackToAddPeopleSegue")
+        {
+            var svc = segue.destinationViewController as! AddPeopleViewController;
             
             svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
