@@ -12,6 +12,7 @@ import MobileCoreServices
 
 var finalReceipt: Receipt!
 var start: Bool!
+var dataFilePath: String?
 
 class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate
 {
@@ -27,6 +28,24 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             finalReceipt = Receipt()
         }
         // Do any additional setup after loading the view, typically from a nib.
+        
+        /*let filemgr = NSFileManager.defaultManager()
+        let dirPaths =
+        NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
+            .UserDomainMask, true)
+        
+        let docsDir = dirPaths[0] as! String
+        dataFilePath =
+            docsDir.stringByAppendingPathComponent("data.archive")
+        
+        if filemgr.fileExistsAtPath(dataFilePath!) {
+            let dataArray =
+            NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!)
+                as! [History]
+            
+        }*/
+
+        
     }
     
     override func didReceiveMemoryWarning() {
