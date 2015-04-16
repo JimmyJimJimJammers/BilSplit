@@ -17,6 +17,8 @@ class AddPersonPopUp: UIViewController {
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
+    var historyList: [History] = [];
+    var taxAmount: Double = 0;
     
     override func viewDidLoad()
     {
@@ -65,6 +67,7 @@ class AddPersonPopUp: UIViewController {
 
                 svc.people = self.people;
                 svc.colors = self.colors;
+                svc.historyList = self.historyList;
                 svc.editableItemsList = self.editableItemsList;
                 //svc.people.append(tempPerson); //wrong, send person
                 //svc.NameTextField = NameTextField.text

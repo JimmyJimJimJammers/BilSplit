@@ -14,6 +14,8 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
+    var historyList: [History] = [];
+    var taxAmount: Double = 0;
     
     @IBOutlet weak var FriendsTable: UITableView!
 
@@ -55,6 +57,7 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
             svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
             svc.colors = self.colors;
+            svc.historyList = self.historyList;
         }
         if (segue.identifier == "BackToEditItemsSegue")
         {
@@ -63,6 +66,7 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
             svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
             svc.colors = self.colors;
+            svc.historyList = self.historyList;
         }
         if (segue.identifier == "SelectPersonSegue")
         {
@@ -71,6 +75,7 @@ class AddPeopleViewController: UIViewController, UITableViewDataSource, UITableV
             svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
             svc.colors = self.colors;
+            svc.historyList = self.historyList;
         }
     }
 }

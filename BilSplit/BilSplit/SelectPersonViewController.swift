@@ -16,6 +16,8 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
     var colors: ColorPresets = ColorPresets();
     var currPerson: Person = Person();
     var currPersonIndex: Int = 0;
+    var historyList: [History] = [];
+    var taxAmount: Double = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +73,7 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
             svc.colors = self.colors;
             svc.currPerson = self.currPerson;
             svc.currPersonIndex = self.currPersonIndex;
+            svc.historyList = self.historyList;
         }
         if (segue.identifier == "ToFinalScreenSegue")
         {
@@ -79,6 +82,7 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
             svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
             svc.colors = self.colors;
+            svc.historyList = self.historyList;
         }
     }
 }

@@ -16,6 +16,8 @@ class AddItemPopUpViewController: UIViewController {
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
+    var historyList: [History] = [];
+    var taxAmount: Double = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +58,7 @@ class AddItemPopUpViewController: UIViewController {
             finalReceipt.items.append(x)
             
             svc.people = self.people;
+            svc.historyList = self.historyList;
             svc.colors = self.colors;
             svc.editableItemsList = self.editableItemsList;
         }

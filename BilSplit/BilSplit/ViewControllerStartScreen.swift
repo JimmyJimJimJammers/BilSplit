@@ -13,6 +13,7 @@ import MobileCoreServices
 var finalReceipt: Receipt!
 var start: Bool!
 var dataFilePath: String?
+var historyList: [History] = [];
 
 class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate
 {
@@ -20,6 +21,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     var t:UILabel!
     @IBOutlet weak var textView: UITextView!
     var historyList: [History] = [];
+    var taxAmount: Double = 0;
     
     override func viewDidLoad()
     {
@@ -688,4 +690,15 @@ extension ViewControllerStartScreen: UIImagePickerControllerDelegate {
             
             
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
+    {
+        if(segue.identifier == "EditItemsSegue")
+        {
+            var svc = segue.destinationViewController as! ItemsWindow;
+  
+            svc.historyList = self.historyList;
+        }
+    }
+    
 }

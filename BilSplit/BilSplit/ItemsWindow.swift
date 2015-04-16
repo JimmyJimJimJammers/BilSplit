@@ -17,6 +17,8 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
+    var historyList: [History] = [];
+    var taxAmount: Double = 0;
     
     override func viewDidLoad()
     {
@@ -47,6 +49,12 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
             var passedEditableItemsList : [EditableItem] = [];
             var newTotal : Double = 0;
             var table = EditItemsTable.visibleCells()
+            
+            var tempTax: String = TaxField.text;
+            tempTax = tempTax.stringByReplacingOccurrencesOfString("$", withString: "", options: nil, range: nil);
+            tempTax = tempTax.stringByReplacingOccurrencesOfString(".", withString: "", options: nil, range: nil);
+            
+            taxAmount = Double(tempTax.toInt()!)/100.0;
 
             for(var i: Int = 0; i < table.count; i++)
             {
@@ -84,6 +92,7 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
             
             svc.editableItemsList = passedEditableItemsList;
             svc.people = self.people;
+            svc.historyList = self.historyList;
             svc.colors = self.colors;
             
         }
@@ -91,6 +100,7 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
         if (segue.identifier == "AddItemsSegue")
         {
             var svc = segue.destinationViewController as! AddItemPopUpViewController;
+            svc.historyList = self.historyList;
             svc.people = self.people;
             svc.colors = self.colors;
             svc.editableItemsList = self.editableItemsList;

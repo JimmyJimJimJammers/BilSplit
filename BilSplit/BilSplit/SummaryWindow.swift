@@ -10,10 +10,12 @@ import UIKit
 
 class SummaryWindow: UIViewController, NSCoding
 {
-    
+    var historyList: [History] = [];
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
+    var taxAmount: Double = 0;
+    
     @IBOutlet weak var RestaurantTextField: UITextField!
     @IBOutlet weak var TotalLabel: UILabel!
     
@@ -87,9 +89,24 @@ class SummaryWindow: UIViewController, NSCoding
         
         if(segue.identifier == "SaveHistorySegue")
         {
+            var tempHistory: History = History();
+            tempHistory.location = RestaurantTextField.text;
+            tempHistory.people = self.people;
+            var tempTotal: String = TotalLabel.text!;
+            tempTotal = tempTotal.stringByReplacingOccurrencesOfString("$", withString: "", options: nil, range: nil);
+            tempTotal = tempTotal.stringByReplacingOccurrencesOfString(".", withString: "", options: nil, range: nil);
+            
+            tempHistory.total = Double(tempTotal.toInt()!)/100.0;
+            
+            //tempHistory.tax =
+            
             var svc = segue.destinationViewController as! ViewControllerStartScreen;
             
-            var loc : String = RestaurantTextField.text
+            historyList.append(tempHistory);
+            svc.historyList = self.historyList;
+            
+            
+            /*var loc : String = RestaurantTextField.text
             
             let filemgr = NSFileManager.defaultManager()
             /*let dirPaths =
@@ -113,7 +130,7 @@ class SummaryWindow: UIViewController, NSCoding
                 //var t = History(people: people, tax: finalReceipt.tax, total: finalReceipt.total, location: loc) as NSObject;
                 //dataArray.append(t);
                 //NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
-            }
+            }*/
         }
     }
     

@@ -10,6 +10,7 @@ import UIKit
 
 class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
+    var historyList: [History] = [];
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
@@ -17,6 +18,7 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
     var currPersonIndex: Int = 0;
     var selected: [Bool] = [];
     var assignedQuantities: [Int] = [];
+    var taxAmount: Double = 0;
     
     var viableItemsList: [EditableItem] = []
     var originalIndex: [Int] = [];
@@ -124,6 +126,7 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
             svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
             svc.colors = self.colors;
+            svc.historyList = self.historyList;
             
         }
     }
