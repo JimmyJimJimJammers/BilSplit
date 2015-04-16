@@ -28,12 +28,12 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iC3-b5-KFO">
-                                <rect key="frame" x="99" y="319" width="203" height="30"/>
+                                <rect key="frame" x="99" y="319" width="186" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EOx-Pr-Anc">
-                                <rect key="frame" x="310" y="319" width="49" height="30"/>
+                                <rect key="frame" x="293" y="319" width="66" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -624,9 +624,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wb4-XC-bu0"/>
-        <segue reference="qY9-OU-AXP"/>
-        <segue reference="3zV-up-ghY"/>
+        <segue reference="F4R-2p-YIW"/>
         <segue reference="t6V-OR-2Yj"/>
+        <segue reference="qY9-OU-AXP"/>
+        <segue reference="Wb4-XC-bu0"/>
     </inferredMetricsTieBreakers>
 </document>
