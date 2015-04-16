@@ -34,9 +34,9 @@ class SummaryWindow: UIViewController
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell: ItemSelectCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("AssignmentCell", forIndexPath: indexPath) as! ItemSelectCellTableViewCell
+        let cell: SummaryTableCell = tableView.dequeueReusableCellWithIdentifier("IndividualTotalCells", forIndexPath: indexPath) as! SummaryTableCell
         
-        var item : EditableItem;
+        var Person : EditableItem;
         item = editableItemsList[indexPath.row];
         
         //cell.QuantityTextField.text = "0x";
@@ -48,14 +48,14 @@ class SummaryWindow: UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
     {
-        if (segue.identifier == "DoneAssigningItemsSegue")
+        /*if (segue.identifier == "DoneAssigningItemsSegue")
         {
             var svc = segue.destinationViewController as! SelectPersonViewController;
             
             svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
             svc.colors = self.colors;
-        }
+        }*/
     }
 
 }
