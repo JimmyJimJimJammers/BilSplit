@@ -13,7 +13,7 @@ class History {
     var tax:Double
     var total:Double
     
-    init(people: String, tax: Double, total: Double)
+    init(people: [Person], tax: Double, total: Double)
     {
         self.people = people;
         self.tax = tax;
