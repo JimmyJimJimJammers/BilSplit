@@ -14,13 +14,15 @@ var finalReceipt: Receipt!
 var start: Bool!
 var dataFilePath: String?
 
-class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate
+class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate
 {
     var activityIndicator:UIActivityIndicatorView!
     var t:UILabel!
     @IBOutlet weak var textView: UITextView!
+    var historyList: [History] = [];
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         print("made receipt in load\n")
         start = true
@@ -30,23 +32,18 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         // Do any additional setup after loading the view, typically from a nib.
         
         let filemgr = NSFileManager.defaultManager()
-        let dirPaths =
-        NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
-            .UserDomainMask, true)
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         
         let docsDir = dirPaths[0] as! String
-        dataFilePath =
-            docsDir.stringByAppendingPathComponent("data.archive")
+        dataFilePath = docsDir.stringByAppendingPathComponent("data.archive")
         
-        if filemgr.fileExistsAtPath(dataFilePath!) {
-            let dataArray =
-            NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!)
-                as! [History]
-            
+        if filemgr.fileExistsAtPath(dataFilePath!)
+        {
+            historyList = NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!) as! [History]
         }
-
-        
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -70,6 +67,28 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         SwiftSpinner.hide()
         activityIndicator.removeFromSuperview()
         activityIndicator = nil
+    }
+    
+    
+    //TABLE STUFFF
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return self.historyList.count;
+    }
+    
+    func tableView(tView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell: StartWindowCell = tView.dequeueReusableCellWithIdentifier("HistoryTableCell", forIndexPath: indexPath) as! StartWindowCell
+        
+        var hist : History;
+        hist = historyList[indexPath.row];
+        
+        cell.LocationLabel.text = hist.location;
+        cell.TotalLabel.text = String(format: "$%.2f", hist.total);
+        
+        //cell.NameLabel.text = person.name;
+        //cell.ColorLabel.backgroundColor = person.color;
+        return cell;
     }
     
     

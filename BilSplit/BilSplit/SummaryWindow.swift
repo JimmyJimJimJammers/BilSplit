@@ -65,13 +65,13 @@ class SummaryWindow: UIViewController
             var loc : String = RestaurantTextField.text
             
             let filemgr = NSFileManager.defaultManager()
-            let dirPaths =
+            /*let dirPaths =
             NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
                 .UserDomainMask, true)
             
             let docsDir = dirPaths[0] as! String
             dataFilePath =
-                docsDir.stringByAppendingPathComponent("data.archive")
+                docsDir.stringByAppendingPathComponent("data.archive")*/
             
             if filemgr.fileExistsAtPath(dataFilePath!) {
                 var dataArray =
@@ -84,8 +84,7 @@ class SummaryWindow: UIViewController
             else{
                 var dataArray: [History] = [];
                 dataArray.append(History(people: people, tax: finalReceipt.tax, total: finalReceipt.total, location: loc));
-                NSKeyedArchiver.archiveRootObject(dataArray,
-                    toFile: dataFilePath!)
+                NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
             }
         }
     }

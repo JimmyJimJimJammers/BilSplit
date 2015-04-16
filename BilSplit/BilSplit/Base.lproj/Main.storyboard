@@ -650,6 +650,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="6Da-VH-ipC" id="lnc-VH-EFK"/>
+                                    <outlet property="delegate" destination="6Da-VH-ipC" id="wcx-pL-cE2"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
