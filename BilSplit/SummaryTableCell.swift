@@ -1,6 +1,6 @@
 //
 //  SummaryTableCell.swift
-//  
+//
 //
 //  Created by James McCarthy on 4/15/15.
 //
@@ -18,10 +18,10 @@ class SummaryTableCell: UITableViewCell
     {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool)
     {
         super.setSelected(selected, animated: animated)
     }
-
+    
 }

@@ -10,17 +10,17 @@ import UIKit
 
 class SummaryWindow: UIViewController
 {
-
+    
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -50,12 +50,12 @@ class SummaryWindow: UIViewController
     {
         /*if (segue.identifier == "DoneAssigningItemsSegue")
         {
-            var svc = segue.destinationViewController as! SelectPersonViewController;
-            
-            svc.editableItemsList = self.editableItemsList;
-            svc.people = self.people;
-            svc.colors = self.colors;
+        var svc = segue.destinationViewController as! SelectPersonViewController;
+        
+        svc.editableItemsList = self.editableItemsList;
+        svc.people = self.people;
+        svc.colors = self.colors;
         }*/
     }
-
+    
 }

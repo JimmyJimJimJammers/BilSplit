@@ -14,6 +14,7 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
     var colors: ColorPresets = ColorPresets();
+    var currPerson: String = "";
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,6 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
         return cell;
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
     {
         if (segue.identifier == "ToSignUpForItemsSegue")
@@ -46,7 +46,8 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
             svc.editableItemsList = self.editableItemsList;
             svc.people = self.people;
             svc.colors = self.colors;
+            
+            //sender.
         }
     }
-    
 }
