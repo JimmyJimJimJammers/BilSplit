@@ -28,7 +28,6 @@
 		1238C55F1ADE052D00844C86 /* AddPersonPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1238C55E1ADE052D00844C86 /* AddPersonPopUp.swift */; };
 		1238C5631ADE068F00844C86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1238C5611ADE068F00844C86 /* AppDelegate.swift */; };
 		1238C5641ADE068F00844C86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1238C5621ADE068F00844C86 /* ViewController.swift */; };
-		12CD274B1ADA0EDF00484BAF /* QuantityTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CD274A1ADA0EDF00484BAF /* QuantityTextField.swift */; };
 		12EE76441AD9BD170033848D /* EditItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE76431AD9BD170033848D /* EditItemsCell.swift */; };
 		302572571ADF2AE70044026E /* AddItemPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302572561ADF2AE60044026E /* AddItemPopUpViewController.swift */; };
 		3025725A1ADF334C0044026E /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302572591ADF334C0044026E /* History.swift */; };
@@ -77,7 +76,6 @@
 		1238C55E1ADE052D00844C86 /* AddPersonPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPersonPopUp.swift; sourceTree = "<group>"; };
 		1238C5611ADE068F00844C86 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1238C5621ADE068F00844C86 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		12CD274A1ADA0EDF00484BAF /* QuantityTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantityTextField.swift; sourceTree = "<group>"; };
 		12EE76431AD9BD170033848D /* EditItemsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemsCell.swift; sourceTree = "<group>"; };
 		302572561ADF2AE60044026E /* AddItemPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemPopUpViewController.swift; sourceTree = "<group>"; };
 		302572591ADF334C0044026E /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 			children = (
 				12033CC41ACC789F007201B3 /* ItemsWindow.swift */,
 				12EE76431AD9BD170033848D /* EditItemsCell.swift */,
-				12CD274A1ADA0EDF00484BAF /* QuantityTextField.swift */,
 			);
 			name = EditItemsWindow;
 			sourceTree = "<group>";
@@ -377,7 +374,6 @@
 				12089C391ADF49F200F094A6 /* SummaryWindow.swift in Sources */,
 				307054061ADE25E600426415 /* Receipt.swift in Sources */,
 				12033CC71ACC7D3B007201B3 /* EditableItem.swift in Sources */,
-				12CD274B1ADA0EDF00484BAF /* QuantityTextField.swift in Sources */,
 				12089C2A1ADEF96000F094A6 /* ColorPresets.swift in Sources */,
 				30B962421ACA2A5B0047D02E /* SwiftSpinner.swift in Sources */,
 				12089C2F1ADF16AC00F094A6 /* PersonSelectCell.swift in Sources */,

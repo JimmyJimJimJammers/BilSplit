@@ -50,7 +50,7 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
             for(var i: Int = 0; i < table.count; i++)
             {
                 let selectedCell = table[i] as! EditItemsCell
-                var q = String(selectedCell.QuantityField.text)
+                var q = String(selectedCell.QuantityTextField.text)
                 var n = String(selectedCell.ItemNameField.text)
                 var p = String(selectedCell.CostField.text)
                 var quantInt : Int = 0;
@@ -107,7 +107,7 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
         editItem = editableItemsList[indexPath.row];
         
         //cell.textLabel?.text = editItem.ItemName;
-        cell.QuantityField.text = String(format: "%dx",editItem.Quantity);
+        cell.QuantityTextField.text = String(format: "%dx",editItem.Quantity);
         cell.ItemNameField.text = editItem.ItemName;
         cell.CostField.text = String(format: "$%.2f",editItem.Price);
         

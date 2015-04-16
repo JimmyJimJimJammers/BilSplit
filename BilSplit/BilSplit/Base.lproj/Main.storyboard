@@ -147,7 +147,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="arN-ij-HaR" id="rC2-Qz-rKv">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="QTF" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="2x" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8l6-Ik-3kK" customClass="QuantityTextField" customModule="BilSplit" customModuleProvider="target">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="QTF" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="2x" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8l6-Ik-3kK">
                                                     <rect key="frame" x="8" y="8" width="46" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -167,7 +167,7 @@
                                         <connections>
                                             <outlet property="CostField" destination="z2R-I0-bYv" id="9Et-Bg-35T"/>
                                             <outlet property="ItemNameField" destination="O5w-rV-2kw" id="ZBi-y5-7vr"/>
-                                            <outlet property="QuantityField" destination="8l6-Ik-3kK" id="Jrr-ux-nUo"/>
+                                            <outlet property="QuantityTextField" destination="8l6-Ik-3kK" id="Po1-1n-zqn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -642,9 +642,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qY9-OU-AXP"/>
-        <segue reference="Wb4-XC-bu0"/>
-        <segue reference="RVp-US-asg"/>
+        <segue reference="5OL-sD-fxn"/>
         <segue reference="7gU-bw-DEr"/>
+        <segue reference="t6V-OR-2Yj"/>
+        <segue reference="Wb4-XC-bu0"/>
     </inferredMetricsTieBreakers>
 </document>
