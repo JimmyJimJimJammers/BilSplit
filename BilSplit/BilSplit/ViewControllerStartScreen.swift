@@ -95,6 +95,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         filemgr.removeItemAtPath(dataFilePath!, error: &error);
         historyList = [];
         histListString = [];
+        finalReceipt = Receipt();
         historyTable.reloadData();
     }
     
