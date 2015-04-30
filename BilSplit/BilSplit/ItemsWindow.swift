@@ -91,8 +91,6 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
                     newTotal = newTotal + priceD;
                 }
                 
-                totalItems += q.toInt()!;
-                
                 passedEditableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt, assigned: 0));
                 
             }
@@ -155,6 +153,37 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        var passedEditableItemsList : [EditableItem] = [];
+        var table = EditItemsTable.visibleCells();
+        var newTotal : Double = 0;
+        
+        for(var i: Int = 0; i < table.count; i++)
+        {
+            let selectedCell = table[i] as! EditItemsCell
+            var q = String(selectedCell.QuantityTextField.text)
+            var n = String(selectedCell.ItemNameField.text)
+            var p = String(selectedCell.CostField.text)
+            var quantInt : Int = 0;
+            var priceD : Double = 0;
+            q = q.stringByReplacingOccurrencesOfString("x", withString: "", options: nil, range: nil);
+            p = p.stringByReplacingOccurrencesOfString("$", withString: "", options: nil, range: nil);
+            if let myNumber = NSNumberFormatter().numberFromString(q) {
+                quantInt = q.toInt()!;
+            }
+            if let myNumber = NSNumberFormatter().numberFromString(p) { //<- not sure if works with '.' in number
+                priceD = NSString(string: p).doubleValue;
+                newTotal = newTotal + priceD;
+            }
+            
+            totalItems += q.toInt()!;
+            
+            passedEditableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt, assigned: 0));
+            
+        }
+        
+        editableItemsList = passedEditableItemsList;
+
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             // handle delete (by removing the data from your array and updating the tableview)
             editableItemsList.removeAtIndex(indexPath.row);

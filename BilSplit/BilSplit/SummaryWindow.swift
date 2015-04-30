@@ -107,7 +107,7 @@ class SummaryWindow: UIViewController, NSCoding
         return cell;
     }
     
-    /*func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedRowIndex = indexPath
         currentRow = selectedRowIndex.row
         tableView.beginUpdates()
@@ -125,7 +125,7 @@ class SummaryWindow: UIViewController, NSCoding
             }
         }
         return 45
-    }*/
+    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
@@ -141,96 +141,99 @@ class SummaryWindow: UIViewController, NSCoding
         
         if(segue.identifier == "SaveHistorySegue")
         {
-            var tempHistory: History = History();
-            tempHistory.location = RestaurantTextField.text;
-            tempHistory.people = self.people;
-            var tempTotal: String = TotalLabel.text!;
-            tempTotal = tempTotal.stringByReplacingOccurrencesOfString("$", withString: "", options: nil, range: nil);
-            tempTotal = tempTotal.stringByReplacingOccurrencesOfString(".", withString: "", options: nil, range: nil);
-            
-            tempHistory.total = Double(tempTotal.toInt()!)/100.0;
-            
-            //tempHistory.tax =
-            
-            var svc = segue.destinationViewController as! ViewControllerStartScreen;
-            
-            //historyList.append(tempHistory);
-            //svc.historyList = self.historyList;
-            
-            finalReceipt = Receipt();
-            
-            var loc: String = RestaurantTextField.text;
-            
-            //string history class
-            var temp = tempHistory.location + "==";
-            temp = temp + String(format: "%.2f", tempHistory.total) + "==";
-            temp = temp + String(format: "%f", taxAmount) + "==";
-            
-            for(var i=0; i<tempHistory.people.count; i++){
+            if(self.people.count != 0)
+            {
+                var tempHistory: History = History();
+                tempHistory.location = RestaurantTextField.text;
+                tempHistory.people = self.people;
+                var tempTotal: String = TotalLabel.text!;
+                tempTotal = tempTotal.stringByReplacingOccurrencesOfString("$", withString: "", options: nil, range: nil);
+                tempTotal = tempTotal.stringByReplacingOccurrencesOfString(".", withString: "", options: nil, range: nil);
                 
-                temp = temp + tempHistory.people[i].name + "[]";
-                //temp = temp + people[i].color + "[]";// <--color bullshit
-                var r:CGFloat = 0;
-                var g:CGFloat = 0;
-                var b:CGFloat = 0;
-                var a:CGFloat = 0;
-                var myColor = tempHistory.people[i].color;
-                myColor.getRed(&r, green: &g, blue: &b, alpha: &a);
-                temp = temp + r.description + " " + g.description + " " + b.description + " " + a.description + "[]"
-                if(tempHistory.people[i].email != ""){
-                    temp = temp + tempHistory.people[i].email + "[]";
-                }
-                else{
-                    temp = temp + "n/a" + "[]";
-                }
-                if(tempHistory.people[i].phone != ""){
-                    temp = temp + tempHistory.people[i].phone + "[]";
-                }
-                else{
-                    temp = temp + "n/a" + "[]";
-                }
-                temp = temp + String(format: "%f", tempHistory.people[i].tip) + "{}";
-                for(var j=0; j<tempHistory.people[i].items.count; j++){
-                    temp = temp + tempHistory.people[i].items[j].ItemName + "&&";
-                    temp = temp + String(format: "%.2f", tempHistory.people[i].items[j].Price) + "&&";
-                    temp = temp + String(format: "%d", tempHistory.people[i].items[j].Quantity) + "&&";
-                    temp = temp + String(format: "%d", tempHistory.people[i].items[j].numAssigned);
-                    if(j<tempHistory.people[i].items.count-1){
-                        temp = temp + "()";
+                tempHistory.total = Double(tempTotal.toInt()!)/100.0;
+                
+                //tempHistory.tax =
+                
+                var svc = segue.destinationViewController as! ViewControllerStartScreen;
+                
+                //historyList.append(tempHistory);
+                //svc.historyList = self.historyList;
+                
+                finalReceipt = Receipt();
+                
+                var loc: String = RestaurantTextField.text;
+                
+                //string history class
+                var temp = tempHistory.location + "==";
+                temp = temp + String(format: "%.2f", tempHistory.total) + "==";
+                temp = temp + String(format: "%f", taxAmount) + "==";
+                
+                for(var i=0; i<tempHistory.people.count; i++){
+                    
+                    temp = temp + tempHistory.people[i].name + "[]";
+                    //temp = temp + people[i].color + "[]";// <--color bullshit
+                    var r:CGFloat = 0;
+                    var g:CGFloat = 0;
+                    var b:CGFloat = 0;
+                    var a:CGFloat = 0;
+                    var myColor = tempHistory.people[i].color;
+                    myColor.getRed(&r, green: &g, blue: &b, alpha: &a);
+                    temp = temp + r.description + " " + g.description + " " + b.description + " " + a.description + "[]"
+                    if(tempHistory.people[i].email != ""){
+                        temp = temp + tempHistory.people[i].email + "[]";
+                    }
+                    else{
+                        temp = temp + "n/a" + "[]";
+                    }
+                    if(tempHistory.people[i].phone != ""){
+                        temp = temp + tempHistory.people[i].phone + "[]";
+                    }
+                    else{
+                        temp = temp + "n/a" + "[]";
+                    }
+                    temp = temp + String(format: "%f", tempHistory.people[i].tip) + "{}";
+                    for(var j=0; j<tempHistory.people[i].items.count; j++){
+                        temp = temp + tempHistory.people[i].items[j].ItemName + "&&";
+                        temp = temp + String(format: "%.2f", tempHistory.people[i].items[j].Price) + "&&";
+                        temp = temp + String(format: "%d", tempHistory.people[i].items[j].Quantity) + "&&";
+                        temp = temp + String(format: "%d", tempHistory.people[i].items[j].numAssigned);
+                        if(j<tempHistory.people[i].items.count-1){
+                            temp = temp + "()";
+                        }
+                    }
+                    if(i<tempHistory.people.count-1){
+                        temp = temp + "::";
                     }
                 }
-                if(i<tempHistory.people.count-1){
-                    temp = temp + "::";
+                let formatter = NSDateFormatter()
+                let date = NSDate()
+                formatter.dateFormat = "MM/dd/yy"
+                var d:String = formatter.stringFromDate(date);
+                temp = temp + "=="  + d;
+                
+                
+                let filemgr = NSFileManager.defaultManager()
+                let dirPaths =
+                NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
+                    .UserDomainMask, true)
+                
+                let docsDir = dirPaths[0] as! String
+                dataFilePath =
+                    docsDir.stringByAppendingPathComponent("data.archive")
+                
+                if filemgr.fileExistsAtPath(dataFilePath!) {
+                    var dataArray =
+                    NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!)
+                        as! [String]
+                    dataArray.append(temp);
+                    NSKeyedArchiver.archiveRootObject(dataArray,
+                        toFile: dataFilePath!)
                 }
-            }
-            let formatter = NSDateFormatter()
-            let date = NSDate()
-            formatter.dateFormat = "MM/dd/yy"
-            var d:String = formatter.stringFromDate(date);
-            temp = temp + "=="  + d;
-            
-            
-            let filemgr = NSFileManager.defaultManager()
-            let dirPaths =
-            NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
-                .UserDomainMask, true)
-            
-            let docsDir = dirPaths[0] as! String
-            dataFilePath =
-                docsDir.stringByAppendingPathComponent("data.archive")
-            
-            if filemgr.fileExistsAtPath(dataFilePath!) {
-                var dataArray =
-                NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!)
-                    as! [String]
-                dataArray.append(temp);
-                NSKeyedArchiver.archiveRootObject(dataArray,
-                    toFile: dataFilePath!)
-            }
-            else{
-                var dataArray: [String] = [];
-                dataArray.append(temp);
-                NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
+                else{
+                    var dataArray: [String] = [];
+                    dataArray.append(temp);
+                    NSKeyedArchiver.archiveRootObject(dataArray, toFile: dataFilePath!)
+                }
             }
         }
     }
