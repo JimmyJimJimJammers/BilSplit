@@ -29,4 +29,16 @@ class EditableItem
         Quantity = 0;
         numAssigned = 0;
     }
+    func printItem()
+    {
+        print(ItemName);
+        print(": ");
+        print(String(format: "$%.2f" , Price));
+        print(" ");
+        print(String(numAssigned));
+        print("/");
+        print(String(Quantity));
+        print("\n");
+        
+    }
 }

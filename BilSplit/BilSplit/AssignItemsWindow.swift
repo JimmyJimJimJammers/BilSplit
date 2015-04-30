@@ -100,7 +100,9 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
         
         if(assignedQuantities[indexPath.row] > (item.Quantity - item.numAssigned))
         {
-            assignedQuantities[indexPath.row] = (item.Quantity - item.numAssigned);
+            //assignedQuantities[indexPath.row] = (item.Quantity - item.numAssigned);
+            assignedQuantities[indexPath.row] = 0;
+            selected[indexPath.row] = false;
         }
         
         cell.QuantityTextField.text = String(format: "%dx", assignedQuantities[indexPath.row]);
@@ -142,7 +144,7 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
                     totalItemsAssigned += assignedQuantities[i];
                     
                     var tempItem: EditableItem = editableItemsList[originalIndex[i]];
-                    tempItem.Quantity = assignedQuantities[i];
+                    //tempItem.numAssigned += assignedQuantities[i]; /********************************PROBLEM*********************/
                     people[currPersonIndex].items.append(tempItem);
                     //currPerson.items.append(tempItem);
                     editableItemsList[originalIndex[i]].numAssigned += assignedQuantities[i];
@@ -165,6 +167,7 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
             for(var i: Int = 0; i < people.count; i++)
             {
                 itemsAssigned += people[i].items.count;
+                people[i].printValues();
             }
             
             
@@ -181,7 +184,11 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
     {
         //var item: EditableItem = editableItemsList[indexPath.row];
         var item: EditableItem = viableItemsList[indexPath.row];
-        selected[indexPath.row] = !selected[indexPath.row];
+        
+        if(!selected[indexPath.row])
+        {
+            selected[indexPath.row] = !selected[indexPath.row];
+        }
         
         var table = SelectItemTable.visibleCells()
 

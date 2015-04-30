@@ -49,6 +49,15 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         //var error:NSError?
         //filemgr.removeItemAtPath(dataFilePath!, error: &error);
         
+        //************************************************if shit is broken, uncomment this:******************************************************
+        /*var error:NSError?
+        //let filemgr = NSFileManager.defaultManager()
+        filemgr.removeItemAtPath(dataFilePath!, error: &error);
+        historyList = [];
+        histListString = [];
+        finalReceipt = Receipt();
+        historyTable.reloadData();*/
+        
         if filemgr.fileExistsAtPath(dataFilePath!)
         {
             historyList = [];

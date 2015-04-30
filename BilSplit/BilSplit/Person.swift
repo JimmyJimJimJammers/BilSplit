@@ -36,4 +36,42 @@ class Person
         items = [];
         tip = 0.10;
     }
+    
+    func printValues()
+    {
+       // var tempR: CGFloat;
+        //var tempG: CGFloat;
+        //var tempB: CGFloat;
+        //var tempA: CGFloat;
+        //color.getRed(tempR, saturation: &tempG, brightness: &tempB, alpha: &tempA);
+        
+        /*var colorString = color.description;
+        let newString = colorString.stringByReplacingOccurrencesOfString("UIDeviceRGBColorSpace", withString: "");
+        let myWordList = newString.wordList;
+        let red = myWordList[1].toInt();
+        let green = myWordList[2].toInt();
+        let blue = myWordList[3].toInt();*/
+        
+        print(name);
+        print("\n");
+        print("_____________\n");
+        //print("\tColor: R:%f G:%f B:%f\n", red, green, blue);
+        print(email);
+        print("\n");
+        print(phone);
+        print("\n");
+        for(var i: Int = 0; i < items.count; i++)
+        {
+            items[i].printItem();
+        }
+        print(String(format: "Tip: $%.2f\n" , tip));
+
+        
+    }
 }
+
+/*extension String {
+    var wordList:[String] {
+        return "".join(componentsSeparatedByCharactersInSet(NSCharacterSet.punctuationCharacterSet())).componentsSeparatedByString(" ")
+    }
+}*/
