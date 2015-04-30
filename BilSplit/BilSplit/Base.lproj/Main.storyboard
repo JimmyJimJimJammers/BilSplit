@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--History Detail View Controller-->
         <scene sceneID="d2S-l2-imX">
             <objects>
-                <viewController id="Bbz-QW-lQo" sceneMemberID="viewController">
+                <viewController id="Bbz-QW-lQo" customClass="HistoryDetailViewController" customModule="BilSplit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d59-GL-oh5"/>
                         <viewControllerLayoutGuide type="bottom" id="Al9-kK-kZ9"/>
@@ -16,11 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggS-8V-71r">
+                                <rect key="frame" x="0.0" y="20" width="375" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total: $7.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jab-Ly-X97">
+                                <rect key="frame" x="133" y="596" width="109" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmm-QC-vyF">
+                                <rect key="frame" x="164" y="629" width="46" height="30"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="6Da-VH-ipC" kind="showDetail" id="3dF-in-79M"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mvx-Gg-NYi">
                                 <rect key="frame" x="0.0" y="55" width="375" height="533"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ViewHistoryCell" id="U6o-Jo-0Lp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ViewHistoryCell" id="U6o-Jo-0Lp" customClass="HistoryDetailTableCell" customModule="BilSplit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U6o-Jo-0Lp" id="M1l-39-H2w">
@@ -47,31 +68,26 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="Color" destination="8XD-Vy-MUn" id="cwz-gC-Pnl"/>
+                                            <outlet property="Name" destination="2x5-s7-RHc" id="YuJ-Gy-ojy"/>
+                                            <outlet property="Total" destination="IUM-gz-JOK" id="CC8-xj-GHT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Bbz-QW-lQo" id="Rtj-fs-ACs"/>
+                                    <outlet property="delegate" destination="Bbz-QW-lQo" id="64W-H9-Pgd"/>
+                                </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggS-8V-71r">
-                                <rect key="frame" x="0.0" y="20" width="375" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total: $7.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jab-Ly-X97">
-                                <rect key="frame" x="133" y="596" width="109" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmm-QC-vyF">
-                                <rect key="frame" x="164" y="629" width="46" height="30"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="ResturantName" destination="ggS-8V-71r" id="ge1-qW-HgG"/>
+                        <outlet property="Total" destination="Jab-Ly-X97" id="bGb-Gw-b01"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0y-Te-HOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -483,7 +499,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQz-bn-eOK">
-                                <rect key="frame" x="164" y="629" width="46" height="30"/>
+                                <rect key="frame" x="313" y="629" width="46" height="30"/>
                                 <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -492,7 +508,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tip" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0TE-9j-l74">
-                                <rect key="frame" x="41" y="629" width="97" height="30"/>
+                                <rect key="frame" x="74" y="629" width="83" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -552,6 +568,23 @@
                                     <outlet property="delegate" destination="l1d-di-qSC" id="lvc-Em-TAU"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tip (%):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hb3-1r-QLM">
+                                <rect key="frame" x="11" y="633" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bq1-ue-djU">
+                                <rect key="frame" x="174" y="630" width="131" height="29"/>
+                                <segments>
+                                    <segment title="10%"/>
+                                    <segment title="15%"/>
+                                    <segment title="20%"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="l1d-di-qSC" eventType="valueChanged" id="SZz-Ka-xzf"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -559,6 +592,7 @@
                     <connections>
                         <outlet property="SelectItemTable" destination="cuu-nQ-2g5" id="0dt-hr-TNc"/>
                         <outlet property="TipTextField" destination="0TE-9j-l74" id="1OT-VD-aiF"/>
+                        <outlet property="segmentedControl" destination="bq1-ue-djU" id="gKR-qC-NnR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXl-g9-SED" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -645,6 +679,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="RestaurantTextField" destination="I7Q-Vc-fvN" id="h5a-pP-Jyw"/>
+                        <outlet property="SaveButton" destination="gAL-4s-l6r" id="PSC-96-TQp"/>
                         <outlet property="TotalLabel" destination="7Gj-VX-r2d" id="0HP-jN-CI1"/>
                     </connections>
                 </viewController>
@@ -716,6 +751,7 @@
                                             <outlet property="DateLabel" destination="i4U-Ef-ipB" id="NKm-xv-sx0"/>
                                             <outlet property="LocationLabel" destination="Zkn-At-OKq" id="mQ0-3V-Trm"/>
                                             <outlet property="TotalLabel" destination="8BY-xI-CT8" id="jO6-gO-kg1"/>
+                                            <segue destination="Bbz-QW-lQo" kind="showDetail" identifier="ToHistoryDetailSegue" id="IXU-2z-kxs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -748,9 +784,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="npf-OQ-j7z"/>
+        <segue reference="Wb4-XC-bu0"/>
         <segue reference="qY9-OU-AXP"/>
-        <segue reference="RVp-US-asg"/>
         <segue reference="7gU-bw-DEr"/>
+        <segue reference="3dF-in-79M"/>
     </inferredMetricsTieBreakers>
 </document>

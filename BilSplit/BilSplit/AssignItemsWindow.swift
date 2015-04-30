@@ -26,6 +26,7 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
     var totalItemsAssigned: Int = 0;
     var totalItems: Int = 0;
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var SelectItemTable: UITableView!
     @IBOutlet weak var TipTextField: UITextField!
     
@@ -68,6 +69,19 @@ class AssignItemsWindow: UIViewController, UITableViewDataSource, UITableViewDel
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            TipTextField.text = "10%";
+        case 1:
+            TipTextField.text = "15%";
+        case 2:
+            TipTextField.text = "20%";
+        default:
+            break; 
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int

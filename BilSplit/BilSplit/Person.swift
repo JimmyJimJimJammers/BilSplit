@@ -34,6 +34,6 @@ class Person
         email = "NoEmail";
         phone  = "5558675309";
         items = [];
-        tip = 0.20;
+        tip = 0.10;
     }
 }

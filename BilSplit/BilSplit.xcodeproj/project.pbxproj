@@ -32,6 +32,8 @@
 		12EE76441AD9BD170033848D /* EditItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE76431AD9BD170033848D /* EditItemsCell.swift */; };
 		302572571ADF2AE70044026E /* AddItemPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302572561ADF2AE60044026E /* AddItemPopUpViewController.swift */; };
 		3025725A1ADF334C0044026E /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302572591ADF334C0044026E /* History.swift */; };
+		306647421AF1AC1200D828D3 /* HistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306647411AF1AC1200D828D3 /* HistoryDetailViewController.swift */; };
+		306647441AF1B78000D828D3 /* HistoryDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306647431AF1B78000D828D3 /* HistoryDetailTableCell.swift */; };
 		307054041ADE257300426415 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307054031ADE257300426415 /* Item.swift */; };
 		307054061ADE25E600426415 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307054051ADE25E600426415 /* Receipt.swift */; };
 		30B962421ACA2A5B0047D02E /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B962411ACA2A5B0047D02E /* SwiftSpinner.swift */; };
@@ -84,6 +86,8 @@
 		302572561ADF2AE60044026E /* AddItemPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemPopUpViewController.swift; sourceTree = "<group>"; };
 		302572591ADF334C0044026E /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		3062B5951ABD88490005E932 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		306647411AF1AC1200D828D3 /* HistoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDetailViewController.swift; sourceTree = "<group>"; };
+		306647431AF1B78000D828D3 /* HistoryDetailTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryDetailTableCell.swift; path = ../HistoryDetailTableCell.swift; sourceTree = "<group>"; };
 		307054031ADE257300426415 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		307054051ADE25E600426415 /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		30B962411ACA2A5B0047D02E /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				307054051ADE25E600426415 /* Receipt.swift */,
 				1238C5571ADDD71500844C86 /* Person.swift */,
 				12033CC61ACC7D3B007201B3 /* EditableItem.swift */,
+				306647451AF1F70800D828D3 /* HistoryDetailWindow */,
 				307054071ADE25FA00426415 /* ViewControllerStartSceen */,
 				12EE76421AD9BC910033848D /* EditItemsWindow */,
 				302572581ADF33320044026E /* AddItemPopUp */,
@@ -263,6 +268,15 @@
 				302572561ADF2AE60044026E /* AddItemPopUpViewController.swift */,
 			);
 			name = AddItemPopUp;
+			sourceTree = "<group>";
+		};
+		306647451AF1F70800D828D3 /* HistoryDetailWindow */ = {
+			isa = PBXGroup;
+			children = (
+				306647411AF1AC1200D828D3 /* HistoryDetailViewController.swift */,
+				306647431AF1B78000D828D3 /* HistoryDetailTableCell.swift */,
+			);
+			name = HistoryDetailWindow;
 			sourceTree = "<group>";
 		};
 		307054071ADE25FA00426415 /* ViewControllerStartSceen */ = {
@@ -390,9 +404,11 @@
 				12089C2F1ADF16AC00F094A6 /* PersonSelectCell.swift in Sources */,
 				1238C55A1ADDE89800844C86 /* AddPeopleViewController.swift in Sources */,
 				1238C5641ADE068F00844C86 /* ViewController.swift in Sources */,
+				306647441AF1B78000D828D3 /* HistoryDetailTableCell.swift in Sources */,
 				307054041ADE257300426415 /* Item.swift in Sources */,
 				12089C361ADF30B400F094A6 /* ContactSearch.swift in Sources */,
 				12089C3D1ADF4C9D00F094A6 /* SummaryTableCell.swift in Sources */,
+				306647421AF1AC1200D828D3 /* HistoryDetailViewController.swift in Sources */,
 				1238C55D1ADDF23E00844C86 /* AddPeopleCell.swift in Sources */,
 				12089C341ADF2DDE00F094A6 /* ItemSelectCellTableViewCell.swift in Sources */,
 				1238C55F1ADE052D00844C86 /* AddPersonPopUp.swift in Sources */,

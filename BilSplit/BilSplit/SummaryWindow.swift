@@ -10,6 +10,7 @@ import UIKit
 
 class SummaryWindow: UIViewController, NSCoding
 {
+    
     var historyList: [History] = [];
     var people: [Person] = [];
     var editableItemsList: [EditableItem] = []
@@ -19,7 +20,12 @@ class SummaryWindow: UIViewController, NSCoding
     var totalItemsAssigned: Int = 0;
     var totalItems: Int = 0;
     
+    var cellTapped:Bool = true
+    var currentRow = 0;
+    
+    @IBOutlet weak var SaveButton: UIButton!
     @IBOutlet weak var RestaurantTextField: UITextField!
+    
     @IBOutlet weak var TotalLabel: UILabel!
     
     
@@ -37,6 +43,15 @@ class SummaryWindow: UIViewController, NSCoding
         view.addGestureRecognizer(tap)
         
         super.viewDidLoad()
+        var noTip:Double = 0.0;
+        for(var i: Int = 0; i < people.count; i++)
+        {
+            for(var j: Int = 0; j < people[i].items.count; j++)
+            {
+                noTip += people[i].items[j].Price;
+            }
+        }
+        taxAmount = finalReceipt.tax/noTip;
         
         var total: Double = 0;
         
@@ -47,11 +62,11 @@ class SummaryWindow: UIViewController, NSCoding
             {
                 subTotal += people[i].items[j].Price;
             }
+            total += subTotal*taxAmount;
             total += (subTotal + (subTotal * people[i].tip));
         }
-        
+
         TotalLabel.text = String(format: "$%.2f", total);
-        
         // Do any additional setup after loading the view.
     }
     
@@ -79,6 +94,7 @@ class SummaryWindow: UIViewController, NSCoding
         {
             total += person.items[i].Price;
         }
+        total += total*taxAmount;
         total += total*person.tip;
         
         cell.Total.text = String(format: "$%.2f", total);
@@ -90,6 +106,27 @@ class SummaryWindow: UIViewController, NSCoding
         //cell.ColorLabel.backgroundColor = person.color;
         return cell;
     }
+    
+    /*func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var selectedRowIndex = indexPath
+        currentRow = selectedRowIndex.row
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == currentRow {
+            if cellTapped == false {
+                cellTapped = true
+                return 141
+            } else {
+                cellTapped = false
+                return 45
+            }
+        }
+        return 45
+    }*/
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)
     {
@@ -127,7 +164,7 @@ class SummaryWindow: UIViewController, NSCoding
             //string history class
             var temp = tempHistory.location + "==";
             temp = temp + String(format: "%.2f", tempHistory.total) + "==";
-            temp = temp + String(format: "%.2f", tempHistory.tax) + "==";
+            temp = temp + String(format: "%f", taxAmount) + "==";
             
             for(var i=0; i<tempHistory.people.count; i++){
                 
@@ -152,7 +189,7 @@ class SummaryWindow: UIViewController, NSCoding
                 else{
                     temp = temp + "n/a" + "[]";
                 }
-                temp = temp + String(format: "%d", people[i].tip) + "{}";
+                temp = temp + String(format: "%f", tempHistory.people[i].tip) + "{}";
                 for(var j=0; j<tempHistory.people[i].items.count; j++){
                     temp = temp + tempHistory.people[i].items[j].ItemName + "&&";
                     temp = temp + String(format: "%.2f", tempHistory.people[i].items[j].Price) + "&&";
@@ -166,6 +203,11 @@ class SummaryWindow: UIViewController, NSCoding
                     temp = temp + "::";
                 }
             }
+            let formatter = NSDateFormatter()
+            let date = NSDate()
+            formatter.dateFormat = "MM/dd/yy"
+            var d:String = formatter.stringFromDate(date);
+            temp = temp + "=="  + d;
             
             
             let filemgr = NSFileManager.defaultManager()

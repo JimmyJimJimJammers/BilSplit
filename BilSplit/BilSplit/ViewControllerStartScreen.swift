@@ -24,6 +24,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     var historyList: [History] = [];
     var histListString : [String] = [];
     var taxAmount: Double = 0;
+    var singleHis: History!
     
     var totalItemsAssigned: Int = 0;
     var totalItems: Int = 0;
@@ -83,10 +84,11 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
                 }
                 
                 //saves parsed data in historyList
-                var h = History(people: persons, tax: NSString(string: temp[2]).doubleValue, total: NSString(string: temp[1]).doubleValue, location: temp[0]);
+                var h = History(people: persons, tax: NSString(string: temp[2]).doubleValue, total: NSString(string: temp[1]).doubleValue, location: temp[0], date:temp[temp.count-1]);
                 historyList.append(h);
             }
         }
+        
     }
     
     @IBAction func deleteHistory(sender: AnyObject) {
@@ -145,7 +147,7 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
         
         cell.LocationLabel.text = hist.location;
         cell.TotalLabel.text = String(format: "$%.2f", hist.total);
-        
+        cell.DateLabel.text = hist.date;
         //cell.NameLabel.text = person.name;
         //cell.ColorLabel.backgroundColor = person.color;
         return cell;
@@ -166,6 +168,12 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             historyTable.reloadData();
             
         }
+    }
+    
+    func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath)
+    {
+        singleHis = historyList[indexPath.row];
+        
     }
     
     
@@ -500,13 +508,19 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
     
         }
         
+        for var i = 0; i < arrayText.count; i++ {
+            if arrayText[i] == "" {
+                arrayText.removeAtIndex(i)
+            }
+        }
+        
         //checks to see if numbers are formatted properly
         for var i = 0; i < arrayText.count; i++ {
             var stringLength:Int = count(arrayText[i])
             var substringIndex = stringLength - 2
             var x:String = ""
             if(!isEmpty(arrayText[i])) {
-                x = String(Array(arrayText[i])[substringIndex])
+                x = String(arrayText[i].characterAtIndex(substringIndex)!)
             }
             else {
                 break
@@ -736,6 +750,13 @@ class ViewControllerStartScreen: UIViewController, UINavigationControllerDelegat
             var svc = segue.destinationViewController as! ItemsWindow;
             
             svc.historyList = self.historyList;
+        }
+        
+        if (segue.identifier == "ToHistoryDetailSegue")
+        {
+            var svc = segue.destinationViewController as! HistoryDetailViewController;
+            
+            svc.resturant = singleHis;
         }
     }
     
