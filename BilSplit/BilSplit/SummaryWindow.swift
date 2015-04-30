@@ -107,7 +107,7 @@ class SummaryWindow: UIViewController, NSCoding
         return cell;
     }
     
-    /*func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedRowIndex = indexPath
         currentRow = selectedRowIndex.row
         tableView.beginUpdates()
@@ -125,7 +125,7 @@ class SummaryWindow: UIViewController, NSCoding
             }
         }
         return 45
-    }*/
+    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!)

@@ -12,6 +12,8 @@ class HistoryDetailViewController: UIViewController {
     
     var resturant:History!
     var tax:Double = 0.0;
+    var cellTapped:Bool = true
+    var currentRow = 0;
     
     @IBOutlet weak var ResturantName: UILabel!
     @IBOutlet weak var Total: UILabel!
@@ -54,7 +56,26 @@ class HistoryDetailViewController: UIViewController {
         return tcell;
     }
 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var selectedRowIndex = indexPath
+        currentRow = selectedRowIndex.row
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == currentRow {
+            if cellTapped == false {
+                cellTapped = true
+                return 141
+            } else {
+                cellTapped = false
+                return 45
+            }
+        }
+        return 45
+    }
+
 
     /*
     // MARK: - Navigation
