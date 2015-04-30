@@ -112,6 +112,17 @@ class SelectPersonViewController: UIViewController, UITableViewDataSource, UITab
         }
         if (segue.identifier == "ToFinalScreenSegue")
         {
+            //delete people who have no items assigned to them
+            for(var i: Int = 0; i < people.count; i++)
+            {
+                if(people[i].items.count < 1)
+                {
+                    people.removeAtIndex(i);
+                    i--;
+                }
+            }
+            
+            
             var svc = segue.destinationViewController as! SummaryWindow;
             
             svc.editableItemsList = self.editableItemsList;
