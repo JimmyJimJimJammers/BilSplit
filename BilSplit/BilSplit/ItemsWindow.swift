@@ -96,6 +96,7 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
             }
             finalReceipt.total = newTotal;
             
+            //For a commit
             
             //pull from tax text field here
             var savedTax = TaxField.text;
