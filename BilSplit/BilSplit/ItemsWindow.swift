@@ -91,6 +91,8 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
                     newTotal = newTotal + priceD;
                 }
                 
+                totalItems += q.toInt()!;
+                
                 passedEditableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt, assigned: 0));
                 
             }
@@ -178,6 +180,7 @@ class ItemsWindow: UIViewController, UITableViewDataSource, UITableViewDelegate,
             }
             
             totalItems += q.toInt()!;
+            
             
             passedEditableItemsList.append(EditableItem(itemName: n, price: priceD, quantity: quantInt, assigned: 0));
             
